@@ -1,0 +1,94 @@
+# NVDA Translate Addon - ur
+# This file is distributed under the same license as the translate package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: translate 2025.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-02 00:00+0000\n"
+"PO-Revision-Date: 2025-04-02 00:00+0000\n"
+"Last-Translator: Translate Addon\n"
+"Language-Team: \n"
+"Language: ur\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "&Target language:"
+msgstr "&ہدف زبان:"
+
+msgid "All translations have been deleted."
+msgstr "تمام تراجم حذف کر دیے گئے ہیں۔"
+
+msgid "Copy the latest translated text to the clipboard."
+msgstr "تازہ ترین ترجمہ شدہ متن کو کلپ بورڈ پر کاپی کریں۔"
+
+msgid "Enables translation to the desired language."
+msgstr "مطلوبہ زبان میں ترجمہ کو فعال کرتا ہے۔"
+
+msgid "Error while deleting application's translation cache."
+msgstr "ایپلیکیشن کے ٹرانسلیشن کیشے کو حذف کرتے وقت خرابی۔"
+
+msgid "Google Translate"
+msgstr "گوگل ترجمہ"
+
+msgid "LibreTranslate"
+msgstr ""
+
+msgid "LibreTranslate &URL:"
+msgstr ""
+
+msgid "LibreTranslate API &key (optional):"
+msgstr "LibreTranslate API &key (اختیاری):"
+
+msgid "Lingva Translate"
+msgstr "لنگوا ترجمہ"
+
+msgid "Lingva Translate &instance URL:"
+msgstr "لنگوا ترجمہ اور مثال URL:"
+
+msgid "Match NVDA language"
+msgstr "NVDA زبان سے مطابقت"
+
+msgid "No focused application"
+msgstr "کوئی فوکسڈ ایپلیکیشن نہیں۔"
+
+msgid "No saved translations for {app}"
+msgstr "{app} کے لیے کوئی محفوظ کردہ ترجمہ نہیں"
+
+msgid "No translation to copy"
+msgstr "کاپی کرنے کے لیے کوئی ترجمہ نہیں۔"
+
+msgid "Press twice to delete all cached translations for all applications."
+msgstr "تمام ایپلیکیشنز کے لیے تمام کیش شدہ ترجمے حذف کرنے کے لیے دو بار دبائیں"
+
+msgid "Press twice to delete all translations for {app}"
+msgstr "{app} کے تمام ترجمے حذف کرنے کے لیے دو بار دبائیں"
+
+msgid "Remove all cached translations for all applications."
+msgstr "تمام ایپلیکیشنز کے لیے تمام کیش شدہ ترجمہ ہٹا دیں۔"
+
+msgid "Remove translation cache for the currently focused application"
+msgstr "موجودہ فوکس کردہ ایپلیکیشن کے لیے ترجمہ کیشے کو ہٹا دیں۔"
+
+msgid "Some caches failed to be removed."
+msgstr "کچھ کیچز کو ہٹانے میں ناکام رہا۔"
+
+msgid "Translate"
+msgstr "ترجمہ"
+
+msgid "Translation &engine:"
+msgstr "ترجمہ &انجن:"
+
+msgid "Translation cache for {app} has been deleted."
+msgstr "{app} کے لیے ترجمہ کیشے کو حذف کر دیا گیا ہے۔"
+
+msgid "Translation disabled."
+msgstr "ترجمہ غیر فعال ہوگیا۔"
+
+msgid "Translation enabled."
+msgstr "ترجمہ فعال ہوگیا۔"
+
+msgid "translation {text} ¨copied to clipboard"
+msgstr "ترجمہ {text} ¨کلپ بورڈ میں کاپی کیا گیا۔"
+

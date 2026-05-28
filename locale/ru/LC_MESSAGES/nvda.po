@@ -1,0 +1,94 @@
+# NVDA Translate Addon - ru
+# This file is distributed under the same license as the translate package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: translate 2025.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-02 00:00+0000\n"
+"PO-Revision-Date: 2025-04-02 00:00+0000\n"
+"Last-Translator: Translate Addon\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "&Target language:"
+msgstr "&Целевой язык:"
+
+msgid "All translations have been deleted."
+msgstr "Все переводы удалены."
+
+msgid "Copy the latest translated text to the clipboard."
+msgstr "Скопировать последний переведённый текст в буфер обмена."
+
+msgid "Enables translation to the desired language."
+msgstr "Включает перевод на нужный язык."
+
+msgid "Error while deleting application's translation cache."
+msgstr "Ошибка при удалении кэша переводов приложения."
+
+msgid "Google Translate"
+msgstr "Google Переводчик"
+
+msgid "LibreTranslate"
+msgstr "LibreПереводчик"
+
+msgid "LibreTranslate &URL:"
+msgstr "&URL LibreTranslate:"
+
+msgid "LibreTranslate API &key (optional):"
+msgstr "&Ключ API LibreTranslate (необязательно):"
+
+msgid "Lingva Translate"
+msgstr "Лингва Переводчик"
+
+msgid "Lingva Translate &instance URL:"
+msgstr "&URL экземпляра Lingva:"
+
+msgid "Match NVDA language"
+msgstr "Использовать язык NVDA"
+
+msgid "No focused application"
+msgstr "Нет фокусированного приложения"
+
+msgid "No saved translations for {app}"
+msgstr "Нет сохраненных переводов для {app}."
+
+msgid "No translation to copy"
+msgstr "Нет перевода для копирования"
+
+msgid "Press twice to delete all cached translations for all applications."
+msgstr "Нажмите дважды, чтобы удалить все кэшированные переводы для всех приложений."
+
+msgid "Press twice to delete all translations for {app}"
+msgstr "Нажмите дважды, чтобы удалить все переводы для {app}"
+
+msgid "Remove all cached translations for all applications."
+msgstr "Удалить все кэшированные переводы для всех приложений."
+
+msgid "Remove translation cache for the currently focused application"
+msgstr "Удалить кэш переводов для текущего приложения"
+
+msgid "Some caches failed to be removed."
+msgstr "Некоторые кэши не удалось удалить."
+
+msgid "Translate"
+msgstr "Перевод"
+
+msgid "Translation &engine:"
+msgstr "&Движок перевода:"
+
+msgid "Translation cache for {app} has been deleted."
+msgstr "Кэш переводов для {app} удален."
+
+msgid "Translation disabled."
+msgstr "Перевод выключен."
+
+msgid "Translation enabled."
+msgstr "Перевод включён."
+
+msgid "translation {text} ¨copied to clipboard"
+msgstr "перевод {текст} ¨скопирован в буфер обмена"
+

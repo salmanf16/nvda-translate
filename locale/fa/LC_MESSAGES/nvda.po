@@ -1,0 +1,94 @@
+# NVDA Translate Addon - fa
+# This file is distributed under the same license as the translate package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: translate 2025.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-02 00:00+0000\n"
+"PO-Revision-Date: 2025-04-02 00:00+0000\n"
+"Last-Translator: Translate Addon\n"
+"Language-Team: \n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "&Target language:"
+msgstr "زبان &مقصد:"
+
+msgid "All translations have been deleted."
+msgstr "تمام ترجمه ها حذف شده است."
+
+msgid "Copy the latest translated text to the clipboard."
+msgstr "آخرین متن ترجمه شده را در کلیپ بورد کپی کنید."
+
+msgid "Enables translation to the desired language."
+msgstr "ترجمه به زبان مورد نظر را فعال می کند."
+
+msgid "Error while deleting application's translation cache."
+msgstr "خطا هنگام حذف حافظه پنهان ترجمه برنامه."
+
+msgid "Google Translate"
+msgstr "ترجمه گوگل"
+
+msgid "LibreTranslate"
+msgstr ""
+
+msgid "LibreTranslate &URL:"
+msgstr "LibreTranslate & URL:"
+
+msgid "LibreTranslate API &key (optional):"
+msgstr "&کلید LibreTranslate API (اختیاری):"
+
+msgid "Lingva Translate"
+msgstr "ترجمه لینگوا"
+
+msgid "Lingva Translate &instance URL:"
+msgstr "URL &نمونه ترجمه Lingva:"
+
+msgid "Match NVDA language"
+msgstr "تطابق با زبان NVDA"
+
+msgid "No focused application"
+msgstr "بدون برنامه متمرکز"
+
+msgid "No saved translations for {app}"
+msgstr "هیچ ترجمه ذخیره شده ای برای {app} وجود ندارد"
+
+msgid "No translation to copy"
+msgstr "ترجمه ای برای کپی وجود ندارد"
+
+msgid "Press twice to delete all cached translations for all applications."
+msgstr "دوبار فشار دهید تا تمام ترجمه های ذخیره شده در حافظه پنهان برای همه برنامه ها حذف شود."
+
+msgid "Press twice to delete all translations for {app}"
+msgstr "برای حذف همه ترجمه‌های {app}، دوبار فشار دهید"
+
+msgid "Remove all cached translations for all applications."
+msgstr "تمام ترجمه های کش شده برای همه برنامه ها را حذف کنید."
+
+msgid "Remove translation cache for the currently focused application"
+msgstr "حافظه پنهان ترجمه را برای برنامه متمرکز فعلی حذف کنید"
+
+msgid "Some caches failed to be removed."
+msgstr "برخی از حافظه های پنهان حذف نشدند."
+
+msgid "Translate"
+msgstr "ترجمه"
+
+msgid "Translation &engine:"
+msgstr "&موتور ترجمه:"
+
+msgid "Translation cache for {app} has been deleted."
+msgstr "حافظه پنهان ترجمه برای {app} حذف شده است."
+
+msgid "Translation disabled."
+msgstr "ترجمه غیرفعال شد."
+
+msgid "Translation enabled."
+msgstr "ترجمه فعال شد."
+
+msgid "translation {text} ¨copied to clipboard"
+msgstr "ترجمه {متن} ¨در کلیپ بورد کپی شد"
+

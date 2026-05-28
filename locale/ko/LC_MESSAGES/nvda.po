@@ -1,0 +1,94 @@
+# NVDA Translate Addon - ko
+# This file is distributed under the same license as the translate package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: translate 2025.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-02 00:00+0000\n"
+"PO-Revision-Date: 2025-04-02 00:00+0000\n"
+"Last-Translator: Translate Addon\n"
+"Language-Team: \n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "&Target language:"
+msgstr "대상 언어(&T):"
+
+msgid "All translations have been deleted."
+msgstr "모든 번역이 삭제되었습니다."
+
+msgid "Copy the latest translated text to the clipboard."
+msgstr "마지막 번역된 텍스트를 클립보드에 복사합니다."
+
+msgid "Enables translation to the desired language."
+msgstr "원하는 언어로 번역을 활성화합니다."
+
+msgid "Error while deleting application's translation cache."
+msgstr "애플리케이션의 번역 캐시를 삭제하는 중 오류가 발생했습니다."
+
+msgid "Google Translate"
+msgstr "Google 번역"
+
+msgid "LibreTranslate"
+msgstr "Libre번역"
+
+msgid "LibreTranslate &URL:"
+msgstr "자유 번역(&URL):"
+
+msgid "LibreTranslate API &key (optional):"
+msgstr "LibreTranslate API 키 (선택사항)(&K):"
+
+msgid "Lingva Translate"
+msgstr "링바 번역"
+
+msgid "Lingva Translate &instance URL:"
+msgstr "Lingva 인스턴스 URL(&I):"
+
+msgid "Match NVDA language"
+msgstr "NVDA 언어 일치"
+
+msgid "No focused application"
+msgstr "집중적인 적용이 없음"
+
+msgid "No saved translations for {app}"
+msgstr "{app}에 대해 저장된 번역이 없습니다."
+
+msgid "No translation to copy"
+msgstr "복사할 번역이 없습니다."
+
+msgid "Press twice to delete all cached translations for all applications."
+msgstr "모든 애플리케이션에 대해 캐시된 번역을 모두 삭제하려면 두 번 누르세요."
+
+msgid "Press twice to delete all translations for {app}"
+msgstr "{app}에 대한 모든 번역을 삭제하려면 두 번 누르세요."
+
+msgid "Remove all cached translations for all applications."
+msgstr "모든 응용프로그램의 캐시된 번역을 모두 제거합니다."
+
+msgid "Remove translation cache for the currently focused application"
+msgstr "현재 포커스된 응용프로그램의 번역 캐시 제거"
+
+msgid "Some caches failed to be removed."
+msgstr "일부 캐시를 제거하지 못했습니다."
+
+msgid "Translate"
+msgstr "번역"
+
+msgid "Translation &engine:"
+msgstr "번역 엔진(&E):"
+
+msgid "Translation cache for {app} has been deleted."
+msgstr "{app}의 번역 캐시가 삭제되었습니다."
+
+msgid "Translation disabled."
+msgstr "번역이 비활성화되었습니다."
+
+msgid "Translation enabled."
+msgstr "번역이 활성화되었습니다."
+
+msgid "translation {text} ¨copied to clipboard"
+msgstr "번역 {text} ¨클립보드에 복사됨"
+

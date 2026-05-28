@@ -1,0 +1,94 @@
+# NVDA Translate Addon - fr
+# This file is distributed under the same license as the translate package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: translate 2025.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-02 00:00+0000\n"
+"PO-Revision-Date: 2025-04-02 00:00+0000\n"
+"Last-Translator: Translate Addon\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "&Target language:"
+msgstr "Langue &cible :"
+
+msgid "All translations have been deleted."
+msgstr "Toutes les traductions ont été supprimées."
+
+msgid "Copy the latest translated text to the clipboard."
+msgstr "Copier le dernier texte traduit dans le presse-papiers."
+
+msgid "Enables translation to the desired language."
+msgstr "Active la traduction vers la langue souhaitée."
+
+msgid "Error while deleting application's translation cache."
+msgstr "Erreur lors de la suppression du cache de traduction de l'application."
+
+msgid "Google Translate"
+msgstr "Google Traduction"
+
+msgid "LibreTranslate"
+msgstr "LibreTraduire"
+
+msgid "LibreTranslate &URL:"
+msgstr "&URL LibreTranslate :"
+
+msgid "LibreTranslate API &key (optional):"
+msgstr "&Clé API LibreTranslate (optionnel) :"
+
+msgid "Lingva Translate"
+msgstr "Lingva Traduction"
+
+msgid "Lingva Translate &instance URL:"
+msgstr "URL de l'instance &Lingva :"
+
+msgid "Match NVDA language"
+msgstr "Correspondre à la langue de NVDA"
+
+msgid "No focused application"
+msgstr "Aucune application ciblée"
+
+msgid "No saved translations for {app}"
+msgstr "Aucune traduction enregistrée pour {app}"
+
+msgid "No translation to copy"
+msgstr "Aucune traduction à copier"
+
+msgid "Press twice to delete all cached translations for all applications."
+msgstr "Appuyez deux fois pour supprimer toutes les traductions en cache pour toutes les applications."
+
+msgid "Press twice to delete all translations for {app}"
+msgstr "Appuyez deux fois pour supprimer toutes les traductions de {app}"
+
+msgid "Remove all cached translations for all applications."
+msgstr "Supprimer toutes les traductions en cache pour toutes les applications."
+
+msgid "Remove translation cache for the currently focused application"
+msgstr "Supprimer le cache de traduction pour l'application actuellement ciblée"
+
+msgid "Some caches failed to be removed."
+msgstr "Certains caches n'ont pas pu être supprimés."
+
+msgid "Translate"
+msgstr "Traduction"
+
+msgid "Translation &engine:"
+msgstr "&Moteur de traduction :"
+
+msgid "Translation cache for {app} has been deleted."
+msgstr "Le cache de traduction de {app} a été supprimé."
+
+msgid "Translation disabled."
+msgstr "Traduction désactivée."
+
+msgid "Translation enabled."
+msgstr "Traduction activée."
+
+msgid "translation {text} ¨copied to clipboard"
+msgstr "traduction {texte} ¨copié dans le presse-papiers"
+

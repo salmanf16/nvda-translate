@@ -1,0 +1,94 @@
+# NVDA Translate Addon - tr
+# This file is distributed under the same license as the translate package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: translate 2025.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-02 00:00+0000\n"
+"PO-Revision-Date: 2025-04-02 00:00+0000\n"
+"Last-Translator: Translate Addon\n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "&Target language:"
+msgstr "&Hedef dil:"
+
+msgid "All translations have been deleted."
+msgstr "Tüm çeviriler silindi."
+
+msgid "Copy the latest translated text to the clipboard."
+msgstr "Son çevrilen metni panoya kopyala."
+
+msgid "Enables translation to the desired language."
+msgstr "İstenilen dile çeviriyi etkinleştirir."
+
+msgid "Error while deleting application's translation cache."
+msgstr "Uygulamanın çeviri önbelleği silinirken hata oluştu."
+
+msgid "Google Translate"
+msgstr "Google Çeviri"
+
+msgid "LibreTranslate"
+msgstr ""
+
+msgid "LibreTranslate &URL:"
+msgstr "LibreTranslate &URL:"
+
+msgid "LibreTranslate API &key (optional):"
+msgstr "LibreTranslate API &anahtarı (isteğe bağlı):"
+
+msgid "Lingva Translate"
+msgstr "Lingva Çeviri"
+
+msgid "Lingva Translate &instance URL:"
+msgstr "Lingva &sunucu URL'si:"
+
+msgid "Match NVDA language"
+msgstr "NVDA diliyle eşleştir"
+
+msgid "No focused application"
+msgstr "Odaklanmış uygulama yok"
+
+msgid "No saved translations for {app}"
+msgstr "{app} için kayıtlı çeviri yok"
+
+msgid "No translation to copy"
+msgstr "Kopyalanacak çeviri yok"
+
+msgid "Press twice to delete all cached translations for all applications."
+msgstr "Tüm uygulamalar için önbelleğe alınmış tüm çevirileri silmek için iki kez basın."
+
+msgid "Press twice to delete all translations for {app}"
+msgstr "{app} için tüm çevirileri silmek için iki kez basın"
+
+msgid "Remove all cached translations for all applications."
+msgstr "Tüm uygulamalar için önbelleğe alınmış tüm çevirileri kaldır."
+
+msgid "Remove translation cache for the currently focused application"
+msgstr "Şu anda odaklanılan uygulama için çeviri önbelleğini kaldır"
+
+msgid "Some caches failed to be removed."
+msgstr "Bazı önbellekler kaldırılamadı."
+
+msgid "Translate"
+msgstr "Çeviri"
+
+msgid "Translation &engine:"
+msgstr "Çeviri &motoru:"
+
+msgid "Translation cache for {app} has been deleted."
+msgstr "{app} için çeviri önbelleği silindi."
+
+msgid "Translation disabled."
+msgstr "Çeviri devre dışı bırakıldı."
+
+msgid "Translation enabled."
+msgstr "Çeviri etkinleştirildi."
+
+msgid "translation {text} ¨copied to clipboard"
+msgstr "çeviri {metin} ¨panoya kopyalandı"
+

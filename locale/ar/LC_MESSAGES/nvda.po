@@ -1,0 +1,94 @@
+# NVDA Translate Addon - ar
+# This file is distributed under the same license as the translate package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: translate 2026.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-20 00:00+0000\n"
+"PO-Revision-Date: 2026-05-20 00:00+0000\n"
+"Last-Translator: Translate Addon\n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "&Target language:"
+msgstr "اللغة ال&هدف:"
+
+msgid "All translations have been deleted."
+msgstr "تم حذف جميع الترجمات."
+
+msgid "Copy the latest translated text to the clipboard."
+msgstr "نسخ آخر نص مترجم إلى الحافظة."
+
+msgid "Enables translation to the desired language."
+msgstr "تُمكّن الترجمة إلى اللغة المطلوبة."
+
+msgid "Error while deleting application's translation cache."
+msgstr "خطأ أثناء حذف ذاكرة ترجمة التطبيق."
+
+msgid "Google Translate"
+msgstr "ترجمة جوجل"
+
+msgid "LibreTranslate"
+msgstr "LibreTranslate"
+
+msgid "LibreTranslate &URL:"
+msgstr "رابط LibreTranslate:"
+
+msgid "LibreTranslate API &key (optional):"
+msgstr "مفتاح API لـ LibreTranslate (اختياري):"
+
+msgid "Lingva Translate"
+msgstr "ترجمة Lingva"
+
+msgid "Lingva Translate &instance URL:"
+msgstr "رابط خادم Lingva:"
+
+msgid "Match NVDA language"
+msgstr "مطابقة لغة NVDA"
+
+msgid "No focused application"
+msgstr "لا يوجد تطبيق مركّز"
+
+msgid "No saved translations for {app}"
+msgstr "لا توجد ترجمات محفوظة لـ {app}"
+
+msgid "No translation to copy"
+msgstr "لا يوجد ترجمة للنسخ"
+
+msgid "Press twice to delete all cached translations for all applications."
+msgstr "اضغط مرتين لحذف جميع الترجمات المخزنة لجميع التطبيقات."
+
+msgid "Press twice to delete all translations for {app}"
+msgstr "اضغط مرتين لحذف جميع الترجمات لـ {app}"
+
+msgid "Remove all cached translations for all applications."
+msgstr "حذف جميع الترجمات المخزنة لجميع التطبيقات."
+
+msgid "Remove translation cache for the currently focused application"
+msgstr "حذف ذاكرة الترجمة للتطبيق المركّز حالياً"
+
+msgid "Some caches failed to be removed."
+msgstr "فشل حذف بعض الذاكرة المؤقتة."
+
+msgid "Translate"
+msgstr "ترجمة"
+
+msgid "Translation &engine:"
+msgstr "&محرك الترجمة:"
+
+msgid "Translation cache for {app} has been deleted."
+msgstr "تم حذف ذاكرة الترجمة لـ {app}."
+
+msgid "Translation disabled."
+msgstr "تم تعطيل الترجمة."
+
+msgid "Translation enabled."
+msgstr "تم تفعيل الترجمة."
+
+msgid "translation {text} ¨copied to clipboard"
+msgstr "الترجمة {text} ¨نُسخت إلى الحافظة"
+

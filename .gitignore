@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Operating system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# NVDA local caches and temporary test logs
+*.json
+*.log
+*.tmp
+run_log.txt
+nvda_config.ini
+
+# Packaging outputs
+*.zip
+*.nvda-addon
