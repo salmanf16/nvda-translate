@@ -48,7 +48,7 @@
 			margin-top: 2rem;
 			font-weight: 700;
 		}
-		ul {
+		ul, ol {
 			padding-left: 20px;
 		}
 		li {
@@ -91,71 +91,53 @@
 <body>
 
 	<h1>NVDA Translate</h1>
-	<p class="subtitle">An ultra-lightweight, extremely performant online translation addon for NVDA.</p>
+	<p class="subtitle">A simple, super-fast translation addon for NVDA.</p>
 
 	<div class="note-box">
-		Originally developed by <strong>Yannick Plassiard</strong> (the original author who made this translation addon possible). This modified version is optimized for extremely fast real-time translations while fully respecting the original developer's rights and excellent work.
+		This addon is built upon the wonderful original work by <strong>Yannick Plassiard</strong>. A huge shoutout and thanks to him for making on-the-fly translation accessible to the blind community!
 	</div>
 
 	<hr>
 
 	<div class="card">
-		<h2>Features</h2>
+		<h2>What makes it great?</h2>
 		<ul>
-			<li><strong>Multi-Engine Cloud Support</strong>: Choose from Google Translate, Lingva Translate, or LibreTranslate directly from NVDASettings.</li>
-			<li><strong>Official JSON API Integration</strong>: Connects directly to Google's official free translation API (<code>translate.googleapis.com</code>) with zero legacy web-scraping regexes.</li>
-			<li><strong>Zero-Latency Handshake Savings</strong>: Reuses persistent socket connections and HTTP/HTTPS Keep-Alive handshakes across subsequent translation requests, saving <strong>100ms - 300ms</strong> of network lag on every call!</li>
-			<li><strong>Granular Local Caching</strong>: Translates and caches text line by line. Granular terms load instantly from memory on future matches.</li>
-			<li><strong>0.0ms Performance Bypasses</strong>:
-				<ul>
-					<li><strong>Rule 1 (Non-Alphabetic Bypass)</strong>: Instantly skips numbers, gauges, coordinates, and symbols.</li>
-					<li><strong>Rule 2 (Single Latin Key Bypass)</strong>: Bypasses individual keyboard shortcut letters (like 'g' or 'A') while preserving non-ASCII translations (like Japanese Kanji).</li>
-					<li><strong>Rule 3 (Source-Target Matching)</strong>: Bypasses text already in your target language (e.g. Arabic chat messages) to ensure zero speech delays during live multiplayer gaming.</li>
-				</ul>
-			</li>
-			<li><strong>Auto-Saving Daemon</strong>: A thread-safe, periodic auto-saver writes translation caches to disk every 15 seconds in the background without affecting gameplay, preventing data loss on abrupt shutdowns.</li>
-			<li><strong>Punctuation-Insensitive Glossary</strong>: Instantly matches system terms (like <code>"Server down..."</code>, <code>"Server offline!!!"</code>) to pre-configured high-quality translations in <strong>0.0ms</strong> while preserving exact leading/trailing symbols.</li>
-			<li><strong>Ultra-Lightweight & Clean</strong>: purges offline dependencies, local drive managers, and developer temporary logs. Idle memory footprint is exactly <strong>0.0 MB</strong> and the packaged addon is only <strong>68 KB</strong>!</li>
+			<li><strong>Real-Time Translation</strong>: Translates text instantly as soon as NVDA speaks it.</li>
+			<li><strong>Choose Your Target Language</strong>: You can set the translation language to be completely different from your NVDA interface language! For example, if your NVDA is set to Arabic, you can still translate spoken text into English or any of the 80+ supported languages.</li>
+			<li><strong>Super Fast & Lightweight</strong>: No lag, no system bloat. It's built to run in the background without you even noticing.</li>
+			<li><strong>Smart Caching</strong>: It remembers previous translations. If a phrase is spoken again, it loads instantly from memory without waiting for the internet.</li>
+			<li><strong>Multiple Translation Engines</strong>: Easily switch between Google Translate, Lingva, or LibreTranslate right from the settings.</li>
 		</ul>
 	</div>
 
 	<div class="card">
-		<h2>Installation</h2>
+		<h2>How to Install</h2>
 		<ol>
-			<li>Download the latest <code>translate.nvda-addon</code> file.</li>
+			<li>Download the <code>translate.nvda-addon</code> file.</li>
 			<li>Double-click or press Enter on the file.</li>
-			<li>Answer <strong>Yes</strong> to NVDA's prompt to install the addon.</li>
-			<li>Restart NVDA to load the translation plugin.</li>
+			<li>Click <strong>Yes</strong> when NVDA asks if you want to install it.</li>
+			<li>Restart NVDA, and you are good to go!</li>
 		</ol>
 	</div>
 
 	<div class="card">
-		<h2>Gestures & Controls</h2>
-		<p>Configure these shortcuts in NVDA Preferences -> Command Gestures:</p>
+		<h2>Hotkeys (Gestures)</h2>
+		<p>Here are the default shortcuts to control the addon (you can customize them in NVDA Preferences -> Command Gestures):</p>
 		<ul>
-			<li><code>NVDA+Shift+Control+T</code>: Toggles translation on or off.</li>
-			<li><code>NVDA+Shift+C</code>: Copies the latest translated text to the clipboard.</li>
-			<li><code>NVDA+Shift+F</code> (press twice quickly): Deletes the translation cache for the currently active/focused application.</li>
-			<li><code>NVDA+Shift+Control+F</code> (press twice quickly): Deletes all cached translations for all applications on your system.</li>
+			<li><code>NVDA+Shift+Control+T</code>: Turn translation on or off.</li>
+			<li><code>NVDA+Shift+C</code>: Copy the last translated text to your clipboard.</li>
+			<li><code>NVDA+Shift+F</code> (press twice quickly): Clear the translation memory for the active app.</li>
+			<li><code>NVDA+Shift+Control+F</code> (press twice quickly): Clear all translation memory on your system.</li>
 		</ul>
 	</div>
 
 	<div class="card">
-		<h2>Configuration</h2>
-		<p>Navigate to <strong>NVDA Menu -> Preferences -> Settings -> Translate</strong> to configure:</p>
+		<h2>Settings & Customization</h2>
+		<p>Go to <strong>NVDA Menu -> Preferences -> Settings -> Translate</strong> to configure:</p>
 		<ol>
-			<li><strong>Translation Engine</strong>: Google Translate, Lingva Translate, or LibreTranslate.</li>
-			<li><strong>Custom API endpoints</strong>: Change URLs for Lingva instances or LibreTranslate servers (including API keys).</li>
-			<li><strong>Target Language</strong>: Choose your destination language (defaults to your active NVDA language). Supports <strong>89 distinct global languages</strong>!</li>
+			<li><strong>Translation Engine</strong>: Choose Google, Lingva, or LibreTranslate.</li>
+			<li><strong>Target Language</strong>: Choose your destination language (can be different from NVDA's active language!).</li>
 		</ol>
-	</div>
-
-	<div class="card">
-		<h2>Credits & Special Thanks</h2>
-		<ul>
-			<li><strong>Yannick Plassiard</strong>: The original author and developer who conceptualized and wrote the initial versions of this fantastic addon, making on-the-fly translation accessible to the blind community. We highly thank and appreciate him for his initial work and contribution.</li>
-			<li><strong>Hxebolax</strong>: For prior compatibility fixes in earlier NVDA versions.</li>
-		</ul>
 	</div>
 
 </body>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+	<meta charset="utf-8">
+	<title>إضافة الترجمة لـ NVDA</title>
+	<style>
+		body {
+			font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			color: #e2e8f0;
+			background-color: #0f172a;
+			line-height: 1.6;
+			max-width: 800px;
+			margin: 40px auto;
+			padding: 0 20px;
+		}
+		h1 {
+			font-size: 2.5rem;
+			color: #f8fafc;
+			text-align: center;
+			margin-bottom: 0.5rem;
+			font-weight: 800;
+			background: linear-gradient(to left, #38bdf8, #818cf8);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+		.subtitle {
+			text-align: center;
+			color: #94a3b8;
+			font-size: 1.1rem;
+			margin-bottom: 2rem;
+		}
+		.note-box {
+			background: rgba(56, 189, 248, 0.1);
+			border-right: 4px solid #38bdf8;
+			padding: 15px 20px;
+			border-radius: 8px 0 0 8px;
+			margin-bottom: 25px;
+			color: #94a3b8;
+		}
+		.note-box strong {
+			color: #38bdf8;
+		}
+		h2 {
+			font-size: 1.6rem;
+			color: #38bdf8;
+			border-bottom: 2px solid #1e293b;
+			padding-bottom: 8px;
+			margin-top: 2rem;
+			font-weight: 700;
+		}
+		ul, ol {
+			padding-right: 20px;
+			padding-left: 0;
+		}
+		li {
+			margin-bottom: 10px;
+		}
+		strong {
+			color: #f8fafc;
+		}
+		code {
+			background-color: #1e293b;
+			color: #38bdf8;
+			padding: 2px 6px;
+			border-radius: 4px;
+			font-family: Consolas, "Courier New", Courier, monospace;
+			font-size: 0.9em;
+		}
+		.card {
+			background: rgba(30, 41, 59, 0.5);
+			backdrop-filter: blur(10px);
+			border: 1px solid rgba(255, 255, 255, 0.05);
+			border-radius: 12px;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		hr {
+			border: 0;
+			height: 1px;
+			background: #1e293b;
+			margin: 2rem 0;
+		}
+		a {
+			color: #38bdf8;
+			text-decoration: none;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>إضافة الترجمة لـ NVDA</h1>
+	<p class="subtitle">إضافة بسيطة وسريعة جداً للترجمة الفورية لبرنامج NVDA.</p>
+
+	<div class="note-box">
+		هذه الإضافة تم تطويرها وتعديلها بناءً على العمل الرائع الذي قدمه المطور الأصلي <strong>Yannick Plassiard</strong>. كل الشكر والتقدير له على فكرته وجهده الرهيب الذي أفاد مجتمع المكفوفين بشكل كبير!
+	</div>
+
+	<hr>
+
+	<div class="card">
+		<h2>وش المميزات الرهيبة فيها؟</h2>
+		<ul>
+			<li><strong>ترجمة فورية وسريعة</strong>: الإضافة تترجم لك الكلام مباشرة أول ما ينطق به NVDA.</li>
+			<li><strong>اختر اللغة اللي تبيها (حتى لو مختلفة عن لغة الـ NVDA)</strong>: هذي ميزة بطلة! إذا كان برنامج NVDA عندك باللغة العربية مثلاً، بس تبي الترجمة تكون للغة الإنجليزية أو العكس، تقدر بكل بساطة تروح للإعدادات وتحدد لغة الترجمة اللي تبيها بشكل مستقل تماماً عن لغة البرنامج نفسه. الإضافة تدعم لغات كثيرة جداً (أكثر من 80 لغة!).</li>
+			<li><strong>سريعة وخفيفة جداً</strong>: ما تسبب أي بطء أو تعليق للجهاز، وحجمها صغير جداً.</li>
+			<li><strong>تحفظ الترجمات السابقة (ذاكرة ذكية)</strong>: الكلمات اللي تترجمها أكثر من مرة تنحفظ في الذاكرة المؤقتة عشان تظهر لك فوراً بدون ما تنتظر الإنترنت.</li>
+			<li><strong>محركات ترجمة متعددة</strong>: تقدر تختار بين ترجمة جوجل (Google Translate) أو المحركات الثانية مثل Lingva و LibreTranslate من الإعدادات.</li>
+		</ul>
+	</div>
+
+	<div class="card">
+		<h2>كيف أثبت الإضافة؟</h2>
+		<ol>
+			<li>حمل ملف الإضافة <code>translate.nvda-addon</code>.</li>
+			<li>اضغط عليه مرتين (أو اضغط Enter).</li>
+			<li>راح يسألك الـ NVDA إذا كنت تبي تثبتها، اختر <strong>نعم</strong> (Yes).</li>
+			<li>أعد تشغيل NVDA وراح تكون جاهزة للعمل!</li>
+		</ol>
+	</div>
+
+	<div class="card">
+		<h2>الاختصارات والتحكم</h2>
+		<p>هذي أهم الاختصارات اللي تحتاجها (وتقدر تغيرها من إعدادات اختصارات NVDA إذا تبي):</p>
+		<ul>
+			<li><code>NVDA+Shift+Control+T</code>: يشغل أو يطفي الترجمة.</li>
+			<li><code>NVDA+Shift+C</code>: ينسخ آخر نص تم ترجمته للحافظة عشان تشاركه بسهولة.</li>
+			<li><code>NVDA+Shift+F</code> (اضغطها مرتين بسرعة): يمسح ذاكرة الترجمة الخاصة بالتطبيق اللي شغال عليه حالياً.</li>
+			<li><code>NVDA+Shift+Control+F</code> (اضغطها مرتين بسرعة): يمسح كل ذاكرة الترجمة المحفوظة في الجهاز.</li>
+		</ul>
+	</div>
+
+	<div class="card">
+		<h2>الإعدادات وضبط اللغات</h2>
+		<p>عشان تضبط لغة الترجمة والمحرك، روح لـ <strong>قائمة NVDA -> تفضيلات -> إعدادات -> الترجمة (Translate)</strong>:</p>
+		<ol>
+			<li>اختر <strong>محرك الترجمة</strong> اللي يريحك.</li>
+			<li>حدد <strong>اللغة الهدف (Target Language)</strong> اللي تبي الترجمة تتحول لها (وتقدر تخليها مختلفة تماماً عن لغة الـ NVDA زي ما تحب!).</li>
+		</ol>
+	</div>
+
+</body>
+</html>
