@@ -179,44 +179,10 @@ def safe_format(template_str, numbers):
 
 
 
-GLOSSARY = {
-        # Static server/status phrases
-        "server down": "الخادم متوقف",
-        "server is down": "الخادم متوقف",
-        "connection lost": "فُقد الاتصال",
-        "server restarting": "جاري إعادة تشغيل الخادم",
-        "the server is restarting": "جاري إعادة تشغيل الخادم",
-        "reconnecting... please wait": "جاري إعادة الاتصال... يرجى الانتظار",
-        "reconnecting": "جاري إعادة الاتصال",
-        "reconnected": "تم إعادة الاتصال",
-        "server offline": "الخادم متوقف",
-        "server is offline": "الخادم متوقف",
-        "server online": "الخادم متصل",
-        "server is online": "الخادم متصل",
-        
-        # Dynamic server/status templates (fully compatible with number isolation!)
-        "the server will reboot within {0} seconds": "سيعاد تشغيل الخادم خلال {0} ثانية",
-        "the server will reboot in {0} seconds": "سيعاد تشغيل الخادم خلال {0} ثانية",
-        "reconnecting in {0} seconds": "إعادة الاتصال خلال {0} ثانية",
-}
-
-
 def translate_single_line_core(line, appTable, target_lang):
         stripped_line = line.strip()
         if not stripped_line:
                 return line
-
-        # Rule 0: Glossary Match (Static Arabic Status phrases with punctuation stripping)
-        if target_lang[:2].lower() == "ar":
-                import re
-                punc_pattern = r'^([^\w\s{}]*)(.*?)([^\w\s{}]*)$'
-                g_match = re.match(punc_pattern, stripped_line)
-                if g_match:
-                        prefix_punc = g_match.group(1)
-                        core_text = g_match.group(2)
-                        suffix_punc = g_match.group(3)
-                        if core_text.lower() in GLOSSARY:
-                                return prefix_punc + GLOSSARY[core_text.lower()] + suffix_punc
 
 
 
@@ -255,20 +221,7 @@ def translate_single_line_core(line, appTable, target_lang):
                         template_parts.append(stripped_line[last_idx:])
                         line_template = "".join(template_parts)
 
-                        # Rule 0b: Glossary Match for Dynamic Templates with punctuation stripping
-                        if target_lang[:2].lower() == "ar":
-                                import re
-                                punc_pattern = r'^([^\w\s{}]*)(.*?)([^\w\s{}]*)$'
-                                g_match = re.match(punc_pattern, line_template)
-                                if g_match:
-                                        prefix_punc = g_match.group(1)
-                                        core_template = g_match.group(2)
-                                        suffix_punc = g_match.group(3)
-                                        if core_template.lower() in GLOSSARY:
-                                                formatted_core = safe_format(GLOSSARY[core_template.lower()], numbers)
-                                                result = prefix_punc + formatted_core + suffix_punc
-                                                update_cache(appTable, line, result)
-                                                return result
+
 
                         # If template has no letters (e.g. "{0}"), format and return immediately
                         if not any(c.isalpha() for c in line_template):

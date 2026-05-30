@@ -78,8 +78,7 @@ from globalPlugins.translate import (
     safe_format,
     translate,
     _translationCache,
-    _execute_engine_translation,
-    GLOSSARY
+    _execute_engine_translation
 )
 import globalPlugins.translate as translate_module
 
@@ -195,35 +194,6 @@ class TestAddonSuite(unittest.TestCase):
         res = translate("Local Chat from user123: Hello my friend")
         self.assertEqual(res, "دردشة محلية من مستخدم123: مرحبا يا صديقي")
         mock_engine.assert_called_once_with("Local Chat from user{0}: Hello my friend", source_lang="en")
-
-    @patch('globalPlugins.translate._execute_engine_translation')
-
-    def test_glossary_resolution(self, mock_engine):
-        """Verify that server/system status terms in GLOSSARY resolve locally (0ms) without engine calls."""
-        # Configure target language to Arabic
-        translate_module.config.conf["translate"]["localTargetLang"] = "ar"
-        
-        # 1. Static phrase match (case-insensitive)
-        self.assertEqual(translate("Server down"), "الخادم متوقف")
-        self.assertEqual(translate("reconnecting... please wait"), "جاري إعادة الاتصال... يرجى الانتظار")
-        
-        # Punctuation-insensitive checks (dots, exclamation marks, case-insensitive)
-        self.assertEqual(translate("Server down."), "الخادم متوقف.")
-        self.assertEqual(translate("Server down..."), "الخادم متوقف...")
-        self.assertEqual(translate("Server down!"), "الخادم متوقف!")
-        self.assertEqual(translate("sErVeR dOwN!!!"), "الخادم متوقف!!!")
-        self.assertEqual(translate("Connection lost..."), "فُقد الاتصال...")
-        
-        # 2. Dynamic template glossary match (should isolate number and format locally!)
-        self.assertEqual(translate("The server will reboot within 30 seconds"), "سيعاد تشغيل الخادم خلال 30 ثانية")
-        self.assertEqual(translate("Reconnecting in 5 seconds"), "إعادة الاتصال خلال 5 ثانية")
-        
-        # Dynamic template glossary match with punctuation and dots
-        self.assertEqual(translate("The server will reboot within 30 seconds."), "سيعاد تشغيل الخادم خلال 30 ثانية.")
-        self.assertEqual(translate("Reconnecting in 5 seconds..."), "إعادة الاتصال خلال 5 ثانية...")
-        
-        # All these should be resolved locally via the glossary, so mock_engine must have 0 calls!
-        mock_engine.assert_not_called()
 
     @patch('globalPlugins.translate._execute_engine_translation')
     def test_number_isolation_caching(self, mock_engine):
