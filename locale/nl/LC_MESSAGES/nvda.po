@@ -23,14 +23,50 @@ msgstr ""
 msgid "Copy the latest translated text to the clipboard."
 msgstr "Kopieer de laatst vertaalde tekst naar het klembord."
 
+msgid "DeepL API &key:"
+msgstr "DeepL API &sleutel:"
+
+msgid "DeepL Translate"
+msgstr "DeepL-vertaal"
+
 msgid "Enables translation to the desired language."
 msgstr "Schakelt vertaling naar de gewenste taal in."
+
+msgid "Error"
+msgstr "Fout"
 
 msgid "Error while deleting application's translation cache."
 msgstr ""
 
+msgid "Failed to fetch Gemini models: {error}"
+msgstr "Kan Gemini-modellen niet ophalen: {error}"
+
+msgid "Failed to fetch OpenAI models: {error}"
+msgstr "Kan OpenAI-modellen niet ophalen: {error}"
+
+msgid "Fetch Gemini Models"
+msgstr "Haal Gemini-modellen op"
+
+msgid "Fetch OpenAI Models"
+msgstr "OpenAI-modellen ophalen"
+
+msgid "Fetching..."
+msgstr "Ophalen..."
+
+msgid "Gemini &model:"
+msgstr "Tweeling & model:"
+
+msgid "Gemini API &key:"
+msgstr "Gemini API &sleutel:"
+
+msgid "Google Gemini"
+msgstr "Google Tweelingen"
+
 msgid "Google Translate"
 msgstr "Google Vertalen"
+
+msgid "Info"
+msgstr ""
 
 msgid "LibreTranslate"
 msgstr ""
@@ -50,6 +86,12 @@ msgstr "Language Translate &instance URL:"
 msgid "Match NVDA language"
 msgstr "NVDA-taal gebruiken"
 
+msgid "No compatible Gemini models found."
+msgstr "Geen compatibele Gemini-modellen gevonden."
+
+msgid "No compatible OpenAI models found."
+msgstr "Geen compatibele OpenAI-modellen gevonden."
+
 msgid "No focused application"
 msgstr ""
 
@@ -58,6 +100,21 @@ msgstr ""
 
 msgid "No translation to copy"
 msgstr ""
+
+msgid "OpenAI &model:"
+msgstr ""
+
+msgid "OpenAI API &key:"
+msgstr "OpenAI API &sleutel:"
+
+msgid "OpenAI ChatGPT"
+msgstr ""
+
+msgid "Please enter a Gemini API key first."
+msgstr "Voer eerst een Gemini API-sleutel in."
+
+msgid "Please enter an OpenAI API key first."
+msgstr "Voer eerst een OpenAI API-sleutel in."
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr ""
@@ -73,6 +130,15 @@ msgstr ""
 
 msgid "Some caches failed to be removed."
 msgstr ""
+
+msgid "Success"
+msgstr "Succes"
+
+msgid "Successfully fetched {count} Gemini models!"
+msgstr "Met succes {count} Gemini-modellen opgehaald!"
+
+msgid "Successfully fetched {count} OpenAI models!"
+msgstr "Met succes {count} OpenAI-modellen opgehaald!"
 
 msgid "Translate"
 msgstr "Vertalen"

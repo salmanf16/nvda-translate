@@ -23,14 +23,50 @@ msgstr "تم حذف جميع الترجمات."
 msgid "Copy the latest translated text to the clipboard."
 msgstr "نسخ آخر نص مترجم إلى الحافظة."
 
+msgid "DeepL API &key:"
+msgstr "واجهة برمجة تطبيقات DeepL والمفتاح:"
+
+msgid "DeepL Translate"
+msgstr "ترجمة ديبل"
+
 msgid "Enables translation to the desired language."
 msgstr "تُمكّن الترجمة إلى اللغة المطلوبة."
+
+msgid "Error"
+msgstr "خطأ"
 
 msgid "Error while deleting application's translation cache."
 msgstr "خطأ أثناء حذف ذاكرة ترجمة التطبيق."
 
+msgid "Failed to fetch Gemini models: {error}"
+msgstr "فشل جلب نماذج الجوزاء: {خطأ}"
+
+msgid "Failed to fetch OpenAI models: {error}"
+msgstr "فشل جلب نماذج OpenAI: {خطأ}"
+
+msgid "Fetch Gemini Models"
+msgstr "جلب نماذج الجوزاء"
+
+msgid "Fetch OpenAI Models"
+msgstr "جلب نماذج OpenAI"
+
+msgid "Fetching..."
+msgstr "جارٍ الجلب..."
+
+msgid "Gemini &model:"
+msgstr "الجوزاء والنموذج:"
+
+msgid "Gemini API &key:"
+msgstr "واجهة برمجة تطبيقات ومفتاح الجوزاء:"
+
+msgid "Google Gemini"
+msgstr "جوجل الجوزاء"
+
 msgid "Google Translate"
 msgstr "ترجمة جوجل"
+
+msgid "Info"
+msgstr "معلومات"
 
 msgid "LibreTranslate"
 msgstr "LibreTranslate"
@@ -50,6 +86,12 @@ msgstr "رابط خادم Lingva:"
 msgid "Match NVDA language"
 msgstr "مطابقة لغة NVDA"
 
+msgid "No compatible Gemini models found."
+msgstr "لم يتم العثور على نماذج الجوزاء المتوافقة."
+
+msgid "No compatible OpenAI models found."
+msgstr "لم يتم العثور على نماذج OpenAI متوافقة."
+
 msgid "No focused application"
 msgstr "لا يوجد تطبيق مركّز"
 
@@ -58,6 +100,21 @@ msgstr "لا توجد ترجمات محفوظة لـ {app}"
 
 msgid "No translation to copy"
 msgstr "لا يوجد ترجمة للنسخ"
+
+msgid "OpenAI &model:"
+msgstr "OpenAI والنموذج:"
+
+msgid "OpenAI API &key:"
+msgstr "واجهة برمجة تطبيقات OpenAI والمفتاح:"
+
+msgid "OpenAI ChatGPT"
+msgstr ""
+
+msgid "Please enter a Gemini API key first."
+msgstr "الرجاء إدخال مفتاح Gemini API أولاً."
+
+msgid "Please enter an OpenAI API key first."
+msgstr "الرجاء إدخال مفتاح OpenAI API أولاً."
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr "اضغط مرتين لحذف جميع الترجمات المخزنة لجميع التطبيقات."
@@ -73,6 +130,15 @@ msgstr "حذف ذاكرة الترجمة للتطبيق المركّز حالي�
 
 msgid "Some caches failed to be removed."
 msgstr "فشل حذف بعض الذاكرة المؤقتة."
+
+msgid "Success"
+msgstr "نجاح"
+
+msgid "Successfully fetched {count} Gemini models!"
+msgstr "تم بنجاح جلب {count} من نماذج برج الجوزاء."
+
+msgid "Successfully fetched {count} OpenAI models!"
+msgstr "تم جلب {count} من نماذج OpenAI بنجاح!"
 
 msgid "Translate"
 msgstr "ترجمة"

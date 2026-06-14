@@ -23,14 +23,50 @@ msgstr "Tất cả các bản dịch đã bị xóa."
 msgid "Copy the latest translated text to the clipboard."
 msgstr "Sao chép văn bản dịch mới nhất vào clipboard."
 
+msgid "DeepL API &key:"
+msgstr "API & khóa DeepL:"
+
+msgid "DeepL Translate"
+msgstr "Dịch DeepL"
+
 msgid "Enables translation to the desired language."
 msgstr "Cho phép dịch sang ngôn ngữ mong muốn."
+
+msgid "Error"
+msgstr "Lỗi"
 
 msgid "Error while deleting application's translation cache."
 msgstr "Lỗi khi xóa bộ đệm dịch của ứng dụng."
 
+msgid "Failed to fetch Gemini models: {error}"
+msgstr "Không tìm nạp được mô hình Gemini: {error}"
+
+msgid "Failed to fetch OpenAI models: {error}"
+msgstr "Không tìm nạp được mô hình OpenAI: {error}"
+
+msgid "Fetch Gemini Models"
+msgstr "Lấy mô hình Song Tử"
+
+msgid "Fetch OpenAI Models"
+msgstr "Tìm nạp các mô hình OpenAI"
+
+msgid "Fetching..."
+msgstr "Đang tìm nạp..."
+
+msgid "Gemini &model:"
+msgstr "Song Tử & người mẫu:"
+
+msgid "Gemini API &key:"
+msgstr "API & khóa Gemini:"
+
+msgid "Google Gemini"
+msgstr "Google Song Tử"
+
 msgid "Google Translate"
 msgstr "Google Dịch"
+
+msgid "Info"
+msgstr "Thông tin"
 
 msgid "LibreTranslate"
 msgstr "Miễn phíDịch"
@@ -50,6 +86,12 @@ msgstr "Lingva Translate &URL ví dụ:"
 msgid "Match NVDA language"
 msgstr "Khớp ngôn ngữ NVDA"
 
+msgid "No compatible Gemini models found."
+msgstr "Không tìm thấy mô hình Gemini tương thích."
+
+msgid "No compatible OpenAI models found."
+msgstr "Không tìm thấy mô hình OpenAI tương thích."
+
 msgid "No focused application"
 msgstr "Không có ứng dụng tập trung"
 
@@ -58,6 +100,21 @@ msgstr "Không có bản dịch nào được lưu cho {app}"
 
 msgid "No translation to copy"
 msgstr "Không có bản dịch để sao chép"
+
+msgid "OpenAI &model:"
+msgstr "OpenAI & mô hình:"
+
+msgid "OpenAI API &key:"
+msgstr "API và khóa OpenAI:"
+
+msgid "OpenAI ChatGPT"
+msgstr "Trò chuyện OpenAIGPT"
+
+msgid "Please enter a Gemini API key first."
+msgstr "Trước tiên, vui lòng nhập khóa API Gemini."
+
+msgid "Please enter an OpenAI API key first."
+msgstr "Trước tiên, vui lòng nhập khóa API OpenAI."
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr "Nhấn hai lần để xóa tất cả các bản dịch được lưu trong bộ nhớ đệm cho tất cả các ứng dụng."
@@ -73,6 +130,15 @@ msgstr "Xóa bộ nhớ đệm dịch cho ứng dụng hiện đang tập trung"
 
 msgid "Some caches failed to be removed."
 msgstr "Một số bộ nhớ đệm không thể xóa được."
+
+msgid "Success"
+msgstr "Thành công"
+
+msgid "Successfully fetched {count} Gemini models!"
+msgstr "Đã tìm nạp thành công {count} mẫu Gemini!"
+
+msgid "Successfully fetched {count} OpenAI models!"
+msgstr "Đã tìm nạp thành công {count} mô hình OpenAI!"
 
 msgid "Translate"
 msgstr "Dịch"

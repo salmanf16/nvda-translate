@@ -23,14 +23,50 @@ msgstr "Tüm çeviriler silindi."
 msgid "Copy the latest translated text to the clipboard."
 msgstr "Son çevrilen metni panoya kopyala."
 
+msgid "DeepL API &key:"
+msgstr "DeepL API &anahtarı:"
+
+msgid "DeepL Translate"
+msgstr "DeepL Çeviri"
+
 msgid "Enables translation to the desired language."
 msgstr "İstenilen dile çeviriyi etkinleştirir."
+
+msgid "Error"
+msgstr "Hata"
 
 msgid "Error while deleting application's translation cache."
 msgstr "Uygulamanın çeviri önbelleği silinirken hata oluştu."
 
+msgid "Failed to fetch Gemini models: {error}"
+msgstr "Gemini modelleri getirilemedi: {error}"
+
+msgid "Failed to fetch OpenAI models: {error}"
+msgstr "OpenAI modelleri getirilemedi: {error}"
+
+msgid "Fetch Gemini Models"
+msgstr "İkizler Modellerini Getir"
+
+msgid "Fetch OpenAI Models"
+msgstr "OpenAI Modellerini Getir"
+
+msgid "Fetching..."
+msgstr "Getiriliyor..."
+
+msgid "Gemini &model:"
+msgstr "İkizler & modeli:"
+
+msgid "Gemini API &key:"
+msgstr "Gemini API'si ve anahtarı:"
+
+msgid "Google Gemini"
+msgstr "Google İkizler"
+
 msgid "Google Translate"
 msgstr "Google Çeviri"
+
+msgid "Info"
+msgstr "Bilgi"
 
 msgid "LibreTranslate"
 msgstr ""
@@ -50,6 +86,12 @@ msgstr "Lingva &sunucu URL'si:"
 msgid "Match NVDA language"
 msgstr "NVDA diliyle eşleştir"
 
+msgid "No compatible Gemini models found."
+msgstr "Uyumlu Gemini modeli bulunamadı."
+
+msgid "No compatible OpenAI models found."
+msgstr "Uyumlu OpenAI modeli bulunamadı."
+
 msgid "No focused application"
 msgstr "Odaklanmış uygulama yok"
 
@@ -58,6 +100,21 @@ msgstr "{app} için kayıtlı çeviri yok"
 
 msgid "No translation to copy"
 msgstr "Kopyalanacak çeviri yok"
+
+msgid "OpenAI &model:"
+msgstr "OpenAI ve modeli:"
+
+msgid "OpenAI API &key:"
+msgstr "OpenAI API'si ve anahtarı:"
+
+msgid "OpenAI ChatGPT"
+msgstr ""
+
+msgid "Please enter a Gemini API key first."
+msgstr "Lütfen önce Gemini API anahtarını girin."
+
+msgid "Please enter an OpenAI API key first."
+msgstr "Lütfen önce bir OpenAI API anahtarı girin."
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr "Tüm uygulamalar için önbelleğe alınmış tüm çevirileri silmek için iki kez basın."
@@ -73,6 +130,15 @@ msgstr "Şu anda odaklanılan uygulama için çeviri önbelleğini kaldır"
 
 msgid "Some caches failed to be removed."
 msgstr "Bazı önbellekler kaldırılamadı."
+
+msgid "Success"
+msgstr "Başarı"
+
+msgid "Successfully fetched {count} Gemini models!"
+msgstr "{count} Gemini modeli başarıyla getirildi!"
+
+msgid "Successfully fetched {count} OpenAI models!"
+msgstr "{count} OpenAI modeli başarıyla getirildi!"
 
 msgid "Translate"
 msgstr "Çeviri"

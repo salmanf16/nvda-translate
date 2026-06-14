@@ -23,14 +23,50 @@ msgstr "सभी अनुवाद हटा दिए गए हैं."
 msgid "Copy the latest translated text to the clipboard."
 msgstr "नवीनतम अनुवादित पाठ को क्लिपबोर्ड पर कॉपी करें।"
 
+msgid "DeepL API &key:"
+msgstr "डीपएल एपीआई और कुंजी:"
+
+msgid "DeepL Translate"
+msgstr "डीपएल अनुवाद"
+
 msgid "Enables translation to the desired language."
 msgstr "वांछित भाषा में अनुवाद सक्षम बनाता है।"
+
+msgid "Error"
+msgstr "गलती"
 
 msgid "Error while deleting application's translation cache."
 msgstr "एप्लिकेशन का अनुवाद कैश हटाते समय त्रुटि."
 
+msgid "Failed to fetch Gemini models: {error}"
+msgstr "जेमिनी मॉडल लाने में विफल: {त्रुटि}"
+
+msgid "Failed to fetch OpenAI models: {error}"
+msgstr "OpenAI मॉडल लाने में विफल: {त्रुटि}"
+
+msgid "Fetch Gemini Models"
+msgstr "जेमिनी मॉडल प्राप्त करें"
+
+msgid "Fetch OpenAI Models"
+msgstr "OpenAI मॉडल प्राप्त करें"
+
+msgid "Fetching..."
+msgstr "लाया जा रहा है..."
+
+msgid "Gemini &model:"
+msgstr "मिथुन और मॉडल:"
+
+msgid "Gemini API &key:"
+msgstr "जेमिनी एपीआई और कुंजी:"
+
+msgid "Google Gemini"
+msgstr "गूगल जेमिनी"
+
 msgid "Google Translate"
 msgstr "गूगल अनुवाद"
+
+msgid "Info"
+msgstr "जानकारी"
 
 msgid "LibreTranslate"
 msgstr "लिब्रेट्रांसलेट"
@@ -50,6 +86,12 @@ msgstr "लिंगवा अनुवाद और उदाहरण यू�
 msgid "Match NVDA language"
 msgstr "NVDA भाषा से मिलान"
 
+msgid "No compatible Gemini models found."
+msgstr "कोई संगत जेमिनी मॉडल नहीं मिला."
+
+msgid "No compatible OpenAI models found."
+msgstr "कोई संगत OpenAI मॉडल नहीं मिला."
+
 msgid "No focused application"
 msgstr "कोई केंद्रित अनुप्रयोग नहीं"
 
@@ -58,6 +100,21 @@ msgstr "{ऐप} के लिए कोई सहेजा गया अनु�
 
 msgid "No translation to copy"
 msgstr "कॉपी करने के लिए कोई अनुवाद नहीं"
+
+msgid "OpenAI &model:"
+msgstr "ओपनएआई और मॉडल:"
+
+msgid "OpenAI API &key:"
+msgstr "ओपनएआई एपीआई और कुंजी:"
+
+msgid "OpenAI ChatGPT"
+msgstr "ओपनएआई चैटजीपीटी"
+
+msgid "Please enter a Gemini API key first."
+msgstr "कृपया पहले जेमिनी एपीआई कुंजी दर्ज करें।"
+
+msgid "Please enter an OpenAI API key first."
+msgstr "कृपया पहले एक OpenAI API कुंजी दर्ज करें।"
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr "सभी एप्लिकेशन के सभी कैश्ड अनुवादों को हटाने के लिए दो बार दबाएँ।"
@@ -73,6 +130,15 @@ msgstr "वर्तमान में केंद्रित एप्लि
 
 msgid "Some caches failed to be removed."
 msgstr "कुछ कैश हटाए जाने में विफल रहे."
+
+msgid "Success"
+msgstr "सफलता"
+
+msgid "Successfully fetched {count} Gemini models!"
+msgstr "जेमिनी मॉडल सफलतापूर्वक लाए गए!"
+
+msgid "Successfully fetched {count} OpenAI models!"
+msgstr "{count} OpenAI मॉडल सफलतापूर्वक प्राप्त किए गए!"
 
 msgid "Translate"
 msgstr "अनुवाद"

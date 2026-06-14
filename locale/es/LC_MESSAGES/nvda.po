@@ -23,14 +23,50 @@ msgstr "Todas las traducciones han sido eliminadas."
 msgid "Copy the latest translated text to the clipboard."
 msgstr "Copiar el último texto traducido al portapapeles."
 
+msgid "DeepL API &key:"
+msgstr "API de DeepL y clave:"
+
+msgid "DeepL Translate"
+msgstr "Traductor profundo"
+
 msgid "Enables translation to the desired language."
 msgstr "Activa la traducción al idioma deseado."
+
+msgid "Error"
+msgstr ""
 
 msgid "Error while deleting application's translation cache."
 msgstr "Error al eliminar el caché de traducción de la aplicación."
 
+msgid "Failed to fetch Gemini models: {error}"
+msgstr "No se pudieron recuperar los modelos Gemini: {error}"
+
+msgid "Failed to fetch OpenAI models: {error}"
+msgstr "No se pudieron recuperar los modelos OpenAI: {error}"
+
+msgid "Fetch Gemini Models"
+msgstr "Buscar modelos Géminis"
+
+msgid "Fetch OpenAI Models"
+msgstr "Obtener modelos OpenAI"
+
+msgid "Fetching..."
+msgstr "Atractivo..."
+
+msgid "Gemini &model:"
+msgstr "Géminis y modelo:"
+
+msgid "Gemini API &key:"
+msgstr "API y clave de Géminis:"
+
+msgid "Google Gemini"
+msgstr "Google Géminis"
+
 msgid "Google Translate"
 msgstr "Google Traducir"
+
+msgid "Info"
+msgstr "Información"
 
 msgid "LibreTranslate"
 msgstr "LibreTraducir"
@@ -50,6 +86,12 @@ msgstr "&URL de la instancia de Lingva:"
 msgid "Match NVDA language"
 msgstr "Coincidir con el idioma de NVDA"
 
+msgid "No compatible Gemini models found."
+msgstr "No se encontraron modelos Gemini compatibles."
+
+msgid "No compatible OpenAI models found."
+msgstr "No se encontraron modelos OpenAI compatibles."
+
 msgid "No focused application"
 msgstr "No hay aplicación enfocada"
 
@@ -58,6 +100,21 @@ msgstr "No hay traducciones guardadas para {app}"
 
 msgid "No translation to copy"
 msgstr "No hay traducción para copiar"
+
+msgid "OpenAI &model:"
+msgstr "OpenAI y modelo:"
+
+msgid "OpenAI API &key:"
+msgstr "API de OpenAI y clave:"
+
+msgid "OpenAI ChatGPT"
+msgstr "Chat OpenAIGPT"
+
+msgid "Please enter a Gemini API key first."
+msgstr "Primero ingrese una clave API de Gemini."
+
+msgid "Please enter an OpenAI API key first."
+msgstr "Primero ingrese una clave API de OpenAI."
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr "Pulse dos veces para eliminar todas las traducciones en caché de todas las aplicaciones."
@@ -73,6 +130,15 @@ msgstr "Eliminar la caché de traducción para la aplicación enfocada actualmen
 
 msgid "Some caches failed to be removed."
 msgstr "Algunos cachés no se pudieron eliminar."
+
+msgid "Success"
+msgstr "Éxito"
+
+msgid "Successfully fetched {count} Gemini models!"
+msgstr "¡Se obtuvieron {count} modelos Gemini con éxito!"
+
+msgid "Successfully fetched {count} OpenAI models!"
+msgstr "¡Se obtuvieron {count} modelos OpenAI con éxito!"
 
 msgid "Translate"
 msgstr "Traducir"

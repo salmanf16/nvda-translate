@@ -15,6 +15,9 @@ sys.path.insert(0, curDir)
 import mtranslate
 import libretrans
 import lingva
+import deepl
+import openai_api
+import gemini_api
 import addonHandler, languageHandler
 
 addonHandler.initTranslation()
@@ -24,6 +27,9 @@ import threading
 ENGINE_GOOGLE = "google"
 ENGINE_LINGVA = "lingva"
 ENGINE_LIBRETRANSLATE = "libretranslate"
+ENGINE_DEEPL = "deepl"
+ENGINE_OPENAI = "openai"
+ENGINE_GEMINI = "gemini"
 ENGINE_LOCAL = "local"
 
 config.conf.spec["translate"] = {
@@ -31,6 +37,13 @@ config.conf.spec["translate"] = {
 	"lingvaUrl": 'string(default="https://lingva.ml")',
 	"libretranslateUrl": 'string(default="https://libretranslate.com")',
 	"libretranslateApiKey": 'string(default="")',
+	"deeplApiKey": 'string(default="")',
+	"openaiApiKey": 'string(default="")',
+	"openaiModel": 'string(default="gpt-5.4-mini")',
+	"openaiModelsList": 'string(default="gpt-5.4-mini,gpt-5.5-pro")',
+	"geminiApiKey": 'string(default="")',
+	"geminiModel": 'string(default="gemini-3.5-flash")',
+	"geminiModelsList": 'string(default="gemini-3.5-flash,gemini-3.5-pro")',
 	"localTargetLang": 'string(default="")',
 	"localModelId": 'string(default="")',
 	"localDevice": 'string(default="auto")',
@@ -137,6 +150,17 @@ def _execute_engine_translation(text, source_lang="auto"):
                 url = config.conf["translate"]["libretranslateUrl"]
                 api_key = config.conf["translate"]["libretranslateApiKey"]
                 return libretrans.translate(text, target_lang, source_language=source_lang, url=url, api_key=api_key)
+        elif engine == ENGINE_DEEPL:
+                api_key = config.conf["translate"]["deeplApiKey"]
+                return deepl.translate(text, target_lang, api_key)
+        elif engine == ENGINE_OPENAI:
+                api_key = config.conf["translate"]["openaiApiKey"]
+                model = config.conf["translate"]["openaiModel"]
+                return openai_api.translate(text, target_lang, api_key, model=model)
+        elif engine == ENGINE_GEMINI:
+                api_key = config.conf["translate"]["geminiApiKey"]
+                model = config.conf["translate"]["geminiModel"]
+                return gemini_api.translate(text, target_lang, api_key, model=model)
         elif engine == ENGINE_LOCAL:
                 return mtranslate.translate(text, target_lang, from_language=source_lang)
         else:
@@ -382,6 +406,9 @@ class TranslateSettingsPanel(gui.settingsDialogs.SettingsPanel):
 		(ENGINE_GOOGLE, _("Google Translate")),
 		(ENGINE_LINGVA, _("Lingva Translate")),
 		(ENGINE_LIBRETRANSLATE, _("LibreTranslate")),
+		(ENGINE_DEEPL, _("DeepL Translate")),
+		(ENGINE_OPENAI, _("OpenAI ChatGPT")),
+		(ENGINE_GEMINI, _("Google Gemini")),
 	]
 
 	def makeSettings(self, settingsSizer):
@@ -415,6 +442,67 @@ class TranslateSettingsPanel(gui.settingsDialogs.SettingsPanel):
 		)
 		self.libreTranslateApiKey.SetValue(config.conf["translate"]["libretranslateApiKey"])
 
+		# DeepL API Key
+		self.deeplApiKey = sHelper.addLabeledControl(
+			_("DeepL API &key:"),
+			wx.TextCtrl
+		)
+		self.deeplApiKey.SetValue(config.conf["translate"]["deeplApiKey"])
+
+		# OpenAI API Key
+		self.openaiApiKey = sHelper.addLabeledControl(
+			_("OpenAI API &key:"),
+			wx.TextCtrl
+		)
+		self.openaiApiKey.SetValue(config.conf["translate"]["openaiApiKey"])
+
+		# OpenAI Fetch Button and Choice
+		self.openaiFetchBtn = wx.Button(self, label=_("Fetch OpenAI Models"))
+		self.openaiFetchBtn.Bind(wx.EVT_BUTTON, self.onOpenAIFetch)
+		sHelper.sizer.Add(self.openaiFetchBtn)
+
+		self.openaiModelChoice = sHelper.addLabeledControl(
+			_("OpenAI &model:"),
+			wx.Choice,
+			choices=[]
+		)
+
+		# Populate OpenAI models list from configuration
+		openai_list = [x.strip() for x in config.conf["translate"]["openaiModelsList"].split(",") if x.strip()]
+		if not openai_list:
+			openai_list = ["gpt-5.4-mini", "gpt-5.5-pro"]
+		self.openaiModelChoice.AppendItems(openai_list)
+		saved_openai_model = config.conf["translate"]["openaiModel"]
+		idx_openai = openai_list.index(saved_openai_model) if saved_openai_model in openai_list else 0
+		self.openaiModelChoice.SetSelection(idx_openai)
+
+		# Gemini API Key
+		self.geminiApiKey = sHelper.addLabeledControl(
+			_("Gemini API &key:"),
+			wx.TextCtrl
+		)
+		self.geminiApiKey.SetValue(config.conf["translate"]["geminiApiKey"])
+
+		# Gemini Fetch Button and Choice
+		self.geminiFetchBtn = wx.Button(self, label=_("Fetch Gemini Models"))
+		self.geminiFetchBtn.Bind(wx.EVT_BUTTON, self.onGeminiFetch)
+		sHelper.sizer.Add(self.geminiFetchBtn)
+
+		self.geminiModelChoice = sHelper.addLabeledControl(
+			_("Gemini &model:"),
+			wx.Choice,
+			choices=[]
+		)
+
+		# Populate Gemini models list from configuration
+		gemini_list = [x.strip() for x in config.conf["translate"]["geminiModelsList"].split(",") if x.strip()]
+		if not gemini_list:
+			gemini_list = ["gemini-3.5-flash", "gemini-3.5-pro"]
+		self.geminiModelChoice.AppendItems(gemini_list)
+		saved_gemini_model = config.conf["translate"]["geminiModel"]
+		idx_gemini = gemini_list.index(saved_gemini_model) if saved_gemini_model in gemini_list else 0
+		self.geminiModelChoice.SetSelection(idx_gemini)
+
 		self._lang_codes = [""]  # empty = match NVDA language
 		self._lang_labels = [_("Match NVDA language")]
 		for code, name in get_supported_languages():
@@ -444,7 +532,124 @@ class TranslateSettingsPanel(gui.settingsDialogs.SettingsPanel):
 		self.lingvaUrl.Enable(engineId == ENGINE_LINGVA)
 		self.libreTranslateUrl.Enable(engineId == ENGINE_LIBRETRANSLATE)
 		self.libreTranslateApiKey.Enable(engineId == ENGINE_LIBRETRANSLATE)
+		
+		# DeepL
+		if hasattr(self, "deeplApiKey"):
+			self.deeplApiKey.Enable(engineId == ENGINE_DEEPL)
+			
+		# OpenAI
+		if hasattr(self, "openaiApiKey"):
+			self.openaiApiKey.Enable(engineId == ENGINE_OPENAI)
+			self.openaiFetchBtn.Enable(engineId == ENGINE_OPENAI)
+			self.openaiModelChoice.Enable(engineId == ENGINE_OPENAI)
+			
+		# Gemini
+		if hasattr(self, "geminiApiKey"):
+			self.geminiApiKey.Enable(engineId == ENGINE_GEMINI)
+			self.geminiFetchBtn.Enable(engineId == ENGINE_GEMINI)
+			self.geminiModelChoice.Enable(engineId == ENGINE_GEMINI)
+			
 		self.targetLangChoice.Enable(True)
+
+	def onOpenAIFetch(self, evt):
+		api_key = self.openaiApiKey.GetValue().strip()
+		if not api_key:
+			gui.messageBox(
+				_("Please enter an OpenAI API key first."),
+				_("Error"),
+				style=wx.OK | wx.ICON_ERROR
+			)
+			return
+		self.openaiFetchBtn.Disable()
+		self.openaiFetchBtn.SetLabel(_("Fetching..."))
+		
+		def run():
+			try:
+				models = openai_api.fetch_models(api_key)
+				wx.CallAfter(self.onOpenAIFetchSuccess, models)
+			except Exception as e:
+				wx.CallAfter(self.onOpenAIFetchFail, str(e))
+				
+		threading.Thread(target=run, daemon=True).start()
+
+	def onOpenAIFetchSuccess(self, models):
+		self.openaiFetchBtn.Enable()
+		self.openaiFetchBtn.SetLabel(_("Fetch OpenAI Models"))
+		if not models:
+			gui.messageBox(
+				_("No compatible OpenAI models found."),
+				_("Info"),
+				style=wx.OK | wx.ICON_INFORMATION
+			)
+			return
+		self.openaiModelChoice.Clear()
+		self.openaiModelChoice.AppendItems(models)
+		self.openaiModelChoice.SetSelection(0)
+		self._openai_fetched_list = models
+		gui.messageBox(
+			_("Successfully fetched {count} OpenAI models!").format(count=len(models)),
+			_("Success"),
+			style=wx.OK | wx.ICON_INFORMATION
+		)
+
+	def onOpenAIFetchFail(self, err_msg):
+		self.openaiFetchBtn.Enable()
+		self.openaiFetchBtn.SetLabel(_("Fetch OpenAI Models"))
+		gui.messageBox(
+			_("Failed to fetch OpenAI models: {error}").format(error=err_msg),
+			_("Error"),
+			style=wx.OK | wx.ICON_ERROR
+		)
+
+	def onGeminiFetch(self, evt):
+		api_key = self.geminiApiKey.GetValue().strip()
+		if not api_key:
+			gui.messageBox(
+				_("Please enter a Gemini API key first."),
+				_("Error"),
+				style=wx.OK | wx.ICON_ERROR
+			)
+			return
+		self.geminiFetchBtn.Disable()
+		self.geminiFetchBtn.SetLabel(_("Fetching..."))
+		
+		def run():
+			try:
+				models = gemini_api.fetch_models(api_key)
+				wx.CallAfter(self.onGeminiFetchSuccess, models)
+			except Exception as e:
+				wx.CallAfter(self.onGeminiFetchFail, str(e))
+				
+		threading.Thread(target=run, daemon=True).start()
+
+	def onGeminiFetchSuccess(self, models):
+		self.geminiFetchBtn.Enable()
+		self.geminiFetchBtn.SetLabel(_("Fetch Gemini Models"))
+		if not models:
+			gui.messageBox(
+				_("No compatible Gemini models found."),
+				_("Info"),
+				style=wx.OK | wx.ICON_INFORMATION
+			)
+			return
+		self.geminiModelChoice.Clear()
+		self.geminiModelChoice.AppendItems(models)
+		self.geminiModelChoice.SetSelection(0)
+		self._gemini_fetched_list = models
+		gui.messageBox(
+			_("Successfully fetched {count} Gemini models!").format(count=len(models)),
+			_("Success"),
+			style=wx.OK | wx.ICON_INFORMATION
+		)
+
+	def onGeminiFetchFail(self, err_msg):
+		self.geminiFetchBtn.Enable()
+		self.geminiFetchBtn.SetLabel(_("Fetch Gemini Models"))
+		gui.messageBox(
+			_("Failed to fetch Gemini models: {error}").format(error=err_msg),
+			_("Error"),
+			style=wx.OK | wx.ICON_ERROR
+		)
 
 	def onSave(self):
 		engineId = self._ENGINE_CHOICES[self.engineChoice.GetSelection()][0]
@@ -452,6 +657,25 @@ class TranslateSettingsPanel(gui.settingsDialogs.SettingsPanel):
 		config.conf["translate"]["lingvaUrl"] = self.lingvaUrl.GetValue()
 		config.conf["translate"]["libretranslateUrl"] = self.libreTranslateUrl.GetValue()
 		config.conf["translate"]["libretranslateApiKey"] = self.libreTranslateApiKey.GetValue()
+		
+		if hasattr(self, "deeplApiKey"):
+			config.conf["translate"]["deeplApiKey"] = self.deeplApiKey.GetValue()
+		if hasattr(self, "openaiApiKey"):
+			config.conf["translate"]["openaiApiKey"] = self.openaiApiKey.GetValue()
+			sel_op = self.openaiModelChoice.GetSelection()
+			if sel_op != wx.NOT_FOUND:
+				config.conf["translate"]["openaiModel"] = self.openaiModelChoice.GetString(sel_op)
+			if hasattr(self, "_openai_fetched_list"):
+				config.conf["translate"]["openaiModelsList"] = ",".join(self._openai_fetched_list)
+				
+		if hasattr(self, "geminiApiKey"):
+			config.conf["translate"]["geminiApiKey"] = self.geminiApiKey.GetValue()
+			sel_gem = self.geminiModelChoice.GetSelection()
+			if sel_gem != wx.NOT_FOUND:
+				config.conf["translate"]["geminiModel"] = self.geminiModelChoice.GetString(sel_gem)
+			if hasattr(self, "_gemini_fetched_list"):
+				config.conf["translate"]["geminiModelsList"] = ",".join(self._gemini_fetched_list)
+				
 		sel = self.targetLangChoice.GetSelection()
 		config.conf["translate"]["localTargetLang"] = self._lang_codes[sel] if sel > 0 else ""
 

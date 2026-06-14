@@ -23,14 +23,50 @@ msgstr "所有翻译已被删除。"
 msgid "Copy the latest translated text to the clipboard."
 msgstr "将最近翻译的文本复制到剪贴板。"
 
+msgid "DeepL API &key:"
+msgstr "DeepL API 和密钥："
+
+msgid "DeepL Translate"
+msgstr "深度翻译"
+
 msgid "Enables translation to the desired language."
 msgstr "启用翻译到所需语言。"
+
+msgid "Error"
+msgstr "错误"
 
 msgid "Error while deleting application's translation cache."
 msgstr "删除应用程序的翻译缓存时出错。"
 
+msgid "Failed to fetch Gemini models: {error}"
+msgstr "无法获取 Gemini 模型：{error}"
+
+msgid "Failed to fetch OpenAI models: {error}"
+msgstr "无法获取 OpenAI 模型：{error}"
+
+msgid "Fetch Gemini Models"
+msgstr "获取双子座模型"
+
+msgid "Fetch OpenAI Models"
+msgstr "获取 OpenAI 模型"
+
+msgid "Fetching..."
+msgstr "正在获取..."
+
+msgid "Gemini &model:"
+msgstr "双子座&型号："
+
+msgid "Gemini API &key:"
+msgstr "Gemini API 和密钥："
+
+msgid "Google Gemini"
+msgstr "谷歌双子座"
+
 msgid "Google Translate"
 msgstr "谷歌翻译"
+
+msgid "Info"
+msgstr "信息"
 
 msgid "LibreTranslate"
 msgstr "自由翻译"
@@ -50,6 +86,12 @@ msgstr "Lingva实例URL(&I):"
 msgid "Match NVDA language"
 msgstr "匹配NVDA语言"
 
+msgid "No compatible Gemini models found."
+msgstr "未找到兼容的 Gemini 型号。"
+
+msgid "No compatible OpenAI models found."
+msgstr "未找到兼容的 OpenAI 模型。"
+
 msgid "No focused application"
 msgstr "无重点应用"
 
@@ -58,6 +100,21 @@ msgstr "没有保存 {app} 的翻译"
 
 msgid "No translation to copy"
 msgstr "没有翻译可复制"
+
+msgid "OpenAI &model:"
+msgstr "OpenAI 模型："
+
+msgid "OpenAI API &key:"
+msgstr "OpenAI API 和密钥："
+
+msgid "OpenAI ChatGPT"
+msgstr "OpenAI 聊天GPT"
+
+msgid "Please enter a Gemini API key first."
+msgstr "请先输入 Gemini API 密钥。"
+
+msgid "Please enter an OpenAI API key first."
+msgstr "请先输入 OpenAI API 密钥。"
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr "按两次可删除所有应用程序的所有缓存翻译。"
@@ -73,6 +130,15 @@ msgstr "删除当前焦点应用程序的翻译缓存"
 
 msgid "Some caches failed to be removed."
 msgstr "部分缓存删除失败。"
+
+msgid "Success"
+msgstr "成功"
+
+msgid "Successfully fetched {count} Gemini models!"
+msgstr "已成功获取 {count} 个 Gemini 模型！"
+
+msgid "Successfully fetched {count} OpenAI models!"
+msgstr "已成功获取 {count} 个 OpenAI 模型！"
 
 msgid "Translate"
 msgstr "翻译"

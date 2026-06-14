@@ -253,7 +253,38 @@ class TestAddonSuite(unittest.TestCase):
         res2 = translate("Main Menu")
         self.assertEqual(res2, "Main Menu")
         mock_engine.assert_not_called()
-
+    @patch('globalPlugins.translate.deepl.translate')
+    @patch('globalPlugins.translate.openai_api.translate')
+    @patch('globalPlugins.translate.gemini_api.translate')
+    def test_ai_routing(self, mock_gemini, mock_openai, mock_deepl):
+        """Verify that _execute_engine_translation routes requests to DeepL, OpenAI, and Gemini correctly."""
+        # Setup mock returns
+        mock_deepl.return_value = "DeepL Translation"
+        mock_openai.return_value = "OpenAI Translation"
+        mock_gemini.return_value = "Gemini Translation"
+        
+        # Test DeepL Routing
+        translate_module.config.conf["translate"]["engine"] = "deepl"
+        translate_module.config.conf["translate"]["deeplApiKey"] = "test-key"
+        res = _execute_engine_translation("Hello", source_lang="en")
+        self.assertEqual(res, "DeepL Translation")
+        mock_deepl.assert_called_once_with("Hello", "ar", "test-key")
+        
+        # Test OpenAI Routing
+        translate_module.config.conf["translate"]["engine"] = "openai"
+        translate_module.config.conf["translate"]["openaiApiKey"] = "openai-key"
+        translate_module.config.conf["translate"]["openaiModel"] = "gpt-5.4-mini"
+        res2 = _execute_engine_translation("Hello", source_lang="en")
+        self.assertEqual(res2, "OpenAI Translation")
+        mock_openai.assert_called_once_with("Hello", "ar", "openai-key", model="gpt-5.4-mini")
+        
+        # Test Gemini Routing
+        translate_module.config.conf["translate"]["engine"] = "gemini"
+        translate_module.config.conf["translate"]["geminiApiKey"] = "gemini-key"
+        translate_module.config.conf["translate"]["geminiModel"] = "gemini-3.5-flash"
+        res3 = _execute_engine_translation("Hello", source_lang="en")
+        self.assertEqual(res3, "Gemini Translation")
+        mock_gemini.assert_called_once_with("Hello", "ar", "gemini-key", model="gemini-3.5-flash")
 
 
 if __name__ == "__main__":

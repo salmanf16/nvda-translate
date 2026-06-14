@@ -23,14 +23,50 @@ msgstr ""
 msgid "Copy the latest translated text to the clipboard."
 msgstr ""
 
+msgid "DeepL API &key:"
+msgstr "Kunci & API DeepL:"
+
+msgid "DeepL Translate"
+msgstr "Terjemahan Dalam"
+
 msgid "Enables translation to the desired language."
 msgstr ""
+
+msgid "Error"
+msgstr "Kesalahan"
 
 msgid "Error while deleting application's translation cache."
 msgstr ""
 
+msgid "Failed to fetch Gemini models: {error}"
+msgstr "Gagal mengambil model Gemini: {error}"
+
+msgid "Failed to fetch OpenAI models: {error}"
+msgstr "Gagal mengambil model OpenAI: {error}"
+
+msgid "Fetch Gemini Models"
+msgstr "Ambil Model Gemini"
+
+msgid "Fetch OpenAI Models"
+msgstr "Ambil Model OpenAI"
+
+msgid "Fetching..."
+msgstr "Mengambil..."
+
+msgid "Gemini &model:"
+msgstr ""
+
+msgid "Gemini API &key:"
+msgstr "API & kunci Gemini:"
+
+msgid "Google Gemini"
+msgstr ""
+
 msgid "Google Translate"
 msgstr ""
+
+msgid "Info"
+msgstr "Informasi"
 
 msgid "LibreTranslate"
 msgstr ""
@@ -50,6 +86,12 @@ msgstr "Language Translate &instance URL:"
 msgid "Match NVDA language"
 msgstr "Sesuaikan bahasa NVDA"
 
+msgid "No compatible Gemini models found."
+msgstr "Tidak ditemukan model Gemini yang kompatibel."
+
+msgid "No compatible OpenAI models found."
+msgstr "Tidak ditemukan model OpenAI yang kompatibel."
+
 msgid "No focused application"
 msgstr ""
 
@@ -58,6 +100,21 @@ msgstr ""
 
 msgid "No translation to copy"
 msgstr ""
+
+msgid "OpenAI &model:"
+msgstr ""
+
+msgid "OpenAI API &key:"
+msgstr "OpenAI API &kunci:"
+
+msgid "OpenAI ChatGPT"
+msgstr "Obrolan OpenAIGPT"
+
+msgid "Please enter a Gemini API key first."
+msgstr "Silakan masukkan kunci API Gemini terlebih dahulu."
+
+msgid "Please enter an OpenAI API key first."
+msgstr "Silakan masukkan kunci API OpenAI terlebih dahulu."
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr ""
@@ -73,6 +130,15 @@ msgstr ""
 
 msgid "Some caches failed to be removed."
 msgstr ""
+
+msgid "Success"
+msgstr "Kesuksesan"
+
+msgid "Successfully fetched {count} Gemini models!"
+msgstr "Berhasil mengambil {count} model Gemini!"
+
+msgid "Successfully fetched {count} OpenAI models!"
+msgstr "Berhasil mengambil {count} model OpenAI!"
 
 msgid "Translate"
 msgstr "Terjemahan"

@@ -23,14 +23,50 @@ msgstr "すべての翻訳は削除されました。"
 msgid "Copy the latest translated text to the clipboard."
 msgstr "最後に翻訳されたテキストをクリップボードにコピーします。"
 
+msgid "DeepL API &key:"
+msgstr "DeepL API キー(&K):"
+
+msgid "DeepL Translate"
+msgstr "DeepL翻訳"
+
 msgid "Enables translation to the desired language."
 msgstr "目的の言語への翻訳を有効にします。"
+
+msgid "Error"
+msgstr "エラー"
 
 msgid "Error while deleting application's translation cache."
 msgstr "アプリケーションの翻訳キャッシュを削除中にエラーが発生しました。"
 
+msgid "Failed to fetch Gemini models: {error}"
+msgstr "Gemini モデルの取得に失敗しました: {error}"
+
+msgid "Failed to fetch OpenAI models: {error}"
+msgstr "OpenAI モデルの取得に失敗しました: {error}"
+
+msgid "Fetch Gemini Models"
+msgstr "Gemini モデルをフェッチする"
+
+msgid "Fetch OpenAI Models"
+msgstr "OpenAI モデルを取得する"
+
+msgid "Fetching..."
+msgstr "取得中..."
+
+msgid "Gemini &model:"
+msgstr "ジェミニモデル:"
+
+msgid "Gemini API &key:"
+msgstr "Gemini API キー(&K):"
+
+msgid "Google Gemini"
+msgstr "Google ジェミニ"
+
 msgid "Google Translate"
 msgstr "Google翻訳"
+
+msgid "Info"
+msgstr "情報"
 
 msgid "LibreTranslate"
 msgstr "リブレ翻訳"
@@ -50,6 +86,12 @@ msgstr "LingvaインスタンスURL(&I):"
 msgid "Match NVDA language"
 msgstr "NVDAの言語に合わせる"
 
+msgid "No compatible Gemini models found."
+msgstr "互換性のある Gemini モデルが見つかりません。"
+
+msgid "No compatible OpenAI models found."
+msgstr "互換性のある OpenAI モデルが見つかりません。"
+
 msgid "No focused application"
 msgstr "焦点を当てたアプリケーションがない"
 
@@ -58,6 +100,21 @@ msgstr "{app} の保存された翻訳はありません"
 
 msgid "No translation to copy"
 msgstr "コピーする翻訳がありません"
+
+msgid "OpenAI &model:"
+msgstr "OpenAI モデル:"
+
+msgid "OpenAI API &key:"
+msgstr "OpenAI API キー(&K):"
+
+msgid "OpenAI ChatGPT"
+msgstr ""
+
+msgid "Please enter a Gemini API key first."
+msgstr "最初に Gemini API キーを入力してください。"
+
+msgid "Please enter an OpenAI API key first."
+msgstr "最初に OpenAI API キーを入力してください。"
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr "2 回押すと、すべてのアプリケーションのキャッシュされた翻訳がすべて削除されます。"
@@ -73,6 +130,15 @@ msgstr "現在フォーカスされているアプリケーションの翻訳キ
 
 msgid "Some caches failed to be removed."
 msgstr "一部のキャッシュの削除に失敗しました。"
+
+msgid "Success"
+msgstr "成功"
+
+msgid "Successfully fetched {count} Gemini models!"
+msgstr "{count} 個の Gemini モデルを正常に取得しました。"
+
+msgid "Successfully fetched {count} OpenAI models!"
+msgstr "{count} 個の OpenAI モデルを正常に取得しました。"
 
 msgid "Translate"
 msgstr "翻訳"

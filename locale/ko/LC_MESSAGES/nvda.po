@@ -23,14 +23,50 @@ msgstr "모든 번역이 삭제되었습니다."
 msgid "Copy the latest translated text to the clipboard."
 msgstr "마지막 번역된 텍스트를 클립보드에 복사합니다."
 
+msgid "DeepL API &key:"
+msgstr "DeepL API 및 키:"
+
+msgid "DeepL Translate"
+msgstr "DeepL 번역"
+
 msgid "Enables translation to the desired language."
 msgstr "원하는 언어로 번역을 활성화합니다."
+
+msgid "Error"
+msgstr "오류"
 
 msgid "Error while deleting application's translation cache."
 msgstr "애플리케이션의 번역 캐시를 삭제하는 중 오류가 발생했습니다."
 
+msgid "Failed to fetch Gemini models: {error}"
+msgstr "Gemini 모델을 가져오지 못했습니다: {error}"
+
+msgid "Failed to fetch OpenAI models: {error}"
+msgstr "OpenAI 모델을 가져오지 못했습니다: {오류}"
+
+msgid "Fetch Gemini Models"
+msgstr "Gemini 모델 가져오기"
+
+msgid "Fetch OpenAI Models"
+msgstr "OpenAI 모델 가져오기"
+
+msgid "Fetching..."
+msgstr "가져오는 중..."
+
+msgid "Gemini &model:"
+msgstr "쌍둥이자리(&) 모델:"
+
+msgid "Gemini API &key:"
+msgstr "Gemini API 및 키:"
+
+msgid "Google Gemini"
+msgstr "구글 제미니"
+
 msgid "Google Translate"
 msgstr "Google 번역"
+
+msgid "Info"
+msgstr "정보"
 
 msgid "LibreTranslate"
 msgstr "Libre번역"
@@ -50,6 +86,12 @@ msgstr "Lingva 인스턴스 URL(&I):"
 msgid "Match NVDA language"
 msgstr "NVDA 언어 일치"
 
+msgid "No compatible Gemini models found."
+msgstr "호환되는 Gemini 모델이 없습니다."
+
+msgid "No compatible OpenAI models found."
+msgstr "호환되는 OpenAI 모델을 찾을 수 없습니다."
+
 msgid "No focused application"
 msgstr "집중적인 적용이 없음"
 
@@ -58,6 +100,21 @@ msgstr "{app}에 대해 저장된 번역이 없습니다."
 
 msgid "No translation to copy"
 msgstr "복사할 번역이 없습니다."
+
+msgid "OpenAI &model:"
+msgstr "OpenAI 및 모델:"
+
+msgid "OpenAI API &key:"
+msgstr "OpenAI API 및 키:"
+
+msgid "OpenAI ChatGPT"
+msgstr "오픈AI 챗GPT"
+
+msgid "Please enter a Gemini API key first."
+msgstr "먼저 Gemini API 키를 입력하세요."
+
+msgid "Please enter an OpenAI API key first."
+msgstr "먼저 OpenAI API 키를 입력하세요."
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr "모든 애플리케이션에 대해 캐시된 번역을 모두 삭제하려면 두 번 누르세요."
@@ -73,6 +130,15 @@ msgstr "현재 포커스된 응용프로그램의 번역 캐시 제거"
 
 msgid "Some caches failed to be removed."
 msgstr "일부 캐시를 제거하지 못했습니다."
+
+msgid "Success"
+msgstr "성공"
+
+msgid "Successfully fetched {count} Gemini models!"
+msgstr "{count}개의 Gemini 모델을 성공적으로 가져왔습니다!"
+
+msgid "Successfully fetched {count} OpenAI models!"
+msgstr "{count}개의 OpenAI 모델을 성공적으로 가져왔습니다!"
 
 msgid "Translate"
 msgstr "번역"
