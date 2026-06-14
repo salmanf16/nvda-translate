@@ -496,6 +496,14 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
                 speech_module.speak = speak
                 speech.speak = speak
 
+                # Patch sayAll to support translation during continuous reading
+                try:
+                        import speech.sayAll as speech_sayAll
+                        if speech_sayAll.SayAllHandler is not None:
+                                speech_sayAll.SayAllHandler.speechWithoutPausesInstance.speak = speak
+                except Exception as e:
+                        logHandler.log.error("Translate: Failed to patch sayAll speak: %s" % e)
+
                 self.loadLocalCache()
                 self._autoSaveRunning = True
                 self._autoSaveThread = threading.Thread(target=self._autoSaveLoop, daemon=True)
@@ -524,6 +532,12 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
                 if _nvdaSpeak is not None:
                         speech_module.speak = _nvdaSpeak
                         speech.speak = _nvdaSpeak
+                        try:
+                                import speech.sayAll as speech_sayAll
+                                if speech_sayAll.SayAllHandler is not None:
+                                        speech_sayAll.SayAllHandler.speechWithoutPausesInstance.speak = _nvdaSpeak
+                        except Exception:
+                                pass
                 self._autoSaveRunning = False
                 self.saveLocalCache()
                 gui.settingsDialogs.NVDASettingsDialog.categoryClasses.remove(TranslateSettingsPanel)
