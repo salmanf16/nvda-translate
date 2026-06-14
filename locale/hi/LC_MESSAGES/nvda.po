@@ -26,9 +26,6 @@ msgstr "नवीनतम अनुवादित पाठ को क्ल�
 msgid "DeepL API &key:"
 msgstr "डीपएल एपीआई और कुंजी:"
 
-msgid "DeepL Translate"
-msgstr "डीपएल अनुवाद"
-
 msgid "Enables translation to the desired language."
 msgstr "वांछित भाषा में अनुवाद सक्षम बनाता है।"
 
@@ -59,26 +56,14 @@ msgstr "मिथुन और मॉडल:"
 msgid "Gemini API &key:"
 msgstr "जेमिनी एपीआई और कुंजी:"
 
-msgid "Google Gemini"
-msgstr "गूगल जेमिनी"
-
-msgid "Google Translate"
-msgstr "गूगल अनुवाद"
-
 msgid "Info"
 msgstr "जानकारी"
-
-msgid "LibreTranslate"
-msgstr "लिब्रेट्रांसलेट"
 
 msgid "LibreTranslate &URL:"
 msgstr "लिबरट्रांसलेट और यूआरएल:"
 
 msgid "LibreTranslate API &key (optional):"
 msgstr "लिब्रेट्रांसलेट एपीआई और कुंजी (वैकल्पिक):"
-
-msgid "Lingva Translate"
-msgstr "लिंगवा अनुवाद"
 
 msgid "Lingva Translate &instance URL:"
 msgstr "लिंगवा अनुवाद और उदाहरण यूआरएल:"
@@ -106,9 +91,6 @@ msgstr "ओपनएआई और मॉडल:"
 
 msgid "OpenAI API &key:"
 msgstr "ओपनएआई एपीआई और कुंजी:"
-
-msgid "OpenAI ChatGPT"
-msgstr "ओपनएआई चैटजीपीटी"
 
 msgid "Please enter a Gemini API key first."
 msgstr "कृपया पहले जेमिनी एपीआई कुंजी दर्ज करें।"

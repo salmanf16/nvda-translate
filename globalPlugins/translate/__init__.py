@@ -403,12 +403,12 @@ class TranslateSettingsPanel(gui.settingsDialogs.SettingsPanel):
 	title = _("Translate")
 
 	_ENGINE_CHOICES = [
-		(ENGINE_GOOGLE, _("Google Translate")),
-		(ENGINE_LINGVA, _("Lingva Translate")),
-		(ENGINE_LIBRETRANSLATE, _("LibreTranslate")),
-		(ENGINE_DEEPL, _("DeepL Translate")),
-		(ENGINE_OPENAI, _("OpenAI ChatGPT")),
-		(ENGINE_GEMINI, _("Google Gemini")),
+		(ENGINE_GOOGLE, "Google Translate"),
+		(ENGINE_LINGVA, "Lingva Translate"),
+		(ENGINE_LIBRETRANSLATE, "LibreTranslate"),
+		(ENGINE_DEEPL, "DeepL Translate"),
+		(ENGINE_OPENAI, "OpenAI ChatGPT"),
+		(ENGINE_GEMINI, "Google Gemini"),
 	]
 
 	def makeSettings(self, settingsSizer):

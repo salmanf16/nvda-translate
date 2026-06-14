@@ -26,9 +26,6 @@ msgstr "نسخ آخر نص مترجم إلى الحافظة."
 msgid "DeepL API &key:"
 msgstr "واجهة برمجة تطبيقات DeepL والمفتاح:"
 
-msgid "DeepL Translate"
-msgstr "ترجمة ديبل"
-
 msgid "Enables translation to the desired language."
 msgstr "تُمكّن الترجمة إلى اللغة المطلوبة."
 
@@ -59,26 +56,14 @@ msgstr "الجوزاء والنموذج:"
 msgid "Gemini API &key:"
 msgstr "واجهة برمجة تطبيقات ومفتاح الجوزاء:"
 
-msgid "Google Gemini"
-msgstr "جوجل الجوزاء"
-
-msgid "Google Translate"
-msgstr "ترجمة جوجل"
-
 msgid "Info"
 msgstr "معلومات"
-
-msgid "LibreTranslate"
-msgstr "LibreTranslate"
 
 msgid "LibreTranslate &URL:"
 msgstr "رابط LibreTranslate:"
 
 msgid "LibreTranslate API &key (optional):"
 msgstr "مفتاح API لـ LibreTranslate (اختياري):"
-
-msgid "Lingva Translate"
-msgstr "ترجمة Lingva"
 
 msgid "Lingva Translate &instance URL:"
 msgstr "رابط خادم Lingva:"
@@ -106,9 +91,6 @@ msgstr "OpenAI والنموذج:"
 
 msgid "OpenAI API &key:"
 msgstr "واجهة برمجة تطبيقات OpenAI والمفتاح:"
-
-msgid "OpenAI ChatGPT"
-msgstr ""
 
 msgid "Please enter a Gemini API key first."
 msgstr "الرجاء إدخال مفتاح Gemini API أولاً."

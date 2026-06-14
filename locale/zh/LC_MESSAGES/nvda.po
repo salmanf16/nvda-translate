@@ -26,9 +26,6 @@ msgstr "将最近翻译的文本复制到剪贴板。"
 msgid "DeepL API &key:"
 msgstr "DeepL API 和密钥："
 
-msgid "DeepL Translate"
-msgstr "深度翻译"
-
 msgid "Enables translation to the desired language."
 msgstr "启用翻译到所需语言。"
 
@@ -59,26 +56,14 @@ msgstr "双子座&型号："
 msgid "Gemini API &key:"
 msgstr "Gemini API 和密钥："
 
-msgid "Google Gemini"
-msgstr "谷歌双子座"
-
-msgid "Google Translate"
-msgstr "谷歌翻译"
-
 msgid "Info"
 msgstr "信息"
-
-msgid "LibreTranslate"
-msgstr "自由翻译"
 
 msgid "LibreTranslate &URL:"
 msgstr "自由翻译&URL："
 
 msgid "LibreTranslate API &key (optional):"
 msgstr "LibreTranslate API密钥（可选）(&K):"
-
-msgid "Lingva Translate"
-msgstr "Lingva 翻译"
 
 msgid "Lingva Translate &instance URL:"
 msgstr "Lingva实例URL(&I):"
@@ -106,9 +91,6 @@ msgstr "OpenAI 模型："
 
 msgid "OpenAI API &key:"
 msgstr "OpenAI API 和密钥："
-
-msgid "OpenAI ChatGPT"
-msgstr "OpenAI 聊天GPT"
 
 msgid "Please enter a Gemini API key first."
 msgstr "请先输入 Gemini API 密钥。"

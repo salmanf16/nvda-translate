@@ -26,9 +26,6 @@ msgstr "Sao chép văn bản dịch mới nhất vào clipboard."
 msgid "DeepL API &key:"
 msgstr "API & khóa DeepL:"
 
-msgid "DeepL Translate"
-msgstr "Dịch DeepL"
-
 msgid "Enables translation to the desired language."
 msgstr "Cho phép dịch sang ngôn ngữ mong muốn."
 
@@ -59,26 +56,14 @@ msgstr "Song Tử & người mẫu:"
 msgid "Gemini API &key:"
 msgstr "API & khóa Gemini:"
 
-msgid "Google Gemini"
-msgstr "Google Song Tử"
-
-msgid "Google Translate"
-msgstr "Google Dịch"
-
 msgid "Info"
 msgstr "Thông tin"
-
-msgid "LibreTranslate"
-msgstr "Miễn phíDịch"
 
 msgid "LibreTranslate &URL:"
 msgstr ""
 
 msgid "LibreTranslate API &key (optional):"
 msgstr "Khóa & API LibreTranslate (tùy chọn):"
-
-msgid "Lingva Translate"
-msgstr "Lingva Dịch"
 
 msgid "Lingva Translate &instance URL:"
 msgstr "Lingva Translate &URL ví dụ:"
@@ -106,9 +91,6 @@ msgstr "OpenAI & mô hình:"
 
 msgid "OpenAI API &key:"
 msgstr "API và khóa OpenAI:"
-
-msgid "OpenAI ChatGPT"
-msgstr "Trò chuyện OpenAIGPT"
 
 msgid "Please enter a Gemini API key first."
 msgstr "Trước tiên, vui lòng nhập khóa API Gemini."

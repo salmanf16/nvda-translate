@@ -26,9 +26,6 @@ msgstr "Kopieer de laatst vertaalde tekst naar het klembord."
 msgid "DeepL API &key:"
 msgstr "DeepL API &sleutel:"
 
-msgid "DeepL Translate"
-msgstr "DeepL-vertaal"
-
 msgid "Enables translation to the desired language."
 msgstr "Schakelt vertaling naar de gewenste taal in."
 
@@ -59,16 +56,7 @@ msgstr "Tweeling & model:"
 msgid "Gemini API &key:"
 msgstr "Gemini API &sleutel:"
 
-msgid "Google Gemini"
-msgstr "Google Tweelingen"
-
-msgid "Google Translate"
-msgstr "Google Vertalen"
-
 msgid "Info"
-msgstr ""
-
-msgid "LibreTranslate"
 msgstr ""
 
 msgid "LibreTranslate &URL:"
@@ -76,9 +64,6 @@ msgstr ""
 
 msgid "LibreTranslate API &key (optional):"
 msgstr ""
-
-msgid "Lingva Translate"
-msgstr "Language Translate"
 
 msgid "Lingva Translate &instance URL:"
 msgstr "Language Translate &instance URL:"
@@ -106,9 +91,6 @@ msgstr ""
 
 msgid "OpenAI API &key:"
 msgstr "OpenAI API &sleutel:"
-
-msgid "OpenAI ChatGPT"
-msgstr ""
 
 msgid "Please enter a Gemini API key first."
 msgstr "Voer eerst een Gemini API-sleutel in."

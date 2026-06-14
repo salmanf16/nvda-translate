@@ -26,9 +26,6 @@ msgstr ""
 msgid "DeepL API &key:"
 msgstr "Kunci & API DeepL:"
 
-msgid "DeepL Translate"
-msgstr "Terjemahan Dalam"
-
 msgid "Enables translation to the desired language."
 msgstr ""
 
@@ -59,26 +56,14 @@ msgstr ""
 msgid "Gemini API &key:"
 msgstr "API & kunci Gemini:"
 
-msgid "Google Gemini"
-msgstr ""
-
-msgid "Google Translate"
-msgstr ""
-
 msgid "Info"
 msgstr "Informasi"
-
-msgid "LibreTranslate"
-msgstr ""
 
 msgid "LibreTranslate &URL:"
 msgstr ""
 
 msgid "LibreTranslate API &key (optional):"
 msgstr ""
-
-msgid "Lingva Translate"
-msgstr "Language Translate"
 
 msgid "Lingva Translate &instance URL:"
 msgstr "Language Translate &instance URL:"
@@ -106,9 +91,6 @@ msgstr ""
 
 msgid "OpenAI API &key:"
 msgstr "OpenAI API &kunci:"
-
-msgid "OpenAI ChatGPT"
-msgstr "Obrolan OpenAIGPT"
 
 msgid "Please enter a Gemini API key first."
 msgstr "Silakan masukkan kunci API Gemini terlebih dahulu."

@@ -26,9 +26,6 @@ msgstr "Skopiuj ostatnio przetłumaczony tekst do schowka."
 msgid "DeepL API &key:"
 msgstr "&Klucz API DeepL:"
 
-msgid "DeepL Translate"
-msgstr "DeepL Tłumacz"
-
 msgid "Enables translation to the desired language."
 msgstr "Włącza tłumaczenie na żądany język."
 
@@ -59,26 +56,14 @@ msgstr "Bliźnięta i model:"
 msgid "Gemini API &key:"
 msgstr "&klucz API Gemini:"
 
-msgid "Google Gemini"
-msgstr "Google Bliźnięta"
-
-msgid "Google Translate"
-msgstr "Tłumacz Google"
-
 msgid "Info"
 msgstr "Informacje"
-
-msgid "LibreTranslate"
-msgstr "LibrePrzetłumacz"
 
 msgid "LibreTranslate &URL:"
 msgstr "LibrePrzetłumacz &URL:"
 
 msgid "LibreTranslate API &key (optional):"
 msgstr "&Klucz API LibreTranslate (opcjonalnie):"
-
-msgid "Lingva Translate"
-msgstr "Tłumacz Lingwy"
 
 msgid "Lingva Translate &instance URL:"
 msgstr "Adres URL &instancji tłumaczenia Lingva:"
@@ -106,9 +91,6 @@ msgstr "OpenAI i model:"
 
 msgid "OpenAI API &key:"
 msgstr "&klucz API OpenAI:"
-
-msgid "OpenAI ChatGPT"
-msgstr "Czat OpenAIGPT"
 
 msgid "Please enter a Gemini API key first."
 msgstr "Najpierw wprowadź klucz API Gemini."

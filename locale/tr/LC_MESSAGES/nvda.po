@@ -26,9 +26,6 @@ msgstr "Son çevrilen metni panoya kopyala."
 msgid "DeepL API &key:"
 msgstr "DeepL API &anahtarı:"
 
-msgid "DeepL Translate"
-msgstr "DeepL Çeviri"
-
 msgid "Enables translation to the desired language."
 msgstr "İstenilen dile çeviriyi etkinleştirir."
 
@@ -59,26 +56,14 @@ msgstr "İkizler & modeli:"
 msgid "Gemini API &key:"
 msgstr "Gemini API'si ve anahtarı:"
 
-msgid "Google Gemini"
-msgstr "Google İkizler"
-
-msgid "Google Translate"
-msgstr "Google Çeviri"
-
 msgid "Info"
 msgstr "Bilgi"
-
-msgid "LibreTranslate"
-msgstr ""
 
 msgid "LibreTranslate &URL:"
 msgstr "LibreTranslate &URL:"
 
 msgid "LibreTranslate API &key (optional):"
 msgstr "LibreTranslate API &anahtarı (isteğe bağlı):"
-
-msgid "Lingva Translate"
-msgstr "Lingva Çeviri"
 
 msgid "Lingva Translate &instance URL:"
 msgstr "Lingva &sunucu URL'si:"
@@ -106,9 +91,6 @@ msgstr "OpenAI ve modeli:"
 
 msgid "OpenAI API &key:"
 msgstr "OpenAI API'si ve anahtarı:"
-
-msgid "OpenAI ChatGPT"
-msgstr ""
 
 msgid "Please enter a Gemini API key first."
 msgstr "Lütfen önce Gemini API anahtarını girin."

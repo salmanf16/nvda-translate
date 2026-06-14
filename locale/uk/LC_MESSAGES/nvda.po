@@ -28,9 +28,6 @@ msgstr "Копіює останній перекладений текст у б�
 msgid "DeepL API &key:"
 msgstr ""
 
-msgid "DeepL Translate"
-msgstr ""
-
 msgid "Enables translation to the desired language."
 msgstr "Вмикає переклад на потрібну мову."
 
@@ -61,26 +58,14 @@ msgstr ""
 msgid "Gemini API &key:"
 msgstr ""
 
-msgid "Google Gemini"
-msgstr ""
-
-msgid "Google Translate"
-msgstr "Перекладач Google"
-
 msgid "Info"
 msgstr ""
-
-msgid "LibreTranslate"
-msgstr "LibreTranslate"
 
 msgid "LibreTranslate &URL:"
 msgstr "&URL LibreTranslate:"
 
 msgid "LibreTranslate API &key (optional):"
 msgstr "&Ключ API LibreTranslate (необов’язково):"
-
-msgid "Lingva Translate"
-msgstr "Lingva Translate"
 
 msgid "Lingva Translate &instance URL:"
 msgstr "URL &Lingva Translate:"
@@ -107,9 +92,6 @@ msgid "OpenAI &model:"
 msgstr ""
 
 msgid "OpenAI API &key:"
-msgstr ""
-
-msgid "OpenAI ChatGPT"
 msgstr ""
 
 msgid "Please enter a Gemini API key first."

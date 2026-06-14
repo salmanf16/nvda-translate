@@ -26,9 +26,6 @@ msgstr "마지막 번역된 텍스트를 클립보드에 복사합니다."
 msgid "DeepL API &key:"
 msgstr "DeepL API 및 키:"
 
-msgid "DeepL Translate"
-msgstr "DeepL 번역"
-
 msgid "Enables translation to the desired language."
 msgstr "원하는 언어로 번역을 활성화합니다."
 
@@ -59,26 +56,14 @@ msgstr "쌍둥이자리(&) 모델:"
 msgid "Gemini API &key:"
 msgstr "Gemini API 및 키:"
 
-msgid "Google Gemini"
-msgstr "구글 제미니"
-
-msgid "Google Translate"
-msgstr "Google 번역"
-
 msgid "Info"
 msgstr "정보"
-
-msgid "LibreTranslate"
-msgstr "Libre번역"
 
 msgid "LibreTranslate &URL:"
 msgstr "자유 번역(&URL):"
 
 msgid "LibreTranslate API &key (optional):"
 msgstr "LibreTranslate API 키 (선택사항)(&K):"
-
-msgid "Lingva Translate"
-msgstr "링바 번역"
 
 msgid "Lingva Translate &instance URL:"
 msgstr "Lingva 인스턴스 URL(&I):"
@@ -106,9 +91,6 @@ msgstr "OpenAI 및 모델:"
 
 msgid "OpenAI API &key:"
 msgstr "OpenAI API 및 키:"
-
-msgid "OpenAI ChatGPT"
-msgstr "오픈AI 챗GPT"
 
 msgid "Please enter a Gemini API key first."
 msgstr "먼저 Gemini API 키를 입력하세요."

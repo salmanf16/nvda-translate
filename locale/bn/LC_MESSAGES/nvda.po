@@ -26,9 +26,6 @@ msgstr "ক্লিপবোর্ডে সর্বশেষ অনুবা�
 msgid "DeepL API &key:"
 msgstr "DeepL API &কী:"
 
-msgid "DeepL Translate"
-msgstr "ডিপএল অনুবাদ"
-
 msgid "Enables translation to the desired language."
 msgstr "পছন্দসই ভাষায় অনুবাদ সক্ষম করে।"
 
@@ -59,26 +56,14 @@ msgstr "মিথুন এবং মডেল:"
 msgid "Gemini API &key:"
 msgstr "Gemini API &কী:"
 
-msgid "Google Gemini"
-msgstr "গুগল মিথুন"
-
-msgid "Google Translate"
-msgstr "গুগল অনুবাদ"
-
 msgid "Info"
 msgstr "তথ্য"
-
-msgid "LibreTranslate"
-msgstr ""
 
 msgid "LibreTranslate &URL:"
 msgstr ""
 
 msgid "LibreTranslate API &key (optional):"
 msgstr "LibreTranslate API &কী (ঐচ্ছিক):"
-
-msgid "Lingva Translate"
-msgstr "লিঙ্গভা অনুবাদ"
 
 msgid "Lingva Translate &instance URL:"
 msgstr "লিংভা অনুবাদ এবং উদাহরণ URL:"
@@ -106,9 +91,6 @@ msgstr "OpenAI & মডেল:"
 
 msgid "OpenAI API &key:"
 msgstr "OpenAI API &কী:"
-
-msgid "OpenAI ChatGPT"
-msgstr ""
 
 msgid "Please enter a Gemini API key first."
 msgstr "অনুগ্রহ করে প্রথমে একটি Gemini API কী লিখুন।"

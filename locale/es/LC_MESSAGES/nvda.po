@@ -26,9 +26,6 @@ msgstr "Copiar el último texto traducido al portapapeles."
 msgid "DeepL API &key:"
 msgstr "API de DeepL y clave:"
 
-msgid "DeepL Translate"
-msgstr "Traductor profundo"
-
 msgid "Enables translation to the desired language."
 msgstr "Activa la traducción al idioma deseado."
 
@@ -59,26 +56,14 @@ msgstr "Géminis y modelo:"
 msgid "Gemini API &key:"
 msgstr "API y clave de Géminis:"
 
-msgid "Google Gemini"
-msgstr "Google Géminis"
-
-msgid "Google Translate"
-msgstr "Google Traducir"
-
 msgid "Info"
 msgstr "Información"
-
-msgid "LibreTranslate"
-msgstr "LibreTraducir"
 
 msgid "LibreTranslate &URL:"
 msgstr "&URL de LibreTranslate:"
 
 msgid "LibreTranslate API &key (optional):"
 msgstr "&Clave API de LibreTranslate (opcional):"
-
-msgid "Lingva Translate"
-msgstr "Traductor Lingva"
 
 msgid "Lingva Translate &instance URL:"
 msgstr "&URL de la instancia de Lingva:"
@@ -106,9 +91,6 @@ msgstr "OpenAI y modelo:"
 
 msgid "OpenAI API &key:"
 msgstr "API de OpenAI y clave:"
-
-msgid "OpenAI ChatGPT"
-msgstr "Chat OpenAIGPT"
 
 msgid "Please enter a Gemini API key first."
 msgstr "Primero ingrese una clave API de Gemini."
