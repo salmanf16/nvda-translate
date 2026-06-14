@@ -36,7 +36,7 @@ msgid "Error while deleting application's translation cache."
 msgstr "एप्लिकेशन का अनुवाद कैश हटाते समय त्रुटि."
 
 msgid "Failed to fetch Gemini models: {error}"
-msgstr "जेमिनी मॉडल लाने में विफल: {त्रुटि}"
+msgstr "जेमिनी मॉडल लाने में विफल: {error}"
 
 msgid "Failed to fetch OpenAI models: {error}"
 msgstr "OpenAI मॉडल लाने में विफल: {त्रुटि}"
@@ -51,7 +51,7 @@ msgid "Fetching..."
 msgstr "लाया जा रहा है..."
 
 msgid "Gemini &model:"
-msgstr "मिथुन और मॉडल:"
+msgstr "Gemini और मॉडल:"
 
 msgid "Gemini API &key:"
 msgstr "जेमिनी एपीआई और कुंजी:"

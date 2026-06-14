@@ -42,7 +42,7 @@ msgid "Failed to fetch OpenAI models: {error}"
 msgstr "Không tìm nạp được mô hình OpenAI: {error}"
 
 msgid "Fetch Gemini Models"
-msgstr "Lấy mô hình Song Tử"
+msgstr "Lấy mô hình Gemini"
 
 msgid "Fetch OpenAI Models"
 msgstr "Tìm nạp các mô hình OpenAI"
@@ -51,7 +51,7 @@ msgid "Fetching..."
 msgstr "Đang tìm nạp..."
 
 msgid "Gemini &model:"
-msgstr "Song Tử & người mẫu:"
+msgstr "Gemini & người mẫu:"
 
 msgid "Gemini API &key:"
 msgstr "API & khóa Gemini:"

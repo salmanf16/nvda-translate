@@ -42,7 +42,7 @@ msgid "Failed to fetch OpenAI models: {error}"
 msgstr "无法获取 OpenAI 模型：{error}"
 
 msgid "Fetch Gemini Models"
-msgstr "获取双子座模型"
+msgstr "获取Gemini模型"
 
 msgid "Fetch OpenAI Models"
 msgstr "获取 OpenAI 模型"
@@ -51,7 +51,7 @@ msgid "Fetching..."
 msgstr "正在获取..."
 
 msgid "Gemini &model:"
-msgstr "双子座&型号："
+msgstr "Gemini&型号："
 
 msgid "Gemini API &key:"
 msgstr "Gemini API 和密钥："

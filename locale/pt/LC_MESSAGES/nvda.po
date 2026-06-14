@@ -42,7 +42,7 @@ msgid "Failed to fetch OpenAI models: {error}"
 msgstr "Falha ao buscar modelos OpenAI: {error}"
 
 msgid "Fetch Gemini Models"
-msgstr "Buscar modelos Gêmeos"
+msgstr "Buscar modelos Gemini"
 
 msgid "Fetch OpenAI Models"
 msgstr "Buscar modelos OpenAI"
@@ -51,7 +51,7 @@ msgid "Fetching..."
 msgstr "Buscando..."
 
 msgid "Gemini &model:"
-msgstr "Gêmeos e modelo:"
+msgstr "Gemini e modelo:"
 
 msgid "Gemini API &key:"
 msgstr "Chave e API Gemini:"

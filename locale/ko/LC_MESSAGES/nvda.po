@@ -51,7 +51,7 @@ msgid "Fetching..."
 msgstr "가져오는 중..."
 
 msgid "Gemini &model:"
-msgstr "쌍둥이자리(&) 모델:"
+msgstr "Gemini(&) 모델:"
 
 msgid "Gemini API &key:"
 msgstr "Gemini API 및 키:"

@@ -51,7 +51,7 @@ msgid "Fetching..."
 msgstr "Ophalen..."
 
 msgid "Gemini &model:"
-msgstr "Tweeling & model:"
+msgstr "Gemini & model:"
 
 msgid "Gemini API &key:"
 msgstr "Gemini API &sleutel:"

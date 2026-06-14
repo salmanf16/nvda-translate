@@ -36,13 +36,13 @@ msgid "Error while deleting application's translation cache."
 msgstr "অ্যাপ্লিকেশনের অনুবাদ ক্যাশে মোছার সময় ত্রুটি৷"
 
 msgid "Failed to fetch Gemini models: {error}"
-msgstr "মিথুন মডেল আনতে ব্যর্থ হয়েছে: {error}"
+msgstr "Gemini মডেল আনতে ব্যর্থ হয়েছে: {error}"
 
 msgid "Failed to fetch OpenAI models: {error}"
 msgstr "OpenAI মডেল আনতে ব্যর্থ হয়েছে: {error}"
 
 msgid "Fetch Gemini Models"
-msgstr "মিথুন মডেল আনুন"
+msgstr "Gemini মডেল আনুন"
 
 msgid "Fetch OpenAI Models"
 msgstr "OpenAI মডেলগুলি আনুন"
@@ -51,7 +51,7 @@ msgid "Fetching..."
 msgstr "আনা হচ্ছে..."
 
 msgid "Gemini &model:"
-msgstr "মিথুন এবং মডেল:"
+msgstr "Gemini এবং মডেল:"
 
 msgid "Gemini API &key:"
 msgstr "Gemini API &কী:"
@@ -72,7 +72,7 @@ msgid "Match NVDA language"
 msgstr "এনভিডিএ ভাষা মেলে"
 
 msgid "No compatible Gemini models found."
-msgstr "কোন সামঞ্জস্যপূর্ণ মিথুন মডেল পাওয়া যায়নি."
+msgstr "কোন সামঞ্জস্যপূর্ণ Gemini মডেল পাওয়া যায়নি."
 
 msgid "No compatible OpenAI models found."
 msgstr "কোন সামঞ্জস্যপূর্ণ OpenAI মডেল পাওয়া যায়নি."
@@ -117,7 +117,7 @@ msgid "Success"
 msgstr "সফলতা"
 
 msgid "Successfully fetched {count} Gemini models!"
-msgstr "মিথুন মডেলের {count}টি সফলভাবে আনা হয়েছে!"
+msgstr "Gemini মডেলের {count}টি সফলভাবে আনা হয়েছে!"
 
 msgid "Successfully fetched {count} OpenAI models!"
 msgstr "সফলভাবে {count} OpenAI মডেল আনা হয়েছে!"

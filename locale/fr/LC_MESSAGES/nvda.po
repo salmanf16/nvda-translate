@@ -36,13 +36,13 @@ msgid "Error while deleting application's translation cache."
 msgstr "Erreur lors de la suppression du cache de traduction de l'application."
 
 msgid "Failed to fetch Gemini models: {error}"
-msgstr "Échec de la récupération des modèles Gemini : {erreur}"
+msgstr "Échec de la récupération des modèles Gemini : {error}"
 
 msgid "Failed to fetch OpenAI models: {error}"
 msgstr "Échec de la récupération des modèles OpenAI : {erreur}"
 
 msgid "Fetch Gemini Models"
-msgstr "Récupérer des modèles Gémeaux"
+msgstr "Récupérer des modèles Gemini"
 
 msgid "Fetch OpenAI Models"
 msgstr "Récupérer des modèles OpenAI"
@@ -51,7 +51,7 @@ msgid "Fetching..."
 msgstr "Récupération..."
 
 msgid "Gemini &model:"
-msgstr "Gémeaux et modèle :"
+msgstr "Gemini et modèle :"
 
 msgid "Gemini API &key:"
 msgstr "API et clé Gemini :"
