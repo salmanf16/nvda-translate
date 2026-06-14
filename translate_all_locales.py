@@ -21,6 +21,10 @@ import mtranslate
 SRC_DIR = os.path.join(cur_dir, "globalPlugins", "translate")
 LOCALE_DIR = os.path.join(cur_dir, "locale")
 
+# List of locales that are translated by humans.
+# Automated AI translation will be skipped for these languages to prevent overwriting human-curated texts.
+HUMAN_LOCALES = {"ar", "uk"}
+
 # 1. Scan for all translatable strings in Python files
 def extract_translatable_strings(directory):
     found_strings = set()
@@ -228,35 +232,40 @@ def clean_and_translate_locales():
         
         # Auto-translate missing strings using mtranslate
         if missing:
-            print(f"  -> Found {len(missing)} missing translations for '{lang}'. Translating...")
-            for s in missing:
-                # Do not translate placeholders or special values that are obvious configuration/technical terms
-                if s in ("google", "lingva", "libretranslate", "local", "auto", "cpu", "cuda", "speed", "balanced", "quality"):
-                    cleaned[s] = s
-                    continue
-                try:
-                    # Translate to target language code
-                    translated = mtranslate.translate(s, lang, "en")
-                    if translated and translated.strip() != s.strip():
-                        # Unescape and normalize format parameters
-                        translated = translated.replace("{ ", "{").replace(" }", "}")
-                        cleaned[s] = translated
-                        try:
-                            print(f"     * '{s[:30]}...' -> '{translated[:30]}...'")
-                        except Exception:
-                            try:
-                                print(f"     * '{s[:30]}...' -> [Translated successfully]")
-                            except Exception:
-                                pass
-                    else:
-                        cleaned[s] = ""
-                except Exception as e:
-                    try:
-                        print(f"     ! Error translating '{s[:20]}': {e}")
-                    except Exception:
-                        pass
+            if lang in HUMAN_LOCALES:
+                print(f"  -> Locale '{lang}' is a human-translated locale. Skipping AI translation for {len(missing)} missing keys.")
+                for s in missing:
                     cleaned[s] = ""
-                time.sleep(0.02) # Very light rate-limiting
+            else:
+                print(f"  -> Found {len(missing)} missing translations for '{lang}'. Translating...")
+                for s in missing:
+                    # Do not translate placeholders or special values that are obvious configuration/technical terms
+                    if s in ("google", "lingva", "libretranslate", "local", "auto", "cpu", "cuda", "speed", "balanced", "quality"):
+                        cleaned[s] = s
+                        continue
+                    try:
+                        # Translate to target language code
+                        translated = mtranslate.translate(s, lang, "en")
+                        if translated and translated.strip() != s.strip():
+                            # Unescape and normalize format parameters
+                            translated = translated.replace("{ ", "{").replace(" }", "}")
+                            cleaned[s] = translated
+                            try:
+                                print(f"     * '{s[:30]}...' -> '{translated[:30]}...'")
+                            except Exception:
+                                try:
+                                    print(f"     * '{s[:30]}...' -> [Translated successfully]")
+                                except Exception:
+                                    pass
+                        else:
+                            cleaned[s] = ""
+                    except Exception as e:
+                        try:
+                            print(f"     ! Error translating '{s[:20]}': {e}")
+                        except Exception:
+                            pass
+                        cleaned[s] = ""
+                    time.sleep(0.02) # Very light rate-limiting
                 
         # Write PO file
         write_po_file(po_path, cleaned, lang)
