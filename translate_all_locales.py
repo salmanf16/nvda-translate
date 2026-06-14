@@ -23,7 +23,7 @@ LOCALE_DIR = os.path.join(cur_dir, "locale")
 
 # List of locales that are translated by humans.
 # Automated AI translation will be skipped for these languages to prevent overwriting human-curated texts.
-HUMAN_LOCALES = {"ar", "uk"}
+HUMAN_LOCALES = {"uk"}
 
 # 1. Scan for all translatable strings in Python files
 def extract_translatable_strings(directory):

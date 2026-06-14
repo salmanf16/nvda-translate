@@ -43,6 +43,27 @@
 
 الإضافة هذي تم تطويرها وتعديلها بناءً على العمل الرائع اللي قدمه المطور الأصلي **Yannick Plassiard**، كل الشكر والتقدير له على فكرته وجهده الرهيب اللي أفاد مجتمع المكفوفين بشكل كبير.
 
+### المساهمون والمترجمون 👥
+
+نشكر كل من ساهم في جعل هذه الإضافة متاحة بلغات متعددة لمجتمع المكفوفين حول العالم:
+
+* **الترجمات البشرية (Human Translations):**
+  * **الأوكرانية (Ukrainian):** تمت ترجمتها وصياغتها بالكامل بواسطة المطور **George-br**. كل الشكر والتقدير لمساهمته الرائعة!
+
+* **الترجمات الآلية بالذكاء الاصطناعي (AI-Assisted Translations):**
+  لتقديم دعم سريع وقابل للاستخدام لأكبر عدد ممكن من المستخدمين، تم ترجمة واجهة وإعدادات الإضافة تلقائياً باستخدام الذكاء الاصطناعي للغات التالية:
+  * العربية (Arabic - AI Translated)
+  * الفرنسية (French - AI Translated)
+  * الإسبانية (Spanish - AI Translated)
+  * الألمانية (German - AI Translated)
+  * الإيطالية (Italian - AI Translated)
+  * اليابانية (Japanese - AI Translated)
+  * الكورية (Korean - AI Translated)
+  * البرتغالية (Portuguese - AI Translated)
+  * الروسية (Russian - AI Translated)
+  * التركية (Turkish - AI Translated)
+  * وباقي اللغات الـ 20 المدعومة في واجهة الإضافة.
+
 ---
 
 ## English
@@ -81,3 +102,24 @@ Go to **NVDA Menu -> Preferences -> Settings -> Translate** to configure:
 ### Credits & Thanks
 
 This addon is built upon the wonderful original work by **Yannick Plassiard**. A huge shoutout and thanks to him for making on-the-fly translation accessible to the blind community!
+
+### Contributors & Translators 👥
+
+We sincerely thank everyone who helped make this addon accessible to the global blind community:
+
+* **Human Translations:**
+  * **Ukrainian:** Fully translated and curated by **George-br**. Thank you for your amazing contribution!
+
+* **AI-Assisted Translations (AI Translated):**
+  To support users globally, other interface and settings languages have been automatically translated using AI. These include:
+  * Arabic (AI Translated)
+  * French (AI Translated)
+  * Spanish (AI Translated)
+  * German (AI Translated)
+  * Italian (AI Translated)
+  * Japanese (AI Translated)
+  * Korean (AI Translated)
+  * Portuguese (AI Translated)
+  * Russian (AI Translated)
+  * Turkish (AI Translated)
+  * ...and all other supported languages.
