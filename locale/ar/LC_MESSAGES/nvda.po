@@ -20,6 +20,12 @@ msgstr "اللغة ال&هدف:"
 msgid "All translations have been deleted."
 msgstr "تم حذف جميع الترجمات."
 
+msgid "Bing API key:"
+msgstr "مفتاح واجهة برمجة تطبيقات Bing:"
+
+msgid "Bing API region (optional):"
+msgstr "منطقة Bing API (اختياري):"
+
 msgid "Copy the latest translated text to the clipboard."
 msgstr "نسخ آخر نص مترجم إلى الحافظة."
 
@@ -41,11 +47,17 @@ msgstr "فشل جلب نماذج Gemini: {error}"
 msgid "Failed to fetch OpenAI models: {error}"
 msgstr "فشل جلب نماذج OpenAI: {خطأ}"
 
+msgid "Failed to fetch OpenRouter models: {error}"
+msgstr "فشل جلب نماذج OpenRouter: {error}"
+
 msgid "Fetch Gemini Models"
 msgstr "جلب نماذج Gemini"
 
 msgid "Fetch OpenAI Models"
 msgstr "جلب نماذج OpenAI"
+
+msgid "Fetch OpenRouter Models"
+msgstr "جلب نماذج OpenRouter"
 
 msgid "Fetching..."
 msgstr "جارٍ الجلب..."
@@ -77,6 +89,9 @@ msgstr "لم يتم العثور على نماذج Gemini متوافقة."
 msgid "No compatible OpenAI models found."
 msgstr "لم يتم العثور على نماذج OpenAI متوافقة."
 
+msgid "No compatible OpenRouter models found."
+msgstr "لم يتم العثور على نماذج OpenRouter متوافقة."
+
 msgid "No focused application"
 msgstr "لا يوجد تطبيق مركّز"
 
@@ -92,11 +107,20 @@ msgstr "OpenAI والنموذج:"
 msgid "OpenAI API &key:"
 msgstr "واجهة برمجة تطبيقات OpenAI والمفتاح:"
 
+msgid "OpenRouter API key:"
+msgstr "مفتاح واجهة برمجة تطبيقات OpenRouter:"
+
+msgid "OpenRouter model:"
+msgstr "نموذج OpenRouter:"
+
 msgid "Please enter a Gemini API key first."
 msgstr "الرجاء إدخال مفتاح Gemini API أولاً."
 
 msgid "Please enter an OpenAI API key first."
 msgstr "الرجاء إدخال مفتاح OpenAI API أولاً."
+
+msgid "Please enter an OpenRouter API key first."
+msgstr "الرجاء إدخال مفتاح OpenRouter API أولاً."
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr "اضغط مرتين لحذف جميع الترجمات المخزنة لجميع التطبيقات."
@@ -121,6 +145,9 @@ msgstr "تم بنجاح جلب {count} من نماذج Gemini!"
 
 msgid "Successfully fetched {count} OpenAI models!"
 msgstr "تم جلب {count} من نماذج OpenAI بنجاح!"
+
+msgid "Successfully fetched {count} OpenRouter models!"
+msgstr "تم بنجاح جلب {count} من نماذج OpenRouter!"
 
 msgid "Translate"
 msgstr "ترجمة"

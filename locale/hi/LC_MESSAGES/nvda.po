@@ -20,6 +20,12 @@ msgstr "&लक्ष्य भाषा:"
 msgid "All translations have been deleted."
 msgstr "सभी अनुवाद हटा दिए गए हैं."
 
+msgid "Bing API key:"
+msgstr "बिंग एपीआई कुंजी:"
+
+msgid "Bing API region (optional):"
+msgstr "बिंग एपीआई क्षेत्र (वैकल्पिक):"
+
 msgid "Copy the latest translated text to the clipboard."
 msgstr "नवीनतम अनुवादित पाठ को क्लिपबोर्ड पर कॉपी करें।"
 
@@ -41,11 +47,17 @@ msgstr "जेमिनी मॉडल लाने में विफल: {er
 msgid "Failed to fetch OpenAI models: {error}"
 msgstr "OpenAI मॉडल लाने में विफल: {त्रुटि}"
 
+msgid "Failed to fetch OpenRouter models: {error}"
+msgstr "OpenRouter मॉडल लाने में विफल: {error}"
+
 msgid "Fetch Gemini Models"
 msgstr "जेमिनी मॉडल प्राप्त करें"
 
 msgid "Fetch OpenAI Models"
 msgstr "OpenAI मॉडल प्राप्त करें"
+
+msgid "Fetch OpenRouter Models"
+msgstr "ओपनराउटर मॉडल प्राप्त करें"
 
 msgid "Fetching..."
 msgstr "लाया जा रहा है..."
@@ -77,6 +89,9 @@ msgstr "कोई संगत जेमिनी मॉडल नहीं म�
 msgid "No compatible OpenAI models found."
 msgstr "कोई संगत OpenAI मॉडल नहीं मिला."
 
+msgid "No compatible OpenRouter models found."
+msgstr "कोई संगत OpenRouter मॉडल नहीं मिला."
+
 msgid "No focused application"
 msgstr "कोई केंद्रित अनुप्रयोग नहीं"
 
@@ -92,11 +107,20 @@ msgstr "ओपनएआई और मॉडल:"
 msgid "OpenAI API &key:"
 msgstr "ओपनएआई एपीआई और कुंजी:"
 
+msgid "OpenRouter API key:"
+msgstr "ओपनराउटर एपीआई कुंजी:"
+
+msgid "OpenRouter model:"
+msgstr "ओपनराउटर मॉडल:"
+
 msgid "Please enter a Gemini API key first."
 msgstr "कृपया पहले जेमिनी एपीआई कुंजी दर्ज करें।"
 
 msgid "Please enter an OpenAI API key first."
 msgstr "कृपया पहले एक OpenAI API कुंजी दर्ज करें।"
+
+msgid "Please enter an OpenRouter API key first."
+msgstr "कृपया पहले एक OpenRouter API कुंजी दर्ज करें।"
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr "सभी एप्लिकेशन के सभी कैश्ड अनुवादों को हटाने के लिए दो बार दबाएँ।"
@@ -121,6 +145,9 @@ msgstr "जेमिनी मॉडल सफलतापूर्वक ला
 
 msgid "Successfully fetched {count} OpenAI models!"
 msgstr "{count} OpenAI मॉडल सफलतापूर्वक प्राप्त किए गए!"
+
+msgid "Successfully fetched {count} OpenRouter models!"
+msgstr "{गिनती} ओपनराउटर मॉडल सफलतापूर्वक प्राप्त किए गए!"
 
 msgid "Translate"
 msgstr "अनुवाद"

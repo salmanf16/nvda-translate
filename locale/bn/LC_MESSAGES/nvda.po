@@ -20,6 +20,12 @@ msgstr "&লক্ষ্য ভাষা:"
 msgid "All translations have been deleted."
 msgstr "সমস্ত অনুবাদ মুছে ফেলা হয়েছে."
 
+msgid "Bing API key:"
+msgstr "Bing API কী:"
+
+msgid "Bing API region (optional):"
+msgstr "Bing API অঞ্চল (ঐচ্ছিক):"
+
 msgid "Copy the latest translated text to the clipboard."
 msgstr "ক্লিপবোর্ডে সর্বশেষ অনুবাদকৃত পাঠ্যটি অনুলিপি করুন।"
 
@@ -41,11 +47,17 @@ msgstr "Gemini মডেল আনতে ব্যর্থ হয়েছে: 
 msgid "Failed to fetch OpenAI models: {error}"
 msgstr "OpenAI মডেল আনতে ব্যর্থ হয়েছে: {error}"
 
+msgid "Failed to fetch OpenRouter models: {error}"
+msgstr "OpenRouter মডেল আনতে ব্যর্থ হয়েছে: {error}"
+
 msgid "Fetch Gemini Models"
 msgstr "Gemini মডেল আনুন"
 
 msgid "Fetch OpenAI Models"
 msgstr "OpenAI মডেলগুলি আনুন"
+
+msgid "Fetch OpenRouter Models"
+msgstr "OpenRouter মডেলগুলি আনুন৷"
 
 msgid "Fetching..."
 msgstr "আনা হচ্ছে..."
@@ -77,6 +89,9 @@ msgstr "কোন সামঞ্জস্যপূর্ণ Gemini মডেল
 msgid "No compatible OpenAI models found."
 msgstr "কোন সামঞ্জস্যপূর্ণ OpenAI মডেল পাওয়া যায়নি."
 
+msgid "No compatible OpenRouter models found."
+msgstr "কোন সামঞ্জস্যপূর্ণ OpenRouter মডেল পাওয়া যায়নি."
+
 msgid "No focused application"
 msgstr "কোন ফোকাসড অ্যাপ্লিকেশন"
 
@@ -92,11 +107,20 @@ msgstr "OpenAI & মডেল:"
 msgid "OpenAI API &key:"
 msgstr "OpenAI API &কী:"
 
+msgid "OpenRouter API key:"
+msgstr "OpenRouter API কী:"
+
+msgid "OpenRouter model:"
+msgstr "OpenRouter মডেল:"
+
 msgid "Please enter a Gemini API key first."
 msgstr "অনুগ্রহ করে প্রথমে একটি Gemini API কী লিখুন।"
 
 msgid "Please enter an OpenAI API key first."
 msgstr "অনুগ্রহ করে প্রথমে একটি OpenAI API কী লিখুন।"
+
+msgid "Please enter an OpenRouter API key first."
+msgstr "অনুগ্রহ করে প্রথমে একটি OpenRouter API কী লিখুন।"
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr "সমস্ত অ্যাপ্লিকেশনের জন্য সমস্ত ক্যাশে করা অনুবাদগুলি মুছতে দুবার টিপুন৷"
@@ -121,6 +145,9 @@ msgstr "Gemini মডেলের {count}টি সফলভাবে আনা 
 
 msgid "Successfully fetched {count} OpenAI models!"
 msgstr "সফলভাবে {count} OpenAI মডেল আনা হয়েছে!"
+
+msgid "Successfully fetched {count} OpenRouter models!"
+msgstr "ওপেনরাউটার মডেলের {count}টি সফলভাবে আনা হয়েছে!"
 
 msgid "Translate"
 msgstr "অনুবাদ"

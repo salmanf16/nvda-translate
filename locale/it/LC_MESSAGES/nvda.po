@@ -20,6 +20,12 @@ msgstr "Lingua di &destinazione:"
 msgid "All translations have been deleted."
 msgstr "Tutte le traduzioni sono state cancellate."
 
+msgid "Bing API key:"
+msgstr "Chiave API di Bing:"
+
+msgid "Bing API region (optional):"
+msgstr "Regione API Bing (facoltativa):"
+
 msgid "Copy the latest translated text to the clipboard."
 msgstr "Copia l'ultimo testo tradotto negli appunti."
 
@@ -41,11 +47,17 @@ msgstr "Impossibile recuperare i modelli Gemini: {error}"
 msgid "Failed to fetch OpenAI models: {error}"
 msgstr "Impossibile recuperare i modelli OpenAI: {errore}"
 
+msgid "Failed to fetch OpenRouter models: {error}"
+msgstr "Impossibile recuperare i modelli OpenRouter: {error}"
+
 msgid "Fetch Gemini Models"
 msgstr "Recupera i modelli Gemini"
 
 msgid "Fetch OpenAI Models"
 msgstr "Recupera i modelli OpenAI"
+
+msgid "Fetch OpenRouter Models"
+msgstr "Recupera modelli OpenRouter"
 
 msgid "Fetching..."
 msgstr "Recupero..."
@@ -77,6 +89,9 @@ msgstr "Nessun modello Gemini compatibile trovato."
 msgid "No compatible OpenAI models found."
 msgstr "Nessun modello OpenAI compatibile trovato."
 
+msgid "No compatible OpenRouter models found."
+msgstr "Nessun modello OpenRouter compatibile trovato."
+
 msgid "No focused application"
 msgstr "Nessuna applicazione mirata"
 
@@ -92,11 +107,20 @@ msgstr "OpenAI e modello:"
 msgid "OpenAI API &key:"
 msgstr "Chiave API OpenAI:"
 
+msgid "OpenRouter API key:"
+msgstr "Chiave API OpenRouter:"
+
+msgid "OpenRouter model:"
+msgstr "Modello OpenRouter:"
+
 msgid "Please enter a Gemini API key first."
 msgstr "Inserisci prima una chiave API Gemini."
 
 msgid "Please enter an OpenAI API key first."
 msgstr "Inserisci prima una chiave API OpenAI."
+
+msgid "Please enter an OpenRouter API key first."
+msgstr "Inserisci prima una chiave API OpenRouter."
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr "Premere due volte per eliminare tutte le traduzioni memorizzate nella cache per tutte le applicazioni."
@@ -121,6 +145,9 @@ msgstr "{count} modelli Gemini recuperati con successo!"
 
 msgid "Successfully fetched {count} OpenAI models!"
 msgstr "{count} modelli OpenAI recuperati con successo!"
+
+msgid "Successfully fetched {count} OpenRouter models!"
+msgstr "{count} modelli OpenRouter recuperati con successo!"
 
 msgid "Translate"
 msgstr "Traduzione"

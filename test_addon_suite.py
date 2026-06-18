@@ -253,15 +253,19 @@ class TestAddonSuite(unittest.TestCase):
         res2 = translate("Main Menu")
         self.assertEqual(res2, "Main Menu")
         mock_engine.assert_not_called()
+    @patch('globalPlugins.translate.bing_api.translate')
+    @patch('globalPlugins.translate.openrouter_api.translate')
     @patch('globalPlugins.translate.deepl.translate')
     @patch('globalPlugins.translate.openai_api.translate')
     @patch('globalPlugins.translate.gemini_api.translate')
-    def test_ai_routing(self, mock_gemini, mock_openai, mock_deepl):
-        """Verify that _execute_engine_translation routes requests to DeepL, OpenAI, and Gemini correctly."""
+    def test_ai_routing(self, mock_gemini, mock_openai, mock_deepl, mock_openrouter, mock_bing):
+        """Verify that _execute_engine_translation routes requests correctly to all AI and cloud engines."""
         # Setup mock returns
         mock_deepl.return_value = "DeepL Translation"
         mock_openai.return_value = "OpenAI Translation"
         mock_gemini.return_value = "Gemini Translation"
+        mock_bing.return_value = "Bing Translation"
+        mock_openrouter.return_value = "OpenRouter Translation"
         
         # Test DeepL Routing
         translate_module.config.conf["translate"]["engine"] = "deepl"
@@ -285,6 +289,22 @@ class TestAddonSuite(unittest.TestCase):
         res3 = _execute_engine_translation("Hello", source_lang="en")
         self.assertEqual(res3, "Gemini Translation")
         mock_gemini.assert_called_once_with("Hello", "ar", "gemini-key", model="gemini-3.5-flash")
+
+        # Test Bing Routing
+        translate_module.config.conf["translate"]["engine"] = "bing"
+        translate_module.config.conf["translate"]["bingApiKey"] = "bing-key"
+        translate_module.config.conf["translate"]["bingRegion"] = "test-region"
+        res4 = _execute_engine_translation("Hello", source_lang="en")
+        self.assertEqual(res4, "Bing Translation")
+        mock_bing.assert_called_once_with("Hello", "ar", "bing-key", region="test-region")
+        
+        # Test OpenRouter Routing
+        translate_module.config.conf["translate"]["engine"] = "openrouter"
+        translate_module.config.conf["translate"]["openrouterApiKey"] = "openrouter-key"
+        translate_module.config.conf["translate"]["openrouterModel"] = "deepseek/deepseek-chat"
+        res5 = _execute_engine_translation("Hello", source_lang="en")
+        self.assertEqual(res5, "OpenRouter Translation")
+        mock_openrouter.assert_called_once_with("Hello", "ar", "openrouter-key", model="deepseek/deepseek-chat")
 
 
 if __name__ == "__main__":

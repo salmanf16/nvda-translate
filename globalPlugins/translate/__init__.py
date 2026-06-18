@@ -18,6 +18,8 @@ import lingva
 import deepl
 import openai_api
 import gemini_api
+import bing_api
+import openrouter_api
 import addonHandler, languageHandler
 
 addonHandler.initTranslation()
@@ -31,6 +33,8 @@ ENGINE_DEEPL = "deepl"
 ENGINE_OPENAI = "openai"
 ENGINE_GEMINI = "gemini"
 ENGINE_LOCAL = "local"
+ENGINE_BING = "bing"
+ENGINE_OPENROUTER = "openrouter"
 
 config.conf.spec["translate"] = {
 	"engine": 'string(default="google")',
@@ -44,6 +48,11 @@ config.conf.spec["translate"] = {
 	"geminiApiKey": 'string(default="")',
 	"geminiModel": 'string(default="gemini-3.5-flash")',
 	"geminiModelsList": 'string(default="gemini-3.5-flash,gemini-3.5-pro")',
+	"bingApiKey": 'string(default="")',
+	"bingRegion": 'string(default="")',
+	"openrouterApiKey": 'string(default="")',
+	"openrouterModel": 'string(default="deepseek/deepseek-chat")',
+	"openrouterModelsList": 'string(default="deepseek/deepseek-chat,google/gemini-2.5-flash")',
 	"localTargetLang": 'string(default="")',
 	"localModelId": 'string(default="")',
 	"localDevice": 'string(default="auto")',
@@ -161,6 +170,14 @@ def _execute_engine_translation(text, source_lang="auto"):
                 api_key = config.conf["translate"]["geminiApiKey"]
                 model = config.conf["translate"]["geminiModel"]
                 return gemini_api.translate(text, target_lang, api_key, model=model)
+        elif engine == ENGINE_BING:
+                api_key = config.conf["translate"]["bingApiKey"]
+                region = config.conf["translate"]["bingRegion"]
+                return bing_api.translate(text, target_lang, api_key, region=region)
+        elif engine == ENGINE_OPENROUTER:
+                api_key = config.conf["translate"]["openrouterApiKey"]
+                model = config.conf["translate"]["openrouterModel"]
+                return openrouter_api.translate(text, target_lang, api_key, model=model)
         elif engine == ENGINE_LOCAL:
                 return mtranslate.translate(text, target_lang, from_language=source_lang)
         else:
@@ -407,8 +424,10 @@ class TranslateSettingsPanel(gui.settingsDialogs.SettingsPanel):
 		(ENGINE_LINGVA, "Lingva Translate"),
 		(ENGINE_LIBRETRANSLATE, "LibreTranslate"),
 		(ENGINE_DEEPL, "DeepL Translate"),
+		(ENGINE_BING, "Bing Translate"),
 		(ENGINE_OPENAI, "OpenAI ChatGPT"),
 		(ENGINE_GEMINI, "Google Gemini"),
+		(ENGINE_OPENROUTER, "OpenRouter (DeepSeek/Other)"),
 	]
 
 	def makeSettings(self, settingsSizer):
@@ -503,6 +522,46 @@ class TranslateSettingsPanel(gui.settingsDialogs.SettingsPanel):
 		idx_gemini = gemini_list.index(saved_gemini_model) if saved_gemini_model in gemini_list else 0
 		self.geminiModelChoice.SetSelection(idx_gemini)
 
+		# Bing API Key & Region
+		self.bingApiKey = sHelper.addLabeledControl(
+			_("Bing API key:"),
+			wx.TextCtrl
+		)
+		self.bingApiKey.SetValue(config.conf["translate"]["bingApiKey"])
+
+		self.bingRegion = sHelper.addLabeledControl(
+			_("Bing API region (optional):"),
+			wx.TextCtrl
+		)
+		self.bingRegion.SetValue(config.conf["translate"]["bingRegion"])
+
+		# OpenRouter API Key
+		self.openrouterApiKey = sHelper.addLabeledControl(
+			_("OpenRouter API key:"),
+			wx.TextCtrl
+		)
+		self.openrouterApiKey.SetValue(config.conf["translate"]["openrouterApiKey"])
+
+		# OpenRouter Fetch Button and Choice
+		self.openrouterFetchBtn = wx.Button(self, label=_("Fetch OpenRouter Models"))
+		self.openrouterFetchBtn.Bind(wx.EVT_BUTTON, self.onOpenRouterFetch)
+		sHelper.sizer.Add(self.openrouterFetchBtn)
+
+		self.openrouterModelChoice = sHelper.addLabeledControl(
+			_("OpenRouter model:"),
+			wx.Choice,
+			choices=[]
+		)
+
+		# Populate OpenRouter models list from configuration
+		openrouter_list = [x.strip() for x in config.conf["translate"]["openrouterModelsList"].split(",") if x.strip()]
+		if not openrouter_list:
+			openrouter_list = ["deepseek/deepseek-chat", "google/gemini-2.5-flash"]
+		self.openrouterModelChoice.AppendItems(openrouter_list)
+		saved_openrouter_model = config.conf["translate"]["openrouterModel"]
+		idx_openrouter = openrouter_list.index(saved_openrouter_model) if saved_openrouter_model in openrouter_list else 0
+		self.openrouterModelChoice.SetSelection(idx_openrouter)
+
 		self._lang_codes = [""]  # empty = match NVDA language
 		self._lang_labels = [_("Match NVDA language")]
 		for code, name in get_supported_languages():
@@ -548,6 +607,17 @@ class TranslateSettingsPanel(gui.settingsDialogs.SettingsPanel):
 			self.geminiApiKey.Enable(engineId == ENGINE_GEMINI)
 			self.geminiFetchBtn.Enable(engineId == ENGINE_GEMINI)
 			self.geminiModelChoice.Enable(engineId == ENGINE_GEMINI)
+			
+		# Bing
+		if hasattr(self, "bingApiKey"):
+			self.bingApiKey.Enable(engineId == ENGINE_BING)
+			self.bingRegion.Enable(engineId == ENGINE_BING)
+			
+		# OpenRouter
+		if hasattr(self, "openrouterApiKey"):
+			self.openrouterApiKey.Enable(engineId == ENGINE_OPENROUTER)
+			self.openrouterFetchBtn.Enable(engineId == ENGINE_OPENROUTER)
+			self.openrouterModelChoice.Enable(engineId == ENGINE_OPENROUTER)
 			
 		self.targetLangChoice.Enable(True)
 
@@ -651,6 +721,56 @@ class TranslateSettingsPanel(gui.settingsDialogs.SettingsPanel):
 			style=wx.OK | wx.ICON_ERROR
 		)
 
+	def onOpenRouterFetch(self, evt):
+		api_key = self.openrouterApiKey.GetValue().strip()
+		if not api_key:
+			gui.messageBox(
+				_("Please enter an OpenRouter API key first."),
+				_("Error"),
+				style=wx.OK | wx.ICON_ERROR
+			)
+			return
+		self.openrouterFetchBtn.Disable()
+		self.openrouterFetchBtn.SetLabel(_("Fetching..."))
+		
+		def run():
+			try:
+				models = openrouter_api.fetch_models(api_key)
+				wx.CallAfter(self.onOpenRouterFetchSuccess, models)
+			except Exception as e:
+				wx.CallAfter(self.onOpenRouterFetchFail, str(e))
+				
+		threading.Thread(target=run, daemon=True).start()
+
+	def onOpenRouterFetchSuccess(self, models):
+		self.openrouterFetchBtn.Enable()
+		self.openrouterFetchBtn.SetLabel(_("Fetch OpenRouter Models"))
+		if not models:
+			gui.messageBox(
+				_("No compatible OpenRouter models found."),
+				_("Info"),
+				style=wx.OK | wx.ICON_INFORMATION
+			)
+			return
+		self.openrouterModelChoice.Clear()
+		self.openrouterModelChoice.AppendItems(models)
+		self.openrouterModelChoice.SetSelection(0)
+		self._openrouter_fetched_list = models
+		gui.messageBox(
+			_("Successfully fetched {count} OpenRouter models!").format(count=len(models)),
+			_("Success"),
+			style=wx.OK | wx.ICON_INFORMATION
+		)
+
+	def onOpenRouterFetchFail(self, err_msg):
+		self.openrouterFetchBtn.Enable()
+		self.openrouterFetchBtn.SetLabel(_("Fetch OpenRouter Models"))
+		gui.messageBox(
+			_("Failed to fetch OpenRouter models: {error}").format(error=err_msg),
+			_("Error"),
+			style=wx.OK | wx.ICON_ERROR
+		)
+
 	def onSave(self):
 		engineId = self._ENGINE_CHOICES[self.engineChoice.GetSelection()][0]
 		config.conf["translate"]["engine"] = engineId
@@ -676,6 +796,18 @@ class TranslateSettingsPanel(gui.settingsDialogs.SettingsPanel):
 			if hasattr(self, "_gemini_fetched_list"):
 				config.conf["translate"]["geminiModelsList"] = ",".join(self._gemini_fetched_list)
 				
+		if hasattr(self, "bingApiKey"):
+			config.conf["translate"]["bingApiKey"] = self.bingApiKey.GetValue()
+		if hasattr(self, "bingRegion"):
+			config.conf["translate"]["bingRegion"] = self.bingRegion.GetValue()
+		if hasattr(self, "openrouterApiKey"):
+			config.conf["translate"]["openrouterApiKey"] = self.openrouterApiKey.GetValue()
+			sel_or = self.openrouterModelChoice.GetSelection()
+			if sel_or != wx.NOT_FOUND:
+				config.conf["translate"]["openrouterModel"] = self.openrouterModelChoice.GetString(sel_or)
+			if hasattr(self, "_openrouter_fetched_list"):
+				config.conf["translate"]["openrouterModelsList"] = ",".join(self._openrouter_fetched_list)
+
 		sel = self.targetLangChoice.GetSelection()
 		config.conf["translate"]["localTargetLang"] = self._lang_codes[sel] if sel > 0 else ""
 

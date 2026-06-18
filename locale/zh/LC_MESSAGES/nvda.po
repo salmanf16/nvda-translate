@@ -20,6 +20,12 @@ msgstr "目标语言(&T):"
 msgid "All translations have been deleted."
 msgstr "所有翻译已被删除。"
 
+msgid "Bing API key:"
+msgstr "必应 API 密钥："
+
+msgid "Bing API region (optional):"
+msgstr "Bing API 区域（可选）："
+
 msgid "Copy the latest translated text to the clipboard."
 msgstr "将最近翻译的文本复制到剪贴板。"
 
@@ -41,11 +47,17 @@ msgstr "无法获取 Gemini 模型：{error}"
 msgid "Failed to fetch OpenAI models: {error}"
 msgstr "无法获取 OpenAI 模型：{error}"
 
+msgid "Failed to fetch OpenRouter models: {error}"
+msgstr "无法获取 OpenRouter 模型：{error}"
+
 msgid "Fetch Gemini Models"
 msgstr "获取Gemini模型"
 
 msgid "Fetch OpenAI Models"
 msgstr "获取 OpenAI 模型"
+
+msgid "Fetch OpenRouter Models"
+msgstr "获取 OpenRouter 模型"
 
 msgid "Fetching..."
 msgstr "正在获取..."
@@ -77,6 +89,9 @@ msgstr "未找到兼容的 Gemini 型号。"
 msgid "No compatible OpenAI models found."
 msgstr "未找到兼容的 OpenAI 模型。"
 
+msgid "No compatible OpenRouter models found."
+msgstr "未找到兼容的 OpenRouter 型号。"
+
 msgid "No focused application"
 msgstr "无重点应用"
 
@@ -92,11 +107,20 @@ msgstr "OpenAI 模型："
 msgid "OpenAI API &key:"
 msgstr "OpenAI API 和密钥："
 
+msgid "OpenRouter API key:"
+msgstr "OpenRouter API 密钥："
+
+msgid "OpenRouter model:"
+msgstr "开放路由器型号："
+
 msgid "Please enter a Gemini API key first."
 msgstr "请先输入 Gemini API 密钥。"
 
 msgid "Please enter an OpenAI API key first."
 msgstr "请先输入 OpenAI API 密钥。"
+
+msgid "Please enter an OpenRouter API key first."
+msgstr "请先输入 OpenRouter API 密钥。"
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr "按两次可删除所有应用程序的所有缓存翻译。"
@@ -121,6 +145,9 @@ msgstr "已成功获取 {count} 个 Gemini 模型！"
 
 msgid "Successfully fetched {count} OpenAI models!"
 msgstr "已成功获取 {count} 个 OpenAI 模型！"
+
+msgid "Successfully fetched {count} OpenRouter models!"
+msgstr "已成功获取 {count} 个 OpenRouter 模型！"
 
 msgid "Translate"
 msgstr "翻译"

@@ -20,6 +20,12 @@ msgstr "&Hedef dil:"
 msgid "All translations have been deleted."
 msgstr "Tüm çeviriler silindi."
 
+msgid "Bing API key:"
+msgstr "Bing API anahtarı:"
+
+msgid "Bing API region (optional):"
+msgstr "Bing API bölgesi (isteğe bağlı):"
+
 msgid "Copy the latest translated text to the clipboard."
 msgstr "Son çevrilen metni panoya kopyala."
 
@@ -41,11 +47,17 @@ msgstr "Gemini modelleri getirilemedi: {error}"
 msgid "Failed to fetch OpenAI models: {error}"
 msgstr "OpenAI modelleri getirilemedi: {error}"
 
+msgid "Failed to fetch OpenRouter models: {error}"
+msgstr "OpenRouter modelleri getirilemedi: {error}"
+
 msgid "Fetch Gemini Models"
 msgstr "Gemini Modellerini Getir"
 
 msgid "Fetch OpenAI Models"
 msgstr "OpenAI Modellerini Getir"
+
+msgid "Fetch OpenRouter Models"
+msgstr "OpenRouter Modellerini Getir"
 
 msgid "Fetching..."
 msgstr "Getiriliyor..."
@@ -77,6 +89,9 @@ msgstr "Uyumlu Gemini modeli bulunamadı."
 msgid "No compatible OpenAI models found."
 msgstr "Uyumlu OpenAI modeli bulunamadı."
 
+msgid "No compatible OpenRouter models found."
+msgstr "Uyumlu OpenRouter modeli bulunamadı."
+
 msgid "No focused application"
 msgstr "Odaklanmış uygulama yok"
 
@@ -92,11 +107,20 @@ msgstr "OpenAI ve modeli:"
 msgid "OpenAI API &key:"
 msgstr "OpenAI API'si ve anahtarı:"
 
+msgid "OpenRouter API key:"
+msgstr "OpenRouter API anahtarı:"
+
+msgid "OpenRouter model:"
+msgstr "OpenRouter modeli:"
+
 msgid "Please enter a Gemini API key first."
 msgstr "Lütfen önce Gemini API anahtarını girin."
 
 msgid "Please enter an OpenAI API key first."
 msgstr "Lütfen önce bir OpenAI API anahtarı girin."
+
+msgid "Please enter an OpenRouter API key first."
+msgstr "Lütfen önce bir OpenRouter API anahtarı girin."
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr "Tüm uygulamalar için önbelleğe alınmış tüm çevirileri silmek için iki kez basın."
@@ -121,6 +145,9 @@ msgstr "{count} Gemini modeli başarıyla getirildi!"
 
 msgid "Successfully fetched {count} OpenAI models!"
 msgstr "{count} OpenAI modeli başarıyla getirildi!"
+
+msgid "Successfully fetched {count} OpenRouter models!"
+msgstr "{count} OpenRouter modeli başarıyla getirildi!"
 
 msgid "Translate"
 msgstr "Çeviri"

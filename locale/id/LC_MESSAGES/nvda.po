@@ -20,6 +20,12 @@ msgstr "Bahasa &target:"
 msgid "All translations have been deleted."
 msgstr ""
 
+msgid "Bing API key:"
+msgstr "Kunci Bing API:"
+
+msgid "Bing API region (optional):"
+msgstr "Wilayah Bing API (opsional):"
+
 msgid "Copy the latest translated text to the clipboard."
 msgstr ""
 
@@ -41,11 +47,17 @@ msgstr "Gagal mengambil model Gemini: {error}"
 msgid "Failed to fetch OpenAI models: {error}"
 msgstr "Gagal mengambil model OpenAI: {error}"
 
+msgid "Failed to fetch OpenRouter models: {error}"
+msgstr "Gagal mengambil model OpenRouter: {error}"
+
 msgid "Fetch Gemini Models"
 msgstr "Ambil Model Gemini"
 
 msgid "Fetch OpenAI Models"
 msgstr "Ambil Model OpenAI"
+
+msgid "Fetch OpenRouter Models"
+msgstr "Ambil Model OpenRouter"
 
 msgid "Fetching..."
 msgstr "Mengambil..."
@@ -77,6 +89,9 @@ msgstr "Tidak ditemukan model Gemini yang kompatibel."
 msgid "No compatible OpenAI models found."
 msgstr "Tidak ditemukan model OpenAI yang kompatibel."
 
+msgid "No compatible OpenRouter models found."
+msgstr "Tidak ditemukan model OpenRouter yang kompatibel."
+
 msgid "No focused application"
 msgstr ""
 
@@ -92,11 +107,20 @@ msgstr ""
 msgid "OpenAI API &key:"
 msgstr "OpenAI API &kunci:"
 
+msgid "OpenRouter API key:"
+msgstr "Kunci API OpenRouter:"
+
+msgid "OpenRouter model:"
+msgstr "Model OpenRouter:"
+
 msgid "Please enter a Gemini API key first."
 msgstr "Silakan masukkan kunci API Gemini terlebih dahulu."
 
 msgid "Please enter an OpenAI API key first."
 msgstr "Silakan masukkan kunci API OpenAI terlebih dahulu."
+
+msgid "Please enter an OpenRouter API key first."
+msgstr "Silakan masukkan kunci API OpenRouter terlebih dahulu."
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr ""
@@ -121,6 +145,9 @@ msgstr "Berhasil mengambil {count} model Gemini!"
 
 msgid "Successfully fetched {count} OpenAI models!"
 msgstr "Berhasil mengambil {count} model OpenAI!"
+
+msgid "Successfully fetched {count} OpenRouter models!"
+msgstr "Berhasil mengambil {count} model OpenRouter!"
 
 msgid "Translate"
 msgstr "Terjemahan"

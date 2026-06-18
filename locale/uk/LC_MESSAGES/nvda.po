@@ -22,6 +22,12 @@ msgstr "&Мова перекладу:"
 msgid "All translations have been deleted."
 msgstr "Усі переклади видалено."
 
+msgid "Bing API key:"
+msgstr ""
+
+msgid "Bing API region (optional):"
+msgstr ""
+
 msgid "Copy the latest translated text to the clipboard."
 msgstr "Копіює останній перекладений текст у буфер обміну."
 
@@ -43,10 +49,16 @@ msgstr ""
 msgid "Failed to fetch OpenAI models: {error}"
 msgstr ""
 
+msgid "Failed to fetch OpenRouter models: {error}"
+msgstr ""
+
 msgid "Fetch Gemini Models"
 msgstr ""
 
 msgid "Fetch OpenAI Models"
+msgstr ""
+
+msgid "Fetch OpenRouter Models"
 msgstr ""
 
 msgid "Fetching..."
@@ -79,6 +91,9 @@ msgstr ""
 msgid "No compatible OpenAI models found."
 msgstr ""
 
+msgid "No compatible OpenRouter models found."
+msgstr ""
+
 msgid "No focused application"
 msgstr "Немає сфокусованої програми"
 
@@ -94,10 +109,19 @@ msgstr ""
 msgid "OpenAI API &key:"
 msgstr ""
 
+msgid "OpenRouter API key:"
+msgstr ""
+
+msgid "OpenRouter model:"
+msgstr ""
+
 msgid "Please enter a Gemini API key first."
 msgstr ""
 
 msgid "Please enter an OpenAI API key first."
+msgstr ""
+
+msgid "Please enter an OpenRouter API key first."
 msgstr ""
 
 msgid "Press twice to delete all cached translations for all applications."
@@ -122,6 +146,9 @@ msgid "Successfully fetched {count} Gemini models!"
 msgstr ""
 
 msgid "Successfully fetched {count} OpenAI models!"
+msgstr ""
+
+msgid "Successfully fetched {count} OpenRouter models!"
 msgstr ""
 
 msgid "Translate"

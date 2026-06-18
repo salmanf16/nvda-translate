@@ -20,6 +20,12 @@ msgstr "Język &docelowy:"
 msgid "All translations have been deleted."
 msgstr "Wszystkie tłumaczenia zostały usunięte."
 
+msgid "Bing API key:"
+msgstr "Klucz API Bing:"
+
+msgid "Bing API region (optional):"
+msgstr "Region API Bing (opcjonalnie):"
+
 msgid "Copy the latest translated text to the clipboard."
 msgstr "Skopiuj ostatnio przetłumaczony tekst do schowka."
 
@@ -41,11 +47,17 @@ msgstr "Nie udało się pobrać modeli Gemini: {error}"
 msgid "Failed to fetch OpenAI models: {error}"
 msgstr "Nie udało się pobrać modeli OpenAI: {błąd}"
 
+msgid "Failed to fetch OpenRouter models: {error}"
+msgstr "Nie udało się pobrać modeli OpenRouter: {error}"
+
 msgid "Fetch Gemini Models"
 msgstr "Zdobądź modele Gemini"
 
 msgid "Fetch OpenAI Models"
 msgstr "Pobierz modele OpenAI"
+
+msgid "Fetch OpenRouter Models"
+msgstr "Pobierz modele OpenRouter"
 
 msgid "Fetching..."
 msgstr "Ujmujący..."
@@ -77,6 +89,9 @@ msgstr "Nie znaleziono kompatybilnych modeli Gemini."
 msgid "No compatible OpenAI models found."
 msgstr "Nie znaleziono kompatybilnych modeli OpenAI."
 
+msgid "No compatible OpenRouter models found."
+msgstr "Nie znaleziono kompatybilnych modeli OpenRouter."
+
 msgid "No focused application"
 msgstr "Brak ukierunkowanej aplikacji"
 
@@ -92,11 +107,20 @@ msgstr "OpenAI i model:"
 msgid "OpenAI API &key:"
 msgstr "&klucz API OpenAI:"
 
+msgid "OpenRouter API key:"
+msgstr "Klucz API OpenRoutera:"
+
+msgid "OpenRouter model:"
+msgstr "Model OpenRoutera:"
+
 msgid "Please enter a Gemini API key first."
 msgstr "Najpierw wprowadź klucz API Gemini."
 
 msgid "Please enter an OpenAI API key first."
 msgstr "Najpierw wprowadź klucz API OpenAI."
+
+msgid "Please enter an OpenRouter API key first."
+msgstr "Najpierw wprowadź klucz API OpenRouter."
 
 msgid "Press twice to delete all cached translations for all applications."
 msgstr "Naciśnij dwukrotnie, aby usunąć wszystkie buforowane tłumaczenia dla wszystkich aplikacji."
@@ -121,6 +145,9 @@ msgstr "Pomyślnie pobrano {count} modeli Gemini!"
 
 msgid "Successfully fetched {count} OpenAI models!"
 msgstr "Pomyślnie pobrano {count} modeli OpenAI!"
+
+msgid "Successfully fetched {count} OpenRouter models!"
+msgstr "Pomyślnie pobrano {count} modeli OpenRouter!"
 
 msgid "Translate"
 msgstr "Tłumacz"
