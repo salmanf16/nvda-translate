@@ -152,6 +152,11 @@ def _execute_engine_translation(text, source_lang="auto"):
         if not target_lang:
                 target_lang = _gpObject.language
 
+        # If source_lang was detected as "en" solely because the text is ASCII, convert to "auto"
+        # so the translation engine can auto-detect Spanish, French, German, Italian, Portuguese, etc.
+        if source_lang == "en":
+                source_lang = "auto"
+
         if engine == ENGINE_LINGVA:
                 url = config.conf["translate"]["lingvaUrl"]
                 return lingva.translate(text, target_lang, source_language=source_lang, instance_url=url)
