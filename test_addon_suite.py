@@ -78,7 +78,8 @@ from globalPlugins.translate import (
     safe_format,
     translate,
     _translationCache,
-    _execute_engine_translation
+    _execute_engine_translation,
+    _placeholders_survived
 )
 import globalPlugins.translate as translate_module
 
@@ -164,7 +165,7 @@ class TestAddonSuite(unittest.TestCase):
         # Verify that non-ASCII single characters (like Japanese Kanji) STILL get translated!
         mock_engine.return_value = "محطة"
         self.assertEqual(translate("駅"), "محطة")
-        mock_engine.assert_called_once_with("駅", source_lang="ja")
+        mock_engine.assert_called_once_with("駅", source_lang="auto")
         
         # Verify engine was NOT called for ASCII keys
         self.assertEqual(mock_engine.call_count, 1)
@@ -193,7 +194,7 @@ class TestAddonSuite(unittest.TestCase):
         
         res = translate("Local Chat from user123: Hello my friend")
         self.assertEqual(res, "دردشة محلية من مستخدم123: مرحبا يا صديقي")
-        mock_engine.assert_called_once_with("Local Chat from user{0}: Hello my friend", source_lang="en")
+        mock_engine.assert_called_once_with("Local Chat from user{0}: Hello my friend", source_lang="auto")
 
     @patch('globalPlugins.translate._execute_engine_translation')
     def test_number_isolation_caching(self, mock_engine):
@@ -204,7 +205,7 @@ class TestAddonSuite(unittest.TestCase):
         # First call: Should isolated-replace 100, hit engine for template, format, and return
         res1 = translate("距離 100メートル")
         self.assertEqual(res1, "المسافة 100 متر")
-        mock_engine.assert_called_once_with("距離 {0}メートル", source_lang="ja")
+        mock_engine.assert_called_once_with("距離 {0}メートル", source_lang="auto")
         
         # Reset mock call history
         mock_engine.reset_mock()
@@ -213,6 +214,41 @@ class TestAddonSuite(unittest.TestCase):
         res2 = translate("距離 250メートル")
         self.assertEqual(res2, "المسافة 250 متر")
         mock_engine.assert_not_called()
+
+    def test_placeholders_survived(self):
+        """Check the guard that decides whether a translated template is still usable."""
+        self.assertTrue(_placeholders_survived("المسافة {0} متر", 1))
+        self.assertTrue(_placeholders_survived("من {1} إلى {0}", 2))
+        # No numbers in the line: nothing to verify
+        self.assertTrue(_placeholders_survived("أي نص", 0))
+        # Dropped, incomplete or empty results are rejected
+        self.assertFalse(_placeholders_survived("المسافة متر", 1))
+        self.assertFalse(_placeholders_survived("المسافة {0} متر", 2))
+        self.assertFalse(_placeholders_survived("", 1))
+
+    @patch('globalPlugins.translate._execute_engine_translation')
+    def test_mangled_placeholder_falls_back_to_literal_line(self, mock_engine):
+        """If the engine loses a placeholder, retranslate the untouched line instead of
+        appending the numbers to the end of the sentence."""
+        def mock_translate_proc(text, source_lang="auto"):
+            # The template comes back without its placeholder, the literal line is fine
+            if "{0}" in text:
+                return "المسافة متر"
+            return "المسافة 100 متر"
+
+        mock_engine.side_effect = mock_translate_proc
+
+        res = translate("距離 100メートル")
+        self.assertEqual(res, "المسافة 100 متر")
+        # Once for the broken template, once for the untouched line
+        self.assertEqual(mock_engine.call_count, 2)
+        mock_engine.assert_any_call("距離 {0}メートル", source_lang="auto")
+        mock_engine.assert_any_call("距離 100メートル", source_lang="auto")
+
+        # The unusable template must not be cached, but the finished line must be
+        appTable = next(iter(_translationCache.values()))
+        self.assertNotIn("距離 {0}メートル", appTable)
+        self.assertEqual(appTable.get("距離 100メートル"), "المسافة 100 متر")
 
     @patch('globalPlugins.translate._execute_engine_translation')
     def test_line_by_line_caching(self, mock_engine):
@@ -234,8 +270,8 @@ class TestAddonSuite(unittest.TestCase):
         
         # The engine should only be called for "Main Menu" and "Dreamy Mode" (2 calls), and completely skip "120"
         self.assertEqual(mock_engine.call_count, 2)
-        mock_engine.assert_any_call("Main Menu", source_lang="en")
-        mock_engine.assert_any_call("Dreamy Mode", source_lang="en")
+        mock_engine.assert_any_call("Main Menu", source_lang="auto")
+        mock_engine.assert_any_call("Dreamy Mode", source_lang="auto")
 
     @patch('globalPlugins.translate._execute_engine_translation')
     def test_identity_translation_caching(self, mock_engine):
@@ -245,7 +281,7 @@ class TestAddonSuite(unittest.TestCase):
         # First call
         res1 = translate("Main Menu")
         self.assertEqual(res1, "Main Menu")
-        mock_engine.assert_called_once_with("Main Menu", source_lang="en")
+        mock_engine.assert_called_once_with("Main Menu", source_lang="auto")
         
         mock_engine.reset_mock()
         

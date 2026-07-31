@@ -84,6 +84,14 @@ _localTranslateWarningShown = False
 
 
 def detect_source_lang(text):
+	"""Cheap script based guess of the source language.
+
+	This is only a hint, used to decide whether a line is already in the target language
+	and may therefore be skipped. It must not be handed to the translation engine as the
+	source language: a script does not identify a language. Han characters are shared by
+	Chinese and Japanese, the Arabic script by Arabic, Persian and Urdu, Cyrillic by
+	Russian, Ukrainian and Bulgarian. The engine's own auto detection is used instead.
+	"""
 	if not text:
 		return "auto"
 	# Japanese Hiragana and Katakana
@@ -92,9 +100,9 @@ def detect_source_lang(text):
 	# Korean Hangul
 	if re.search(r'[\uac00-\ud7a3\u1100-\u11ff\u3130-\u318f]', text):
 		return "ko"
-	# CJK Unified Ideographs (Japanese Kanji / Chinese)
+	# CJK Unified Ideographs with no kana present: Chinese is by far the most likely
 	if re.search(r'[\u4e00-\u9fff]', text):
-		return "ja"
+		return "zh"
 	# Arabic Script (Arabic, Persian, Urdu)
 	if re.search(r'[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff]', text):
 		return "ar"
@@ -211,6 +219,23 @@ def normalize_placeholders(translated_text):
         return normalized
 
 
+def _placeholders_survived(translated_template, count):
+        """True if every {0}..{count-1} placeholder is still present in the translated template.
+
+        Engines sometimes drop, merge or reorder the braces. When that happens safe_format()
+        appends the numbers to the end of the sentence, which reads badly, so the caller
+        falls back to translating the untouched line instead.
+        """
+        if not count:
+                return True
+        if not translated_template:
+                return False
+        for i in range(count):
+                if ("{%d}" % i) not in translated_template:
+                        return False
+        return True
+
+
 def safe_format(template_str, numbers):
         if not numbers:
                 return template_str
@@ -280,12 +305,23 @@ def translate_single_line_core(line, appTable, target_lang):
                                 update_cache(appTable, line, result)
                                 return result
 
-                        # Cache miss: translate the template
+                        # Cache miss: translate the template, letting the engine detect the source language
                         try:
-                                translated_template = _execute_engine_translation(line_template, source_lang=detected_lang)
+                                translated_template = _execute_engine_translation(line_template, source_lang="auto")
                                 if translated_template and translated_template.strip():
                                         normalized = normalize_placeholders(translated_template)
-                                        update_cache(appTable, line_template, normalized)
+                                        if _placeholders_survived(normalized, len(numbers)):
+                                                update_cache(appTable, line_template, normalized)
+                                                result = safe_format(normalized, numbers)
+                                                update_cache(appTable, line, result)
+                                                return result
+                                        # The engine dropped or mangled a placeholder, so the template is
+                                        # unusable. Translate the untouched line instead of appending the
+                                        # numbers to the end of the sentence.
+                                        literal = _execute_engine_translation(stripped_line, source_lang="auto")
+                                        if literal and literal.strip():
+                                                update_cache(appTable, line, literal)
+                                                return literal
                                         result = safe_format(normalized, numbers)
                                         update_cache(appTable, line, result)
                                         return result
@@ -298,9 +334,9 @@ def translate_single_line_core(line, appTable, target_lang):
                                 logHandler.log.error("Template translation failed: %s" % e)
                                 return line
 
-        # No digits: translate directly
+        # No digits: translate directly, letting the engine detect the source language
         try:
-                translated_val = _execute_engine_translation(stripped_line, source_lang=detected_lang)
+                translated_val = _execute_engine_translation(stripped_line, source_lang="auto")
                 if translated_val and translated_val.strip():
                         update_cache(appTable, line, translated_val)
                         return translated_val
