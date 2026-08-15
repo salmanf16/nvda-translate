@@ -2,7 +2,7 @@
 import urllib.request
 import json
 
-def translate(text, target_lang, api_key, model="gemini-3.5-flash"):
+def translate(text, target_lang, api_key, model="gemini-3.5-flash", timeout=5):
     if not api_key:
         raise ValueError("Gemini API key is missing.")
         
@@ -35,7 +35,7 @@ def translate(text, target_lang, api_key, model="gemini-3.5-flash"):
     req_data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(url, data=req_data, headers=headers, method="POST")
     
-    with urllib.request.urlopen(req) as resp:
+    with urllib.request.urlopen(req, timeout=5) as resp:
         data = json.loads(resp.read().decode("utf-8"))
         candidates = data.get("candidates", [])
         if candidates:

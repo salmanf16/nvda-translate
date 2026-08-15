@@ -155,6 +155,9 @@ msgstr "ترجمة"
 msgid "Translation &engine:"
 msgstr "&محرك الترجمة:"
 
+msgid "Translation &timeout in seconds (1 - 30):"
+msgstr "الترجمة والمهلة بالثواني (1 - 30):"
+
 msgid "Translation cache for {app} has been deleted."
 msgstr "تم حذف ذاكرة الترجمة لـ {app}."
 

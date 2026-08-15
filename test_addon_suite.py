@@ -164,26 +164,24 @@ class TestAddonSuite(unittest.TestCase):
         # Verify that non-ASCII single characters (like Japanese Kanji) STILL get translated!
         mock_engine.return_value = "محطة"
         self.assertEqual(translate("駅"), "محطة")
-        mock_engine.assert_called_once_with("駅", source_lang="ja")
+        mock_engine.assert_called_once_with("駅", source_lang="auto")
         
         # Verify engine was NOT called for ASCII keys
         self.assertEqual(mock_engine.call_count, 1)
 
     @patch('globalPlugins.translate._execute_engine_translation')
-    def test_source_target_match_bypass(self, mock_engine):
-        """Verify that if the source language matches the target language, translation is bypassed instantly (0ms)."""
-        # Set target language to Arabic
-        translate_module.config.conf["translate"]["localTargetLang"] = "ar"
-        
-        # Arabic text should be bypassed immediately
-        self.assertEqual(translate("السلام عليكم"), "السلام عليكم")
-        self.assertEqual(translate("مرحبا بك 120"), "مرحبا بك 120")
-        mock_engine.assert_not_called()
-        
-        # Reset target language to English
+    def test_target_lang_english_translation(self, mock_engine):
+        """Verify that when target_lang is 'en', foreign text in Spanish, French, German, Japanese, Chinese, Arabic translates smoothly."""
         translate_module.config.conf["translate"]["localTargetLang"] = "en"
-        self.assertEqual(translate("Hello World"), "Hello World")
-        mock_engine.assert_not_called()
+        
+        mock_engine.return_value = "current deck"
+        self.assertEqual(translate("mazo actual"), "current deck")
+        mock_engine.assert_called_once_with("mazo actual", source_lang="auto")
+        
+        mock_engine.reset_mock()
+        mock_engine.return_value = "hello world"
+        self.assertEqual(translate("bonjour le monde"), "hello world")
+        mock_engine.assert_called_once_with("bonjour le monde", source_lang="auto")
 
     @patch('globalPlugins.translate._execute_engine_translation')
     def test_full_context_translation(self, mock_engine):
@@ -193,7 +191,7 @@ class TestAddonSuite(unittest.TestCase):
         
         res = translate("Local Chat from user123: Hello my friend")
         self.assertEqual(res, "دردشة محلية من مستخدم123: مرحبا يا صديقي")
-        mock_engine.assert_called_once_with("Local Chat from user{0}: Hello my friend", source_lang="en")
+        mock_engine.assert_called_once_with("Local Chat from user{0}: Hello my friend", source_lang="auto")
 
     @patch('globalPlugins.translate._execute_engine_translation')
     def test_number_isolation_caching(self, mock_engine):
@@ -204,7 +202,7 @@ class TestAddonSuite(unittest.TestCase):
         # First call: Should isolated-replace 100, hit engine for template, format, and return
         res1 = translate("距離 100メートル")
         self.assertEqual(res1, "المسافة 100 متر")
-        mock_engine.assert_called_once_with("距離 {0}メートル", source_lang="ja")
+        mock_engine.assert_called_once_with("距離 {0}メートル", source_lang="auto")
         
         # Reset mock call history
         mock_engine.reset_mock()
@@ -234,25 +232,45 @@ class TestAddonSuite(unittest.TestCase):
         
         # The engine should only be called for "Main Menu" and "Dreamy Mode" (2 calls), and completely skip "120"
         self.assertEqual(mock_engine.call_count, 2)
-        mock_engine.assert_any_call("Main Menu", source_lang="en")
-        mock_engine.assert_any_call("Dreamy Mode", source_lang="en")
+        mock_engine.assert_any_call("Main Menu", source_lang="auto")
+        mock_engine.assert_any_call("Dreamy Mode", source_lang="auto")
 
     @patch('globalPlugins.translate._execute_engine_translation')
-    def test_identity_translation_caching(self, mock_engine):
-        """Ensure that terms translating to themselves are stored in cache and do not hit network repeatedly."""
+    def test_failed_or_identity_translation_not_cached(self, mock_engine):
+        """Ensure that network timeouts or failed translations returning identical text are not cached in RAM, allowing retry."""
+        # First call fails / returns same text (e.g. timeout)
         mock_engine.return_value = "Main Menu"
-        
-        # First call
         res1 = translate("Main Menu")
         self.assertEqual(res1, "Main Menu")
-        mock_engine.assert_called_once_with("Main Menu", source_lang="en")
+        mock_engine.assert_called_once_with("Main Menu", source_lang="auto")
         
         mock_engine.reset_mock()
         
-        # Second call: Should read from cache, 0 engine calls
+        # Second call: Internet recovers, engine returns real translation
+        mock_engine.return_value = "القائمة الرئيسية"
         res2 = translate("Main Menu")
-        self.assertEqual(res2, "Main Menu")
+        self.assertEqual(res2, "القائمة الرئيسية")
+        mock_engine.assert_called_once_with("Main Menu", source_lang="auto")
+        
+        mock_engine.reset_mock()
+        
+        # Third call: Real translation IS cached, 0 engine calls
+        res3 = translate("Main Menu")
+        self.assertEqual(res3, "القائمة الرئيسية")
         mock_engine.assert_not_called()
+
+    @patch('globalPlugins.translate._execute_engine_translation')
+    def test_placeholder_corruption_fallback(self, mock_engine):
+        """Verify that if an engine drops/corrupts a placeholder {0}, we fallback to translating the literal line without corrupting template."""
+        def mock_translate_broken(text, source_lang="auto"):
+            if "{" in text:
+                return "مبروك استلمت الصولجان x" # Dropped {0}!
+            else:
+                return "مبروك استلمت الصولجان x 3" # Literal line translation
+        mock_engine.side_effect = mock_translate_broken
+        
+        res = translate("Congratulations! You receive the Green Leaf Scepter x 3")
+        self.assertEqual(res, "مبروك استلمت الصولجان x 3")
     @patch('globalPlugins.translate.bing_api.translate')
     @patch('globalPlugins.translate.openrouter_api.translate')
     @patch('globalPlugins.translate.deepl.translate')
@@ -270,9 +288,10 @@ class TestAddonSuite(unittest.TestCase):
         # Test DeepL Routing
         translate_module.config.conf["translate"]["engine"] = "deepl"
         translate_module.config.conf["translate"]["deeplApiKey"] = "test-key"
+        translate_module.config.conf["translate"]["timeout"] = 5
         res = _execute_engine_translation("Hello", source_lang="en")
         self.assertEqual(res, "DeepL Translation")
-        mock_deepl.assert_called_once_with("Hello", "ar", "test-key")
+        mock_deepl.assert_called_once_with("Hello", "ar", "test-key", timeout=5)
         
         # Test OpenAI Routing
         translate_module.config.conf["translate"]["engine"] = "openai"
@@ -280,7 +299,7 @@ class TestAddonSuite(unittest.TestCase):
         translate_module.config.conf["translate"]["openaiModel"] = "gpt-5.4-mini"
         res2 = _execute_engine_translation("Hello", source_lang="en")
         self.assertEqual(res2, "OpenAI Translation")
-        mock_openai.assert_called_once_with("Hello", "ar", "openai-key", model="gpt-5.4-mini")
+        mock_openai.assert_called_once_with("Hello", "ar", "openai-key", model="gpt-5.4-mini", timeout=5)
         
         # Test Gemini Routing
         translate_module.config.conf["translate"]["engine"] = "gemini"
@@ -288,7 +307,7 @@ class TestAddonSuite(unittest.TestCase):
         translate_module.config.conf["translate"]["geminiModel"] = "gemini-3.5-flash"
         res3 = _execute_engine_translation("Hello", source_lang="en")
         self.assertEqual(res3, "Gemini Translation")
-        mock_gemini.assert_called_once_with("Hello", "ar", "gemini-key", model="gemini-3.5-flash")
+        mock_gemini.assert_called_once_with("Hello", "ar", "gemini-key", model="gemini-3.5-flash", timeout=5)
 
         # Test Bing Routing
         translate_module.config.conf["translate"]["engine"] = "bing"
@@ -296,7 +315,7 @@ class TestAddonSuite(unittest.TestCase):
         translate_module.config.conf["translate"]["bingRegion"] = "test-region"
         res4 = _execute_engine_translation("Hello", source_lang="en")
         self.assertEqual(res4, "Bing Translation")
-        mock_bing.assert_called_once_with("Hello", "ar", "bing-key", region="test-region")
+        mock_bing.assert_called_once_with("Hello", "ar", "bing-key", region="test-region", timeout=5)
         
         # Test OpenRouter Routing
         translate_module.config.conf["translate"]["engine"] = "openrouter"
@@ -304,7 +323,7 @@ class TestAddonSuite(unittest.TestCase):
         translate_module.config.conf["translate"]["openrouterModel"] = "deepseek/deepseek-chat"
         res5 = _execute_engine_translation("Hello", source_lang="en")
         self.assertEqual(res5, "OpenRouter Translation")
-        mock_openrouter.assert_called_once_with("Hello", "ar", "openrouter-key", model="deepseek/deepseek-chat")
+        mock_openrouter.assert_called_once_with("Hello", "ar", "openrouter-key", model="deepseek/deepseek-chat", timeout=5)
 
 
 if __name__ == "__main__":

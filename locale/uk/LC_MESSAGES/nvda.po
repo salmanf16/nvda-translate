@@ -157,6 +157,9 @@ msgstr "Перекладач"
 msgid "Translation &engine:"
 msgstr "Механізм &перекладу:"
 
+msgid "Translation &timeout in seconds (1 - 30):"
+msgstr ""
+
 msgid "Translation cache for {app} has been deleted."
 msgstr "Кеш перекладу для {app} видалено."
 

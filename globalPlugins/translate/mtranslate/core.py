@@ -35,13 +35,20 @@ from html import unescape
 class PersistentConnectionManager:
     def __init__(self):
         self.conn = None
+        self.last_timeout = None
 
-    def get_conn(self):
-        if self.conn is None:
-            self.conn = http.client.HTTPSConnection("translate.googleapis.com", timeout=3)
+    def get_conn(self, timeout=5):
+        if self.conn is None or self.last_timeout != timeout:
+            if self.conn:
+                try:
+                    self.conn.close()
+                except Exception:
+                    pass
+            self.conn = http.client.HTTPSConnection("translate.googleapis.com", timeout=timeout)
+            self.last_timeout = timeout
         return self.conn
 
-    def request_translate(self, to_translate, to_language="auto", from_language="auto"):
+    def request_translate(self, to_translate, to_language="auto", from_language="auto", timeout=5):
         to_translate_quoted = urllib.parse.quote(to_translate)
         path = "/translate_a/single?client=gtx&sl=%s&tl=%s&dt=t&q=%s" % (from_language, to_language, to_translate_quoted)
         
@@ -52,7 +59,7 @@ class PersistentConnectionManager:
         
         for attempt in range(2):
             try:
-                connection = self.get_conn()
+                connection = self.get_conn(timeout=timeout)
                 connection.request("GET", path, headers=headers)
                 resp = connection.getresponse()
                 if resp.status == 200:
@@ -78,7 +85,7 @@ class PersistentConnectionManager:
 
 _manager = PersistentConnectionManager()
 
-def translate(to_translate, to_language="auto", from_language="auto"):
+def translate(to_translate, to_language="auto", from_language="auto", timeout=5):
     # Split text by lines to prevent context skipping/failures on multi-line text
     lines = to_translate.splitlines()
     translated_lines = []
@@ -88,8 +95,10 @@ def translate(to_translate, to_language="auto", from_language="auto"):
             translated_lines.append(line)
             continue
         
-        line_result = _manager.request_translate(stripped, to_language, from_language)
-        translated_lines.append(line_result if line_result else stripped)
+        line_result = _manager.request_translate(stripped, to_language, from_language, timeout=timeout)
+        if not line_result:
+            return ""
+        translated_lines.append(line_result)
         
     if "\r\n" in to_translate:
         return "\r\n".join(translated_lines)

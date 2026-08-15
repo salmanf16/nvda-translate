@@ -54,6 +54,7 @@ config.conf.spec["translate"] = {
 	"openrouterModel": 'string(default="deepseek/deepseek-chat")',
 	"openrouterModelsList": 'string(default="deepseek/deepseek-chat,google/gemini-2.5-flash")',
 	"localTargetLang": 'string(default="")',
+	"timeout": 'integer(default=5, min=1, max=30)',
 	"localModelId": 'string(default="")',
 	"localDevice": 'string(default="auto")',
 	"modelsDrive": 'string(default="")',
@@ -67,6 +68,8 @@ _cacheModified = False
 
 def update_cache(appTable, key, value):
         global _cacheModified, _cacheLock
+        if not key or not value or str(key).strip() == str(value).strip():
+                return
         with _cacheLock:
                 if appTable.get(key) != value:
                         appTable[key] = value
@@ -83,66 +86,13 @@ _localTranslateWarningShown = False
 
 
 
-def detect_source_lang(text):
-	if not text:
-		return "auto"
-	# Japanese Hiragana and Katakana
-	if re.search(r'[\u3040-\u30ff]', text):
-		return "ja"
-	# Korean Hangul
-	if re.search(r'[\uac00-\ud7a3\u1100-\u11ff\u3130-\u318f]', text):
-		return "ko"
-	# CJK Unified Ideographs (Japanese Kanji / Chinese)
-	if re.search(r'[\u4e00-\u9fff]', text):
-		return "ja"
-	# Arabic Script (Arabic, Persian, Urdu)
-	if re.search(r'[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff]', text):
-		return "ar"
-	# Cyrillic Script (Russian, Ukrainian, Bulgarian, etc.)
-	if re.search(r'[\u0400-\u04ff\u0500-\u052f]', text):
-		return "ru"
-	# Greek Script
-	if re.search(r'[\u0370-\u03ff\u1f00-\u1fff]', text):
-		return "el"
-	# Hebrew Script
-	if re.search(r'[\u0590-\u05ff]', text):
-		return "he"
-	# Thai Script
-	if re.search(r'[\u0e00-\u0e7f]', text):
-		return "th"
-	# Devanagari Script (Hindi, Marathi, etc.)
-	if re.search(r'[\u0900-\u097f]', text):
-		return "hi"
-	# Bengali Script
-	if re.search(r'[\u0980-\u09ff]', text):
-		return "bn"
-	# Tamil Script
-	if re.search(r'[\u0b80-\u0bff]', text):
-		return "ta"
-	# Telugu Script
-	if re.search(r'[\u0c00-\u0c7f]', text):
-		return "te"
-	# Kannada Script
-	if re.search(r'[\u0c80-\u0cff]', text):
-		return "kn"
-	# Malayalam Script
-	if re.search(r'[\u0d00-\u0d7f]', text):
-		return "ml"
-	# Gujarati Script
-	if re.search(r'[\u0a80-\u0aff]', text):
-		return "gu"
-	# Gurmukhi / Punjabi Script
-	if re.search(r'[\u0a00-\u0a7f]', text):
-		return "pa"
-
-	# If the text is entirely ASCII and has alphabetic letters, return "en"
-	try:
-		if text.isascii() and any(c.isalpha() for c in text):
-			return "en"
-	except AttributeError:
-		pass
-
-	return "auto"
+def _placeholders_survived(template_str, count):
+        if not template_str:
+                return False
+        for i in range(count):
+                if ("{%d}" % i) not in template_str:
+                        return False
+        return True
 
 
 def _execute_engine_translation(text, source_lang="auto"):
@@ -152,41 +102,41 @@ def _execute_engine_translation(text, source_lang="auto"):
         if not target_lang:
                 target_lang = _gpObject.language
 
-        # If source_lang was detected as "en" solely because the text is ASCII, convert to "auto"
-        # so the translation engine can auto-detect Spanish, French, German, Italian, Portuguese, etc.
-        if source_lang == "en":
-                source_lang = "auto"
+        try:
+                timeout = int(config.conf["translate"]["timeout"])
+        except Exception:
+                timeout = 5
 
         if engine == ENGINE_LINGVA:
                 url = config.conf["translate"]["lingvaUrl"]
-                return lingva.translate(text, target_lang, source_language=source_lang, instance_url=url)
+                return lingva.translate(text, target_lang, source_language=source_lang, instance_url=url, timeout=timeout)
         elif engine == ENGINE_LIBRETRANSLATE:
                 url = config.conf["translate"]["libretranslateUrl"]
                 api_key = config.conf["translate"]["libretranslateApiKey"]
-                return libretrans.translate(text, target_lang, source_language=source_lang, url=url, api_key=api_key)
+                return libretrans.translate(text, target_lang, source_language=source_lang, url=url, api_key=api_key, timeout=timeout)
         elif engine == ENGINE_DEEPL:
                 api_key = config.conf["translate"]["deeplApiKey"]
-                return deepl.translate(text, target_lang, api_key)
+                return deepl.translate(text, target_lang, api_key, timeout=timeout)
         elif engine == ENGINE_OPENAI:
                 api_key = config.conf["translate"]["openaiApiKey"]
                 model = config.conf["translate"]["openaiModel"]
-                return openai_api.translate(text, target_lang, api_key, model=model)
+                return openai_api.translate(text, target_lang, api_key, model=model, timeout=timeout)
         elif engine == ENGINE_GEMINI:
                 api_key = config.conf["translate"]["geminiApiKey"]
                 model = config.conf["translate"]["geminiModel"]
-                return gemini_api.translate(text, target_lang, api_key, model=model)
+                return gemini_api.translate(text, target_lang, api_key, model=model, timeout=timeout)
         elif engine == ENGINE_BING:
                 api_key = config.conf["translate"]["bingApiKey"]
                 region = config.conf["translate"]["bingRegion"]
-                return bing_api.translate(text, target_lang, api_key, region=region)
+                return bing_api.translate(text, target_lang, api_key, region=region, timeout=timeout)
         elif engine == ENGINE_OPENROUTER:
                 api_key = config.conf["translate"]["openrouterApiKey"]
                 model = config.conf["translate"]["openrouterModel"]
-                return openrouter_api.translate(text, target_lang, api_key, model=model)
+                return openrouter_api.translate(text, target_lang, api_key, model=model, timeout=timeout)
         elif engine == ENGINE_LOCAL:
-                return mtranslate.translate(text, target_lang, from_language=source_lang)
+                return mtranslate.translate(text, target_lang, from_language=source_lang, timeout=timeout)
         else:
-                return mtranslate.translate(text, target_lang, from_language=source_lang)
+                return mtranslate.translate(text, target_lang, from_language=source_lang, timeout=timeout)
 
 
 def normalize_placeholders(translated_text):
@@ -230,8 +180,6 @@ def translate_single_line_core(line, appTable, target_lang):
         if not stripped_line:
                 return line
 
-
-
         # Rule 1: Skip translation entirely if the line contains no alphabetic characters.
         if not any(c.isalpha() for c in stripped_line):
                 return line
@@ -239,11 +187,6 @@ def translate_single_line_core(line, appTable, target_lang):
         # Rule 2: Skip translation entirely if the line contains exactly one Latin character (e.g. isolated keys like "g" or "A").
         letters = [c for c in stripped_line if c.isalpha()]
         if len(letters) == 1 and letters[0].isascii():
-                return line
-
-        # Rule 3: Skip translation entirely if the line's detected language is already the target language.
-        detected_lang = detect_source_lang(stripped_line)
-        if detected_lang == target_lang[:2].lower():
                 return line
 
         # Check exact RAM cache hit
@@ -267,8 +210,6 @@ def translate_single_line_core(line, appTable, target_lang):
                         template_parts.append(stripped_line[last_idx:])
                         line_template = "".join(template_parts)
 
-
-
                         # If template has no letters (e.g. "{0}"), format and return immediately
                         if not any(c.isalpha() for c in line_template):
                                 return safe_format(line_template, numbers)
@@ -280,32 +221,38 @@ def translate_single_line_core(line, appTable, target_lang):
                                 update_cache(appTable, line, result)
                                 return result
 
-                        # Cache miss: translate the template
+                        # Cache miss: translate the template using neural engine auto-detection
                         try:
-                                translated_template = _execute_engine_translation(line_template, source_lang=detected_lang)
-                                if translated_template and translated_template.strip():
+                                translated_template = _execute_engine_translation(line_template, source_lang="auto")
+                                if translated_template and translated_template.strip() and translated_template.strip() != line_template.strip():
                                         normalized = normalize_placeholders(translated_template)
-                                        update_cache(appTable, line_template, normalized)
-                                        result = safe_format(normalized, numbers)
-                                        update_cache(appTable, line, result)
-                                        return result
+                                        if _placeholders_survived(normalized, len(numbers)):
+                                                update_cache(appTable, line_template, normalized)
+                                                result = safe_format(normalized, numbers)
+                                                update_cache(appTable, line, result)
+                                                return result
+                                        else:
+                                                # Placeholders were dropped/corrupted by engine: fallback to direct literal line translation
+                                                translated_direct = _execute_engine_translation(stripped_line, source_lang="auto")
+                                                if translated_direct and translated_direct.strip() and translated_direct.strip() != stripped_line:
+                                                        update_cache(appTable, line, translated_direct)
+                                                        return translated_direct
+                                                return line
                                 else:
-                                        update_cache(appTable, line_template, line_template)
-                                        result = safe_format(line_template, numbers)
-                                        update_cache(appTable, line, result)
-                                        return result
+                                        # Failed to translate or returned identical template: don't cache failure in RAM
+                                        return safe_format(line_template, numbers)
                         except Exception as e:
                                 logHandler.log.error("Template translation failed: %s" % e)
                                 return line
 
-        # No digits: translate directly
+        # No digits: translate directly using engine auto-detection
         try:
-                translated_val = _execute_engine_translation(stripped_line, source_lang=detected_lang)
-                if translated_val and translated_val.strip():
+                translated_val = _execute_engine_translation(stripped_line, source_lang="auto")
+                if translated_val and translated_val.strip() and translated_val.strip() != stripped_line:
                         update_cache(appTable, line, translated_val)
                         return translated_val
                 else:
-                        update_cache(appTable, line, line)
+                        # Failed to translate or returned identical text: don't cache failure in RAM
                         return line
         except Exception as e:
                 logHandler.log.error("Direct translation failed: %s" % e)
@@ -584,6 +531,19 @@ class TranslateSettingsPanel(gui.settingsDialogs.SettingsPanel):
 		else:
 			self.targetLangChoice.SetSelection(0)
 
+		# Translation Timeout in seconds
+		try:
+			saved_timeout = int(config.conf["translate"]["timeout"])
+		except Exception:
+			saved_timeout = 5
+		self.timeoutCtrl = sHelper.addLabeledControl(
+			_("Translation &timeout in seconds (1 - 30):"),
+			wx.SpinCtrl,
+			min=1,
+			max=30,
+			initial=saved_timeout
+		)
+
 		self._updateFieldsVisibility()
 
 	def onEngineChange(self, evt):
@@ -815,6 +775,9 @@ class TranslateSettingsPanel(gui.settingsDialogs.SettingsPanel):
 
 		sel = self.targetLangChoice.GetSelection()
 		config.conf["translate"]["localTargetLang"] = self._lang_codes[sel] if sel > 0 else ""
+
+		if hasattr(self, "timeoutCtrl"):
+			config.conf["translate"]["timeout"] = self.timeoutCtrl.GetValue()
 
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):

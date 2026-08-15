@@ -3,11 +3,11 @@ import urllib.request
 import urllib.parse
 import json
 
-def translate(text, target_lang, api_key, region=""):
+def translate(text, target_lang, api_key, region="", timeout=5):
     if not api_key:
         raise ValueError("Microsoft/Bing Translator API key is missing.")
         
-    url = f"https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to={urllib.parse.quote(target_lang.lower())}"
+    url = f"https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to={urllib.parse.quote(target_lang.replace('_', '-').lower())}"
     
     headers = {
         "Ocp-Apim-Subscription-Key": api_key,
@@ -23,7 +23,7 @@ def translate(text, target_lang, api_key, region=""):
     req_data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(url, data=req_data, headers=headers, method="POST")
     
-    with urllib.request.urlopen(req) as resp:
+    with urllib.request.urlopen(req, timeout=5) as resp:
         data = json.loads(resp.read().decode("utf-8"))
         if data and isinstance(data, list) and len(data) > 0:
             translations = data[0].get("translations", [])

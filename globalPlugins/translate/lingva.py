@@ -8,22 +8,24 @@ class LingvaConnectionManager:
 	def __init__(self):
 		self.conn = None
 		self.last_host = None
+		self.last_timeout = None
 
-	def get_conn(self, host, scheme):
-		if self.conn is None or self.last_host != host:
+	def get_conn(self, host, scheme, timeout=5):
+		if self.conn is None or self.last_host != host or self.last_timeout != timeout:
 			if self.conn:
 				try:
 					self.conn.close()
 				except Exception:
 					pass
 			if scheme == "http":
-				self.conn = http.client.HTTPConnection(host, timeout=5)
+				self.conn = http.client.HTTPConnection(host, timeout=timeout)
 			else:
-				self.conn = http.client.HTTPSConnection(host, timeout=5)
+				self.conn = http.client.HTTPSConnection(host, timeout=timeout)
 			self.last_host = host
+			self.last_timeout = timeout
 		return self.conn
 
-	def request_translate(self, text, to_language, source_language="auto", instance_url=None):
+	def request_translate(self, text, to_language, source_language="auto", instance_url=None, timeout=5):
 		if instance_url is None:
 			instance_url = "https://lingva.ml"
 
@@ -42,7 +44,7 @@ class LingvaConnectionManager:
 		
 		for attempt in range(2):
 			try:
-				conn = self.get_conn(host, scheme)
+				conn = self.get_conn(host, scheme, timeout=timeout)
 				conn.request("GET", path, headers=headers)
 				resp = conn.getresponse()
 				if resp.status == 200:
@@ -64,5 +66,5 @@ class LingvaConnectionManager:
 _manager = LingvaConnectionManager()
 
 
-def translate(text, to_language, source_language="auto", instance_url=None):
-	return _manager.request_translate(text, to_language, source_language, instance_url)
+def translate(text, to_language, source_language="auto", instance_url=None, timeout=5):
+	return _manager.request_translate(text, to_language, source_language, instance_url, timeout=timeout)

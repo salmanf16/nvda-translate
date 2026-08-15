@@ -8,22 +8,24 @@ class LibreConnectionManager:
 	def __init__(self):
 		self.conn = None
 		self.last_host = None
+		self.last_timeout = None
 
-	def get_conn(self, host, scheme):
-		if self.conn is None or self.last_host != host:
+	def get_conn(self, host, scheme, timeout=5):
+		if self.conn is None or self.last_host != host or self.last_timeout != timeout:
 			if self.conn:
 				try:
 					self.conn.close()
 				except Exception:
 					pass
 			if scheme == "http":
-				self.conn = http.client.HTTPConnection(host, timeout=5)
+				self.conn = http.client.HTTPConnection(host, timeout=timeout)
 			else:
-				self.conn = http.client.HTTPSConnection(host, timeout=5)
+				self.conn = http.client.HTTPSConnection(host, timeout=timeout)
 			self.last_host = host
+			self.last_timeout = timeout
 		return self.conn
 
-	def request_translate(self, text, to_language, source_language="auto", url="http://localhost:5000", api_key=""):
+	def request_translate(self, text, to_language, source_language="auto", url="http://localhost:5000", api_key="", timeout=5):
 		parsed = urllib.parse.urlparse(url)
 		host = parsed.netloc
 		scheme = parsed.scheme
@@ -45,9 +47,9 @@ class LibreConnectionManager:
 
 		for attempt in range(2):
 			try:
-				conn = self.get_conn(host, scheme)
+				conn = self.get_conn(host, scheme, timeout=timeout)
 				conn.request("POST", path, body=data, headers=headers)
-				resp = conn.getcall_resp = conn.getcall_resp = conn.getresponse()
+				resp = conn.getresponse()
 				if resp.status == 200:
 					result_data = resp.read().decode("utf-8")
 					result = json.loads(result_data)
@@ -67,5 +69,5 @@ class LibreConnectionManager:
 _manager = LibreConnectionManager()
 
 
-def translate(text, to_language, source_language="auto", url="http://localhost:5000", api_key=""):
-	return _manager.request_translate(text, to_language, source_language, url, api_key)
+def translate(text, to_language, source_language="auto", url="http://localhost:5000", api_key="", timeout=5):
+	return _manager.request_translate(text, to_language, source_language, url, api_key, timeout=timeout)
