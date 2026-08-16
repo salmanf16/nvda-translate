@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-06-12 18:36+0300\n"
-"PO-Revision-Date: 2026-06-12 18:51+0300\n"
+"POT-Creation-Date: 2026-08-16 09:41+0300\n"
+"PO-Revision-Date: 2026-08-16 09:53+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: uk\n"
@@ -16,159 +16,228 @@ msgstr ""
 "X-Poedit-Basepath: ../../../globalPlugins\n"
 "X-Poedit-SearchPath-0: .\n"
 
-msgid "&Target language:"
-msgstr "&Мова перекладу:"
+#: translate/__init__.py:372 translate/__init__.py:784
+msgid "Translate"
+msgstr "Перекласти"
 
-msgid "All translations have been deleted."
-msgstr "Усі переклади видалено."
+#: translate/__init__.py:389
+msgid "Translation &engine:"
+msgstr "Сервіс &перекладу:"
 
-msgid "Bing API key:"
-msgstr ""
-
-msgid "Bing API region (optional):"
-msgstr ""
-
-msgid "Copy the latest translated text to the clipboard."
-msgstr "Копіює останній перекладений текст у буфер обміну."
-
-msgid "DeepL API &key:"
-msgstr ""
-
-msgid "Enables translation to the desired language."
-msgstr "Вмикає переклад на потрібну мову."
-
-msgid "Error"
-msgstr ""
-
-msgid "Error while deleting application's translation cache."
-msgstr "Помилка під час видалення кешу перекладів програми."
-
-msgid "Failed to fetch Gemini models: {error}"
-msgstr ""
-
-msgid "Failed to fetch OpenAI models: {error}"
-msgstr ""
-
-msgid "Failed to fetch OpenRouter models: {error}"
-msgstr ""
-
-msgid "Fetch Gemini Models"
-msgstr ""
-
-msgid "Fetch OpenAI Models"
-msgstr ""
-
-msgid "Fetch OpenRouter Models"
-msgstr ""
-
-msgid "Fetching..."
-msgstr ""
-
-msgid "Gemini &model:"
-msgstr ""
-
-msgid "Gemini API &key:"
-msgstr ""
-
-msgid "Info"
-msgstr ""
-
-msgid "LibreTranslate &URL:"
-msgstr "&URL LibreTranslate:"
-
-msgid "LibreTranslate API &key (optional):"
-msgstr "&Ключ API LibreTranslate (необов’язково):"
-
+#: translate/__init__.py:399
 msgid "Lingva Translate &instance URL:"
 msgstr "URL &Lingva Translate:"
 
+#: translate/__init__.py:405
+msgid "LibreTranslate &URL:"
+msgstr "&URL LibreTranslate:"
+
+#: translate/__init__.py:411
+msgid "LibreTranslate API &key (optional):"
+msgstr "&Ключ API LibreTranslate (необов’язково):"
+
+#: translate/__init__.py:418
+msgid "DeepL API &key:"
+msgstr "Ключ DeepL API:"
+
+#: translate/__init__.py:425
+msgid "OpenAI API &key:"
+msgstr "Ключ API OpenAI:"
+
+#: translate/__init__.py:431 translate/__init__.py:612
+#: translate/__init__.py:632
+msgid "Fetch OpenAI Models"
+msgstr "Отримання моделей OpenAI"
+
+#: translate/__init__.py:436
+msgid "OpenAI &model:"
+msgstr "&Модель OpenAI:"
+
+#: translate/__init__.py:452
+msgid "Gemini API &key:"
+msgstr "Ключ API Gemini:"
+
+#: translate/__init__.py:458 translate/__init__.py:662
+#: translate/__init__.py:682
+msgid "Fetch Gemini Models"
+msgstr "Отримати моделі Gemini"
+
+#: translate/__init__.py:463
+msgid "Gemini &model:"
+msgstr "&Модель Gemini:"
+
+#: translate/__init__.py:479
+msgid "Bing API key:"
+msgstr "Ключ API Bing:"
+
+#: translate/__init__.py:485
+msgid "Bing API region (optional):"
+msgstr "Регіон API Bing (необов'язково):"
+
+#: translate/__init__.py:492
+msgid "OpenRouter API key:"
+msgstr "Ключ API OpenRouter:"
+
+#: translate/__init__.py:498 translate/__init__.py:712
+#: translate/__init__.py:732
+msgid "Fetch OpenRouter Models"
+msgstr "Отримання моделей OpenRouter"
+
+#: translate/__init__.py:503
+msgid "OpenRouter model:"
+msgstr "Модель OpenRouter:"
+
+#: translate/__init__.py:518
 msgid "Match NVDA language"
 msgstr "Відповідність мові NVDA"
 
-msgid "No compatible Gemini models found."
-msgstr ""
+#: translate/__init__.py:524
+msgid "&Target language:"
+msgstr "&Мова перекладу:"
 
-msgid "No compatible OpenAI models found."
-msgstr ""
-
-msgid "No compatible OpenRouter models found."
-msgstr ""
-
-msgid "No focused application"
-msgstr "Немає сфокусованої програми"
-
-msgid "No saved translations for {app}"
-msgstr "Немає збережених перекладів для {app}"
-
-msgid "No translation to copy"
-msgstr "Немає перекладу для копіювання"
-
-msgid "OpenAI &model:"
-msgstr ""
-
-msgid "OpenAI API &key:"
-msgstr ""
-
-msgid "OpenRouter API key:"
-msgstr ""
-
-msgid "OpenRouter model:"
-msgstr ""
-
-msgid "Please enter a Gemini API key first."
-msgstr ""
-
-msgid "Please enter an OpenAI API key first."
-msgstr ""
-
-msgid "Please enter an OpenRouter API key first."
-msgstr ""
-
-msgid "Press twice to delete all cached translations for all applications."
-msgstr "Натисніть двічі, щоб видалити всі кешовані переклади для всіх програм."
-
-msgid "Press twice to delete all translations for {app}"
-msgstr "Натисніть двічі, щоб видалити всі переклади для {app}"
-
-msgid "Remove all cached translations for all applications."
-msgstr "Видалити усі кешовані переклади для всіх програм."
-
-msgid "Remove translation cache for the currently focused application"
-msgstr "Видалити кеш перекладу для поточної програми"
-
-msgid "Some caches failed to be removed."
-msgstr "Деякі кеші не вдалося видалити."
-
-msgid "Success"
-msgstr ""
-
-msgid "Successfully fetched {count} Gemini models!"
-msgstr ""
-
-msgid "Successfully fetched {count} OpenAI models!"
-msgstr ""
-
-msgid "Successfully fetched {count} OpenRouter models!"
-msgstr ""
-
-msgid "Translate"
-msgstr "Перекладач"
-
-msgid "Translation &engine:"
-msgstr "Механізм &перекладу:"
-
+#: translate/__init__.py:540
 msgid "Translation &timeout in seconds (1 - 30):"
-msgstr ""
+msgstr "&Час очікування перекладу в секундах (1 - 30):"
 
-msgid "Translation cache for {app} has been deleted."
-msgstr "Кеш перекладу для {app} видалено."
+#: translate/__init__.py:593
+msgid "Please enter an OpenAI API key first."
+msgstr "Спочатку введіть ключ API OpenAI."
 
-msgid "Translation disabled."
-msgstr "Переклад вимкнено."
+#: translate/__init__.py:594 translate/__init__.py:635
+#: translate/__init__.py:644 translate/__init__.py:685
+#: translate/__init__.py:694 translate/__init__.py:735
+msgid "Error"
+msgstr "Помилка"
 
+#: translate/__init__.py:599 translate/__init__.py:649
+#: translate/__init__.py:699
+msgid "Fetching..."
+msgstr "Отримання..."
+
+#: translate/__init__.py:615
+msgid "No compatible OpenAI models found."
+msgstr "Не знайдено Сумісних моделей OpenAI."
+
+#: translate/__init__.py:616 translate/__init__.py:666
+#: translate/__init__.py:716
+msgid "Info"
+msgstr "Інформація"
+
+#: translate/__init__.py:625
+#, python-brace-format
+msgid "Successfully fetched {count} OpenAI models!"
+msgstr "Успішно отримано {count} моделей OpenAI!"
+
+#: translate/__init__.py:626 translate/__init__.py:676
+#: translate/__init__.py:726
+msgid "Success"
+msgstr "Успіх"
+
+#: translate/__init__.py:634
+#, python-brace-format
+msgid "Failed to fetch OpenAI models: {error}"
+msgstr "Не вдалося отримати моделі OpenAI: {error}"
+
+#: translate/__init__.py:643
+msgid "Please enter a Gemini API key first."
+msgstr "Спочатку введіть ключ API Gemini."
+
+#: translate/__init__.py:665
+msgid "No compatible Gemini models found."
+msgstr "Сумісних моделей Gemini не знайдено."
+
+#: translate/__init__.py:675
+#, python-brace-format
+msgid "Successfully fetched {count} Gemini models!"
+msgstr "Успішно отримано {count} моделей Gemini!"
+
+#: translate/__init__.py:684
+#, python-brace-format
+msgid "Failed to fetch Gemini models: {error}"
+msgstr "Не вдалося отримати моделі Gemini: {error}"
+
+#: translate/__init__.py:693
+msgid "Please enter an OpenRouter API key first."
+msgstr "Спочатку введіть ключ API OpenRouter."
+
+#: translate/__init__.py:715
+msgid "No compatible OpenRouter models found."
+msgstr "Сумісних моделей OpenRouter не знайдено."
+
+#: translate/__init__.py:725
+#, python-brace-format
+msgid "Successfully fetched {count} OpenRouter models!"
+msgstr "Успішно отримано {count} моделей OpenRouter!"
+
+#: translate/__init__.py:734
+#, python-brace-format
+msgid "Failed to fetch OpenRouter models: {error}"
+msgstr "Не вдалося отримати моделі OpenRouter: {error}"
+
+#: translate/__init__.py:930
 msgid "Translation enabled."
 msgstr "Переклад увімкнено."
 
+#: translate/__init__.py:932
+msgid "Translation disabled."
+msgstr "Переклад вимкнено."
+
+#: translate/__init__.py:934
+msgid "Enables translation to the desired language."
+msgstr "Вмикає переклад на потрібну мову."
+
+#: translate/__init__.py:941
+#, python-brace-format
 msgid "translation {text} ¨copied to clipboard"
 msgstr "{text} скопійовано в буфер обміну"
 
+#: translate/__init__.py:943
+msgid "No translation to copy"
+msgstr "Немає перекладу для копіювання"
+
+#: translate/__init__.py:944
+msgid "Copy the latest translated text to the clipboard."
+msgstr "Копіює останній перекладений текст у буфер обміну."
+
+#: translate/__init__.py:948
+msgid "Press twice to delete all cached translations for all applications."
+msgstr "Натисніть двічі, щоб видалити всі кешовані переклади для всіх програм."
+
+#: translate/__init__.py:961
+msgid "All translations have been deleted."
+msgstr "Усі переклади видалено."
+
+#: translate/__init__.py:963
+msgid "Some caches failed to be removed."
+msgstr "Деякі кеші не вдалося видалити."
+
+#: translate/__init__.py:964
+msgid "Remove all cached translations for all applications."
+msgstr "Видалити усі кешовані переклади для всіх програм."
+
+#: translate/__init__.py:970
+msgid "No focused application"
+msgstr "Немає сфокусованої програми"
+
+#: translate/__init__.py:973
+#, python-brace-format
+msgid "Press twice to delete all translations for {app}"
+msgstr "Натисніть двічі, щоб видалити всі переклади для {app}"
+
+#: translate/__init__.py:985
+msgid "Error while deleting application's translation cache."
+msgstr "Помилка під час видалення кешу перекладів програми."
+
+#: translate/__init__.py:987
+#, python-brace-format
+msgid "Translation cache for {app} has been deleted."
+msgstr "Кеш перекладу для {app} видалено."
+
+#: translate/__init__.py:989
+#, python-brace-format
+msgid "No saved translations for {app}"
+msgstr "Немає збережених перекладів для {app}"
+
+#: translate/__init__.py:991
+msgid "Remove translation cache for the currently focused application"
+msgstr "Видалити кеш перекладу для поточної програми"
