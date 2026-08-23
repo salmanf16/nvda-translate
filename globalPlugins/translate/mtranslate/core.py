@@ -33,54 +33,95 @@ from html import unescape
 
 
 class PersistentConnectionManager:
+    ENDPOINTS = [
+        ("clients5.google.com", "/translate_a/t?client=dict-chrome-ex&sl=%s&tl=%s&q=%s"),
+        ("clients5.google.com", "/translate_a/single?client=at&sl=%s&tl=%s&dt=t&q=%s"),
+        ("translate.google.com", "/translate_a/t?client=dict-chrome-ex&sl=%s&tl=%s&q=%s"),
+        ("translate.googleapis.com", "/translate_a/single?client=gtx&sl=%s&tl=%s&dt=t&q=%s"),
+    ]
+
     def __init__(self):
-        self.conn = None
+        self.conns = {}
         self.last_timeout = None
 
-    def get_conn(self, timeout=5):
-        if self.conn is None or self.last_timeout != timeout:
-            if self.conn:
+    def get_conn(self, host, timeout=5):
+        if self.last_timeout != timeout:
+            for h, c in list(self.conns.items()):
                 try:
-                    self.conn.close()
+                    c.close()
                 except Exception:
                     pass
-            self.conn = http.client.HTTPSConnection("translate.googleapis.com", timeout=timeout)
+            self.conns.clear()
             self.last_timeout = timeout
-        return self.conn
+
+        conn = self.conns.get(host)
+        if conn is None:
+            conn = http.client.HTTPSConnection(host, timeout=timeout)
+            self.conns[host] = conn
+        return conn
+
+    def _parse_response(self, data):
+        if not data:
+            return ""
+        if isinstance(data, str):
+            return data
+        if isinstance(data, list) and len(data) > 0:
+            first = data[0]
+            # Format 1: dict-chrome-ex -> [["translated text", "detected_lang"], ...]
+            if isinstance(first, list) and len(first) > 0 and isinstance(first[0], str):
+                parts = []
+                for item in data:
+                    if isinstance(item, list) and len(item) > 0 and isinstance(item[0], str):
+                        parts.append(item[0])
+                    elif isinstance(item, str):
+                        parts.append(item)
+                if parts:
+                    return "".join(parts)
+            # Format 2: single?client=at / client=gtx -> [[["chunk1", "orig1", ...], ...]]
+            if isinstance(first, list) and len(first) > 0 and isinstance(first[0], list):
+                parts = []
+                for chunk in first:
+                    if isinstance(chunk, list) and len(chunk) > 0 and isinstance(chunk[0], str):
+                        parts.append(chunk[0])
+                    elif isinstance(chunk, str):
+                        parts.append(chunk)
+                if parts:
+                    return "".join(parts)
+        return ""
 
     def request_translate(self, to_translate, to_language="auto", from_language="auto", timeout=5):
         to_translate_quoted = urllib.parse.quote(to_translate)
-        path = "/translate_a/single?client=gtx&sl=%s&tl=%s&dt=t&q=%s" % (from_language, to_language, to_translate_quoted)
-        
         headers = {
-            "User-Agent": "Mozilla/5.0",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
             "Connection": "keep-alive"
         }
-        
-        for attempt in range(2):
-            try:
-                connection = self.get_conn(timeout=timeout)
-                connection.request("GET", path, headers=headers)
-                resp = connection.getresponse()
-                if resp.status == 200:
-                    data_bytes = resp.read()
-                    data = json.loads(data_bytes.decode("utf-8"))
-                    parts = []
-                    if data and isinstance(data, list) and len(data) > 0 and isinstance(data[0], list):
-                        for chunk in data[0]:
-                            if chunk and isinstance(chunk, list) and len(chunk) > 0 and chunk[0]:
-                                parts.append(chunk[0])
-                    return "".join(parts)
-                else:
-                    resp.read()  # Consume response body to clear socket
-            except Exception:
-                # Reset connection on any exception (like closed socket due to idle timeout) and retry once
-                if self.conn:
-                    try:
-                        self.conn.close()
-                    except Exception:
-                        pass
-                self.conn = None
+
+        for host, path_template in self.ENDPOINTS:
+            path = path_template % (from_language, to_language, to_translate_quoted)
+            for attempt in range(2):
+                try:
+                    conn = self.get_conn(host, timeout=timeout)
+                    conn.request("GET", path, headers=headers)
+                    resp = conn.getresponse()
+                    if resp.status == 200:
+                        data_bytes = resp.read()
+                        data = json.loads(data_bytes.decode("utf-8"))
+                        res = self._parse_response(data)
+                        if res:
+                            return res
+                    else:
+                        resp.read()  # Clear socket buffer
+                        if resp.status == 429:
+                            # Endpoint rate-limited, move immediately to next endpoint
+                            break
+                except Exception:
+                    # Reset connection for this host on error
+                    old_conn = self.conns.pop(host, None)
+                    if old_conn:
+                        try:
+                            old_conn.close()
+                        except Exception:
+                            pass
         return ""
 
 _manager = PersistentConnectionManager()
