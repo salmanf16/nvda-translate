@@ -136,19 +136,20 @@ class TestAddonSuite(unittest.TestCase):
     @patch('globalPlugins.translate._execute_engine_translation')
     def test_non_alphabetic_bypass(self, mock_engine):
         """Verify that lines containing no alphabetic characters bypass the engine and return immediately (0ms)."""
-        # A purely numeric line
         res = translate("120")
         self.assertEqual(res, "120")
+        res2 = translate("120.5 / 80")
+        self.assertEqual(res2, "120.5 / 80")
+        res3 = translate(":::")
+        self.assertEqual(res3, ":::")
         mock_engine.assert_not_called()
-        
-        # Line with symbols and digits
-        res = translate("120.5 / 80")
-        self.assertEqual(res, "120.5 / 80")
-        mock_engine.assert_not_called()
-        
-        # Line with punctuation only
-        res = translate(":::")
-        self.assertEqual(res, ":::")
+
+    @patch('globalPlugins.translate._execute_engine_translation')
+    def test_already_target_language_bypass(self, mock_engine):
+        """Verify that text already in the target language (e.g. Arabic when target_lang='ar') bypasses engine (0ms)."""
+        self.assertEqual(translate("تم تفعيل الترجمة."), "تم تفعيل الترجمة.")
+        self.assertEqual(translate("مرحبا بالعالم"), "مرحبا بالعالم")
+        self.assertEqual(translate("BK3 - قائمة اللعبة"), "BK3 - قائمة اللعبة")
         mock_engine.assert_not_called()
 
     @patch('globalPlugins.translate._execute_engine_translation')

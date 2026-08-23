@@ -175,6 +175,40 @@ def safe_format(template_str, numbers):
 
 
 
+def is_already_target_language(text, target_lang):
+        if not text or not target_lang:
+                return False
+        tl = target_lang.lower().replace("_", "-")
+        
+        # Arabic target: if text contains Arabic characters and no foreign alphabets (or >= foreign alphabets)
+        if tl.startswith("ar"):
+                arabic_count = sum(1 for c in text if '\u0600' <= c <= '\u06FF' or '\u0750' <= c <= '\u077F' or '\u08A0' <= c <= '\u08FF' or '\uFB50' <= c <= '\uFDFF' or '\uFE70' <= c <= '\uFEFF')
+                if arabic_count > 0:
+                        latin_count = sum(1 for c in text if c.isascii() and c.isalpha())
+                        cyrillic_count = sum(1 for c in text if '\u0400' <= c <= '\u04FF')
+                        cjk_count = sum(1 for c in text if '\u4E00' <= c <= '\u9FFF' or '\u3040' <= c <= '\u30FF' or '\uAC00' <= c <= '\uD7AF')
+                        foreign_count = latin_count + cyrillic_count + cjk_count
+                        if foreign_count == 0 or arabic_count >= foreign_count:
+                                return True
+        elif tl.startswith("he") or tl.startswith("iw"):
+                hebrew_count = sum(1 for c in text if '\u0590' <= c <= '\u05FF')
+                if hebrew_count > 0 and sum(1 for c in text if c.isascii() and c.isalpha()) == 0:
+                        return True
+        elif tl.startswith("el"):
+                greek_count = sum(1 for c in text if '\u0370' <= c <= '\u03FF')
+                if greek_count > 0 and sum(1 for c in text if c.isascii() and c.isalpha()) == 0:
+                        return True
+        elif tl.startswith("ko"):
+                hangul_count = sum(1 for c in text if '\uAC00' <= c <= '\uD7AF' or '\u1100' <= c <= '\u11FF')
+                if hangul_count > 0 and sum(1 for c in text if c.isascii() and c.isalpha()) == 0:
+                        return True
+        elif tl.startswith("ja"):
+                kana_count = sum(1 for c in text if '\u3040' <= c <= '\u309F' or '\u30A0' <= c <= '\u30FF')
+                if kana_count > 0 and sum(1 for c in text if c.isascii() and c.isalpha()) == 0:
+                        return True
+        return False
+
+
 def translate_single_line_core(line, appTable, target_lang):
         stripped_line = line.strip()
         if not stripped_line:
@@ -187,6 +221,10 @@ def translate_single_line_core(line, appTable, target_lang):
         # Rule 2: Skip translation entirely if the line contains exactly one Latin character (e.g. isolated keys like "g" or "A").
         letters = [c for c in stripped_line if c.isalpha()]
         if len(letters) == 1 and letters[0].isascii():
+                return line
+
+        # Rule 3: Skip translation entirely (0ms) if the text is already written in the target language script.
+        if is_already_target_language(stripped_line, target_lang):
                 return line
 
         # Check exact RAM cache hit
@@ -210,40 +248,40 @@ def translate_single_line_core(line, appTable, target_lang):
                         template_parts.append(stripped_line[last_idx:])
                         line_template = "".join(template_parts)
 
-                        # If template has no letters (e.g. "{0}"), format and return immediately
-                        if not any(c.isalpha() for c in line_template):
-                                return safe_format(line_template, numbers)
+                # If template has no letters (e.g. "{0}"), format and return immediately
+                if not any(c.isalpha() for c in line_template):
+                        return safe_format(line_template, numbers)
 
-                        # Check template RAM cache hit
-                        cached_template = appTable.get(line_template, None)
-                        if cached_template is not None:
-                                result = safe_format(cached_template, numbers)
-                                update_cache(appTable, line, result)
-                                return result
+                # Check template RAM cache hit
+                cached_template = appTable.get(line_template, None)
+                if cached_template is not None:
+                        result = safe_format(cached_template, numbers)
+                        update_cache(appTable, line, result)
+                        return result
 
-                        # Cache miss: translate the template using neural engine auto-detection
-                        try:
-                                translated_template = _execute_engine_translation(line_template, source_lang="auto")
-                                if translated_template and translated_template.strip() and translated_template.strip() != line_template.strip():
-                                        normalized = normalize_placeholders(translated_template)
-                                        if _placeholders_survived(normalized, len(numbers)):
-                                                update_cache(appTable, line_template, normalized)
-                                                result = safe_format(normalized, numbers)
-                                                update_cache(appTable, line, result)
-                                                return result
-                                        else:
-                                                # Placeholders were dropped/corrupted by engine: fallback to direct literal line translation
-                                                translated_direct = _execute_engine_translation(stripped_line, source_lang="auto")
-                                                if translated_direct and translated_direct.strip() and translated_direct.strip() != stripped_line:
-                                                        update_cache(appTable, line, translated_direct)
-                                                        return translated_direct
-                                                return line
+                # Cache miss: translate the template using neural engine auto-detection
+                try:
+                        translated_template = _execute_engine_translation(line_template, source_lang="auto")
+                        if translated_template and translated_template.strip() and translated_template.strip() != line_template.strip():
+                                normalized = normalize_placeholders(translated_template)
+                                if _placeholders_survived(normalized, len(numbers)):
+                                        update_cache(appTable, line_template, normalized)
+                                        result = safe_format(normalized, numbers)
+                                        update_cache(appTable, line, result)
+                                        return result
                                 else:
-                                        # Failed to translate or returned identical template: don't cache failure in RAM
-                                        return safe_format(line_template, numbers)
-                        except Exception as e:
-                                logHandler.log.error("Template translation failed: %s" % e)
-                                return line
+                                        # Placeholders were dropped/corrupted by engine: fallback to direct literal line translation
+                                        translated_direct = _execute_engine_translation(stripped_line, source_lang="auto")
+                                        if translated_direct and translated_direct.strip() and translated_direct.strip() != stripped_line:
+                                                update_cache(appTable, line, translated_direct)
+                                                return translated_direct
+                                        return line
+                        else:
+                                # Failed to translate or returned identical template: don't cache failure in RAM
+                                return safe_format(line_template, numbers)
+                except Exception as e:
+                        logHandler.log.error("Template translation failed: %s" % e)
+                        return line
 
         # No digits: translate directly using engine auto-detection
         try:
